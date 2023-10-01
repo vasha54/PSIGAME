@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.PSIGAME">
         <activity
-                android:name=".activity.MainActivity"
+                android:name=".ui.activity.MainActivity"
                 android:configChanges="orientation"
                 android:screenOrientation="portrait"
                 android:exported="true">

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PSIGAME+</string>
+    <string name="title_home">Incio</string>
+    <string name="title_statistics">Estadísticas</string>
+    <string name="title_configuration">Configuración</string>
+    <string name="title_about">Acerca de ...</string>
+    <string name="title_certificate">Certificado</string>
 </resources>
