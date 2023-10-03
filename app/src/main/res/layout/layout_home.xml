@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/banner">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginBottom="8dip">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="2dip"
+                        android:layout_marginRight="2dip"
+                        android:maxLines="1"
+                        android:text="@string/text_banner_one"
+                        android:textColor="@color/black"
+                        android:gravity="center"/>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                    <TextView
+                            android:id="@+id/text_two_banner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="3dip"
+                            android:layout_marginRight="3dip"
+                            android:maxLines="1"
+                            android:text="@string/text_banner_two"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:layout_centerHorizontal="true"/>
+                    <TextView
+                            android:id="@+id/text_three_banner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="3dip"
+                            android:layout_marginRight="3dip"
+                            android:maxLines="1"
+                            android:text="@string/text_banner_three"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:layout_toRightOf="@id/text_two_banner"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/banner" >
+
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/result_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" tools:ignore="SpeakableTextPresentCheck"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:ignore="SpeakableTextPresentCheck"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

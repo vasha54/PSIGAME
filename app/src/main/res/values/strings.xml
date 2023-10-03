@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">PSIGAME+</string>
-    <string name="title_home">Incio</string>
-    <string name="title_statistics">Estadísticas</string>
-    <string name="title_configuration">Configuración</string>
-    <string name="title_about">Acerca de ...</string>
-    <string name="title_certificate">Certificado</string>
+    <string translatable="false" name="app_name">PSIGAME+</string>
+    <string translatable="false" name="title_home">Incio</string>
+    <string translatable="false" name="title_statistics">Estadísticas</string>
+    <string translatable="false" name="title_configuration">Configuración</string>
+    <string translatable="false" name="title_about">Acerca de ...</string>
+    <string translatable="false" name="title_certificate">Certificado</string>
+    <string translatable="false" name="title_tab_course_general_psychology">General</string>
+    <string translatable="false" name="title_tab_course_medical_psychology">Médica</string>
+    <string translatable="false" name="exit">Pulse de nuevo para salir</string>
+    <string translatable="false" name="text_banner_one">Demuestra tu nivel</string>
+    <string translatable="false" name="text_banner_two">en</string>
+    <string translatable="false" name="text_banner_three">Psicología</string>
 </resources>
