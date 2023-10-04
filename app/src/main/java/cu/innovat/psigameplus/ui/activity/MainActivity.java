@@ -10,7 +10,7 @@ import android.widget.Toast;
 import android.view.MenuItem;
 
 import cu.innovat.psigameplus.R;
-import cu.innovat.psigameplus.ui.fragment.HomeFragment;
+import cu.innovat.psigameplus.ui.fragment.*;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
     private BottomNavigationView bottomNavigationView;
@@ -48,31 +48,19 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 Fragment fragment=null;
                 switch (nextItem) {
                     case R.id.navigation_about:
-                        m_toast=Toast.makeText(this.getApplicationContext(),
-                                "About",
-                                Toast.LENGTH_SHORT);
-                        m_toast.show();
+                        fragment = new AboutFragment();
                         break;
                     case R.id.navigation_certificate:
-                        m_toast=Toast.makeText(this.getApplicationContext(),
-                                "Certificado",
-                                Toast.LENGTH_SHORT);
-                        m_toast.show();
+                        fragment = new CertificateFragment();
                         break;
                     case R.id.navigation_configuration:
-                        m_toast=Toast.makeText(this.getApplicationContext(),
-                                "Configuracion",
-                                Toast.LENGTH_SHORT);
-                        m_toast.show();
+                        fragment = new ConfigurationFragment();
                         break;
                     case R.id.navigation_home:
                         fragment = new HomeFragment();
                         break;
                     case R.id.navigation_statistics:
-                        m_toast=Toast.makeText(this.getApplicationContext(),
-                                "Estadisticas",
-                                Toast.LENGTH_SHORT);
-                        m_toast.show();
+                        fragment = new StatisticsFragment();
                         break;
                 }
                 if(fragment!=null){

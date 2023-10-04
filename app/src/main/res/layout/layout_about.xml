@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:background="@drawable/border_round_8dip">
+
+            <ImageView
+                    android:id="@+id/image_about"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:scaleType="fitXY"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="2dp">
+
+                <TextView
+                        android:id="@+id/text_view_app_name"
+                        style="@style/CustomTextView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingLeft="10dp"
+                        android:text="@string/app_name"
+                        android:textAlignment="textStart" />
+
+
+                <TextView
+                        android:id="@+id/text_view_version_name"
+                        style="@style/CustomTextViewVersion"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingLeft="10dp"
+                        android:text="@string/version"
+                        android:textAlignment="textStart" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/border_round_8dip"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+            <ScrollView
+                    android:id="@+id/SCROLLER_ID"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5dp"
+                    android:fillViewport="true"
+                    android:scrollbars="vertical" >
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/text_view_description"
+                            style="@style/CustomTextViewDescription"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbars="vertical"
+                            android:text="@string/descriptions_part_one" >
+                    </TextView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                                android:id="@+id/image_doctor"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@mipmap/cartman"
+                                android:scaleType="fitXY"
+                                android:layout_gravity="center"
+                                android:drawable="@drawable/image_circle"/>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingLeft="2dp">
+
+                            <TextView
+                                    android:id="@+id/name_doctor"
+                                    style="@style/CustomTextViewDescription"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/app_name"
+                                    android:textAlignment="textStart" />
+
+
+                            <TextView
+                                    android:id="@+id/text_number_phone_doctor"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawablePadding="5dp"
+                                    android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+                            <TextView
+                                    android:id="@+id/text_number_email_doctor"
+                                    android:drawablePadding="5dp"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawableLeft="@drawable/ic_email_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left|center"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                            android:id="@+id/text_view_description"
+                            style="@style/CustomTextViewDescription"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="all"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbars="vertical"
+                            android:text="@string/descriptions_part_two" >
+                    </TextView>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                                android:id="@+id/image_design"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@mipmap/cartman"
+                                android:scaleType="fitXY"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_circular_image_view"/>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingLeft="2dp">
+
+                            <TextView
+                                    android:id="@+id/name_design"
+                                    style="@style/CustomTextViewDescription"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/app_name"
+                                    android:textAlignment="textStart" />
+
+
+                            <TextView
+                                    android:id="@+id/text_number_phone_doctor"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawablePadding="5dp"
+                                    android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+                            <TextView
+                                    android:id="@+id/text_number_email_design"
+                                    android:drawablePadding="5dp"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawableLeft="@drawable/ic_email_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left|center"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                                android:id="@+id/image_developer"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@mipmap/cartman"
+                                android:scaleType="fitXY"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_circular_image_view"/>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingLeft="2dp">
+
+                            <TextView
+                                    android:id="@+id/name_developer"
+                                    style="@style/CustomTextViewDescription"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/app_name"
+                                    android:textAlignment="textStart" />
+
+
+                            <TextView
+                                    android:id="@+id/text_number_phone_developer"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawablePadding="5dp"
+                                    android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+                            <TextView
+                                    android:id="@+id/text_number_email_design"
+                                    android:drawablePadding="5dp"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawableLeft="@drawable/ic_email_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left|center"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_number_innovat_srl"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                            android:id="@+id/text_view_description"
+                            style="@style/CustomTextViewDescription"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="all"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbars="vertical"
+                            android:text="@string/descriptions_part_three" >
+                    </TextView>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="20dp" >
+
+                        <TextView
+                                android:id="@+id/text_mark_water1"
+                                style="@style/CustomTextViewDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:paddingLeft="2dp"
+                                android:text="@string/text_mark_water_1"
+                                android:textAlignment="center"
+                                android:textStyle="bold" />
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+
+                            <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:orientation="vertical" >
+
+                                <TextView
+                                        android:id="@+id/text_mark_water2"
+                                        style="@style/CustomTextViewDescription"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_mark_water_2"
+                                        android:textAlignment="center"
+                                        android:textStyle="bold" />
+
+                                <ImageView
+                                        android:id="@+id/icon_drpa"
+                                        android:layout_width="72dip"
+                                        android:layout_height="72dip"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:src="@mipmap/logo_innovat" />
+
+                                <TextView
+                                        android:id="@+id/text_number_phone_innovat"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                                <TextView
+                                        android:id="@+id/text_number_email_innovat"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_email_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                                <TextView
+                                        android:id="@+id/text_facebook_innovat"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_facebook_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:orientation="vertical" >
+
+                                <TextView
+                                        android:id="@+id/text_mark_water3"
+                                        style="@style/CustomTextViewDescription"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_mark_water_3"
+                                        android:textAlignment="center"
+                                        android:textStyle="bold" />
+
+                                <ImageView
+                                        android:id="@+id/icon_um"
+                                        android:layout_width="72dip"
+                                        android:layout_height="72dip"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:src="@mipmap/cartman" />
+                                <TextView
+                                        android:id="@+id/text_number_phone_ucmm"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                                <TextView
+                                        android:id="@+id/text_number_email_ucmm"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_email_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                                <TextView
+                                        android:id="@+id/text_facebook_ucmm"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_facebook_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_number_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

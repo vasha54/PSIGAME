@@ -5,17 +5,36 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/border_round.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/border_round_8dip.xml" value="0.18055555555555555" />
         <entry key="app/src/main/res/drawable/ic_certificate_white_24dp.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/drawable/ic_configuration_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_email_22dp.xml" value="0.18425925925925926" />
+        <entry key="app/src/main/res/drawable/ic_email_link_15dp.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/ic_facebook_22dp.xml" value="0.18425925925925926" />
+        <entry key="app/src/main/res/drawable/ic_facebook_link_15dp.xml" value="0.17685185185185184" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_home_white_24dp.xml" value="0.18055555555555555" />
         <entry key="app/src/main/res/drawable/ic_information_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_information_white_24dp.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/drawable/ic_number_phone.xml" value="0.15555555555555556" />
+        <entry key="app/src/main/res/drawable/ic_number_phone_link_18dp.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/ic_statistics_black_24dp.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/image_circle.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/shape_circular_image_view.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_quizz.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/layout_about.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/layout_cerficate_generate.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_certificate.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_certificate_presentation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_certificate_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_configuration.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_course_general_level.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_course_medical_level.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/layout_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/layout_statistics.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />

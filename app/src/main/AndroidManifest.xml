@@ -10,10 +10,16 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.PSIGAME">
         <activity
+                android:name=".ui.activity.QuizzActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:exported="true"
+                android:label="@string/title_activity_quizz"
+                android:theme="@style/Theme.PSIGAME.Fullscreen"/>
+        <activity
                 android:name=".ui.activity.MainActivity"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"
-                android:exported="true">
+                android:exported="true"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

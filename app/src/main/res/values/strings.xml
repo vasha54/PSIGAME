@@ -1,5 +1,6 @@
 <resources>
     <string translatable="false" name="app_name">PSIGAME+</string>
+    <string translatable="false" name="version">Versión: 1.0.0</string>
     <string translatable="false" name="title_home">Incio</string>
     <string translatable="false" name="title_statistics">Estadísticas</string>
     <string translatable="false" name="title_configuration">Configuración</string>
@@ -14,4 +15,18 @@
     <string translatable="false" name="title_level_rookie">Novato</string>
     <string translatable="false" name="title_level_competent">Competente</string>
     <string translatable="false" name="title_level_professional">Profesional</string>
+    <string translatable="false" name="text_number_innovat_srl">ssfsf</string>
+    <string translatable="false" name="descriptions_part_one">PSIGAME+ es una aplicación diseñada para
+        dispositivos móviles y tablets con sistema operativo Android.\n\nEl equipo de especialistas responsables de la
+        elaboración y adaptación de contenidos de este recurso educativo digital
+        estuvo a cargo de:</string>
+    <string name="descriptions_part_two">El equipo de desarrollo de la aplicación estuvo conformado por:</string>
+    <string name="descriptions_part_three">Pertenecientes a la my Innovat Srl. La misma brinda los siguientes servicios:</string>
+    <string name="text_mark_water_1" translatable="false">Este producto ha sido</string>
+    <string name="text_mark_water_2" translatable="false">Desarrollado por :</string>
+    <string name="text_mark_water_3" translatable="false">Auspiciado por :</string>
+
+    <string name="title_activity_quizz">QuizzActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
