@@ -9,11 +9,13 @@ import java.util.*;
  * @date 2/10/23
  */
 public class AdapterHome extends FragmentPagerAdapter {
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
+    private  List<Fragment> mFragmentList ;
+    private  List<String> mFragmentTitleList ;
 
     public AdapterHome(FragmentManager manager) {
         super(manager);
+        mFragmentList = new ArrayList<>();
+        mFragmentTitleList = new ArrayList<>();
     }
 
     @Override

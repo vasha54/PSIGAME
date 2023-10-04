@@ -11,4 +11,7 @@
     <string translatable="false" name="text_banner_one">Demuestra tu nivel</string>
     <string translatable="false" name="text_banner_two">en</string>
     <string translatable="false" name="text_banner_three">Psicología</string>
+    <string translatable="false" name="title_level_rookie">Novato</string>
+    <string translatable="false" name="title_level_competent">Competente</string>
+    <string translatable="false" name="title_level_professional">Profesional</string>
 </resources>

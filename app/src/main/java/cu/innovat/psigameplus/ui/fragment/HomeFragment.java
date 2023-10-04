@@ -40,8 +40,8 @@ public class HomeFragment extends BaseFragment {
 
     private void setupViewPager(ViewPager viewPager) {
         AdapterHome adapter = new AdapterHome(getChildFragmentManager());
-        adapter.addFragment(new Fragment(), getString(R.string.title_tab_course_general_psychology));
-        adapter.addFragment(new Fragment(), getString(R.string.title_tab_course_medical_psychology));
+        adapter.addFragment(new CourseGeneralLevelFragment(), getString(R.string.title_tab_course_general_psychology));
+        adapter.addFragment(new CourseMedicalLevelFragment(), getString(R.string.title_tab_course_medical_psychology));
         viewPager.setAdapter(adapter);
     }
 }

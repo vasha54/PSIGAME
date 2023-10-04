@@ -9,8 +9,12 @@
         <entry key="app/src/main/res/drawable/ic_configuration_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_information_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_information_white_24dp.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/drawable/ic_statistics_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/layout_course_general_level.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/layout_course_medical_level.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/layout_home.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
