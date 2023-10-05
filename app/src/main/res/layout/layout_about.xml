@@ -113,18 +113,17 @@
                                 android:paddingLeft="2dp">
 
                             <TextView
-                                    android:id="@+id/name_doctor"
+                                    android:id="@+id/textview_name_doctor"
                                     style="@style/CustomTextViewDescription"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:paddingLeft="10dp"
-                                    android:text="@string/app_name"
+                                    android:text="@string/text_name_doctor"
                                     android:textAlignment="textStart" />
 
 
                             <TextView
-                                    android:id="@+id/text_number_phone_doctor"
+                                    android:id="@+id/textview_phone_doctor"
                                     style="@style/CustomTextViewVersion"
                                     android:drawablePadding="5dp"
                                     android:drawableLeft="@drawable/ic_number_phone_link_15dp"
@@ -133,12 +132,12 @@
                                     android:layout_gravity="center"
                                     android:gravity="left"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_phone_doctor"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
                             <TextView
-                                    android:id="@+id/text_number_email_doctor"
+                                    android:id="@+id/textview_email_doctor"
                                     android:drawablePadding="5dp"
                                     style="@style/CustomTextViewVersion"
                                     android:drawableLeft="@drawable/ic_email_link_15dp"
@@ -147,7 +146,7 @@
                                     android:layout_gravity="center"
                                     android:gravity="left|center"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_email_doctor"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
@@ -193,18 +192,17 @@
                                 android:paddingLeft="2dp">
 
                             <TextView
-                                    android:id="@+id/name_design"
+                                    android:id="@+id/textview_name_design"
                                     style="@style/CustomTextViewDescription"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:paddingLeft="10dp"
-                                    android:text="@string/app_name"
+                                    android:text="@string/text_name_design"
                                     android:textAlignment="textStart" />
 
 
                             <TextView
-                                    android:id="@+id/text_number_phone_doctor"
+                                    android:id="@+id/textview_phone_design"
                                     style="@style/CustomTextViewVersion"
                                     android:drawablePadding="5dp"
                                     android:drawableLeft="@drawable/ic_number_phone_link_15dp"
@@ -213,12 +211,12 @@
                                     android:layout_gravity="center"
                                     android:gravity="left"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_phone_design"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
                             <TextView
-                                    android:id="@+id/text_number_email_design"
+                                    android:id="@+id/textview_email_design"
                                     android:drawablePadding="5dp"
                                     style="@style/CustomTextViewVersion"
                                     android:drawableLeft="@drawable/ic_email_link_15dp"
@@ -227,7 +225,7 @@
                                     android:layout_gravity="center"
                                     android:gravity="left|center"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_email_design"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
@@ -260,18 +258,17 @@
                                 android:paddingLeft="2dp">
 
                             <TextView
-                                    android:id="@+id/name_developer"
+                                    android:id="@+id/textview_name_developer"
                                     style="@style/CustomTextViewDescription"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:paddingLeft="10dp"
-                                    android:text="@string/app_name"
+                                    android:text="@string/text_name_developer"
                                     android:textAlignment="textStart" />
 
 
                             <TextView
-                                    android:id="@+id/text_number_phone_developer"
+                                    android:id="@+id/textview_phone_developer"
                                     style="@style/CustomTextViewVersion"
                                     android:drawablePadding="5dp"
                                     android:drawableLeft="@drawable/ic_number_phone_link_15dp"
@@ -280,12 +277,12 @@
                                     android:layout_gravity="center"
                                     android:gravity="left"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_phone_developer"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
                             <TextView
-                                    android:id="@+id/text_number_email_design"
+                                    android:id="@+id/textview_email_developer"
                                     android:drawablePadding="5dp"
                                     style="@style/CustomTextViewVersion"
                                     android:drawableLeft="@drawable/ic_email_link_15dp"
@@ -294,7 +291,7 @@
                                     android:layout_gravity="center"
                                     android:gravity="left|center"
                                     android:paddingLeft="2dp"
-                                    android:text="@string/text_number_innovat_srl"
+                                    android:text="@string/text_email_developer"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
@@ -365,7 +362,7 @@
                                         android:src="@mipmap/logo_innovat" />
 
                                 <TextView
-                                        android:id="@+id/text_number_phone_innovat"
+                                        android:id="@+id/textview_phone_innovat_srl"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_number_phone_link_15dp"
@@ -374,12 +371,12 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_phone_innovat_srl"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
                                 <TextView
-                                        android:id="@+id/text_number_email_innovat"
+                                        android:id="@+id/textview_email_innovat_srl"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_email_link_15dp"
@@ -388,12 +385,12 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_email_innovat_srl"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
                                 <TextView
-                                        android:id="@+id/text_facebook_innovat"
+                                        android:id="@+id/textview_facebook_innovat_srl"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_facebook_link_15dp"
@@ -402,7 +399,7 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_facebook_innovat_srl"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
@@ -427,14 +424,14 @@
                                         android:textStyle="bold" />
 
                                 <ImageView
-                                        android:id="@+id/icon_um"
+                                        android:id="@+id/icon_ucmm"
                                         android:layout_width="72dip"
                                         android:layout_height="72dip"
                                         android:layout_gravity="center"
                                         android:gravity="center"
                                         android:src="@mipmap/cartman" />
                                 <TextView
-                                        android:id="@+id/text_number_phone_ucmm"
+                                        android:id="@+id/textview_phone_ucmm"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_number_phone_link_15dp"
@@ -443,12 +440,12 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_phone_ucmm"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
                                 <TextView
-                                        android:id="@+id/text_number_email_ucmm"
+                                        android:id="@+id/textview_email_ucmm"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_email_link_15dp"
@@ -457,12 +454,12 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_email_ucmm"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
                                 <TextView
-                                        android:id="@+id/text_facebook_ucmm"
+                                        android:id="@+id/textview_facebook_ucmm"
                                         android:drawablePadding="5dp"
                                         style="@style/CustomTextViewVersion"
                                         android:drawableLeft="@drawable/ic_facebook_link_15dp"
@@ -471,7 +468,7 @@
                                         android:layout_gravity="center"
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
-                                        android:text="@string/text_number_innovat_srl"
+                                        android:text="@string/text_facebook_ucmm"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>

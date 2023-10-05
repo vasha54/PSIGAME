@@ -1,18 +1,17 @@
 package cu.innovat.psigameplus.ui.fragment.pageradapter;
 
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.Fragment;
 import java.util.*;
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 2/10/23
  */
-public class AdapterHome extends FragmentPagerAdapter {
+public class FragmentPagerAdapter extends androidx.fragment.app.FragmentPagerAdapter {
     private  List<Fragment> mFragmentList ;
     private  List<String> mFragmentTitleList ;
 
-    public AdapterHome(FragmentManager manager) {
+    public FragmentPagerAdapter(FragmentManager manager) {
         super(manager);
         mFragmentList = new ArrayList<>();
         mFragmentTitleList = new ArrayList<>();

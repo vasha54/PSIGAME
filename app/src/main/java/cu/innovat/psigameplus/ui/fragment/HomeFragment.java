@@ -1,16 +1,13 @@
 package cu.innovat.psigameplus.ui.fragment;
 
-import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import cu.innovat.psigameplus.R;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import com.google.android.material.tabs.TabLayout;
-import androidx.appcompat.widget.Toolbar;
-import com.google.android.material.appbar.AppBarLayout;
 import androidx.viewpager.widget.ViewPager;
-import cu.innovat.psigameplus.ui.fragment.pageradapter.AdapterHome;
+import cu.innovat.psigameplus.ui.fragment.pageradapter.FragmentPagerAdapter;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -39,7 +36,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        AdapterHome adapter = new AdapterHome(getChildFragmentManager());
+        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new CourseGeneralLevelFragment(), getString(R.string.title_tab_course_general_psychology));
         adapter.addFragment(new CourseMedicalLevelFragment(), getString(R.string.title_tab_course_medical_psychology));
         viewPager.setAdapter(adapter);

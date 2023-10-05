@@ -1,31 +1,76 @@
 <resources>
+    <!-- Inicio de textos generales -->
     <string translatable="false" name="app_name">PSIGAME+</string>
     <string translatable="false" name="version">Versión: 1.0.0</string>
+    <string translatable="false" name="exit">Pulse de nuevo para salir</string>
+    <!-- Fin de textos generales -->
+
+    <!-- Inicio de los titulos de los menus de navegacion-->
     <string translatable="false" name="title_home">Incio</string>
     <string translatable="false" name="title_statistics">Estadísticas</string>
     <string translatable="false" name="title_configuration">Configuración</string>
     <string translatable="false" name="title_about">Acerca de ...</string>
     <string translatable="false" name="title_certificate">Certificado</string>
+    <!-- Fin de los titulos de los menus de navegacion-->
+
+    <!-- Inicio de los titulos de los cursos sobre los cuales se haran los cuestionarios-->
     <string translatable="false" name="title_tab_course_general_psychology">General</string>
     <string translatable="false" name="title_tab_course_medical_psychology">Médica</string>
-    <string translatable="false" name="exit">Pulse de nuevo para salir</string>
-    <string translatable="false" name="text_banner_one">Demuestra tu nivel</string>
-    <string translatable="false" name="text_banner_two">en</string>
-    <string translatable="false" name="text_banner_three">Psicología</string>
+    <!-- Fin de los titulos de los cursos sobre los cuales se haran los cuestionarios-->
+
+    <!-- Inicio de los nombre de los niveles del juego-->
     <string translatable="false" name="title_level_rookie">Novato</string>
     <string translatable="false" name="title_level_competent">Competente</string>
     <string translatable="false" name="title_level_professional">Profesional</string>
-    <string translatable="false" name="text_number_innovat_srl">ssfsf</string>
+    <!-- Fin de los nombre de los niveles del juego-->
+
+    <!-- Inicio de los textos presentes en la vista Inicio -->
+    <string translatable="false" name="text_banner_one">Demuestra tu nivel</string>
+    <string translatable="false" name="text_banner_two">en</string>
+    <string translatable="false" name="text_banner_three">Psicología</string>
+    <!-- Fin de los textos presentes en la vista Inicio -->
+
+    <!-- Inicio de los textos presentes en la vista Acerca de ... -->
     <string translatable="false" name="descriptions_part_one">PSIGAME+ es una aplicación diseñada para
         dispositivos móviles y tablets con sistema operativo Android.\n\nEl equipo de especialistas responsables de la
         elaboración y adaptación de contenidos de este recurso educativo digital
         estuvo a cargo de:</string>
     <string name="descriptions_part_two">El equipo de desarrollo de la aplicación estuvo conformado por:</string>
-    <string name="descriptions_part_three">Pertenecientes a la my Innovat Srl. La misma brinda los siguientes servicios:</string>
+    <string name="descriptions_part_three">Pertenecientes a la MIPYMES Innovat Srl. La misma brinda los siguientes servicios:</string>
     <string name="text_mark_water_1" translatable="false">Este producto ha sido</string>
     <string name="text_mark_water_2" translatable="false">Desarrollado por :</string>
     <string name="text_mark_water_3" translatable="false">Auspiciado por :</string>
+    <string name="text_name_doctor" translatable="false"></string>
+    <string name="text_phone_doctor" translatable="false">+53 52636877</string>
+    <string name="text_email_doctor" translatable="false"></string>
+    <string name="text_name_design" translatable="false"></string>
+    <string name="text_phone_design" translatable="false"></string>
+    <string name="text_email_design" translatable="false"></string>
+    <string name="text_name_developer" translatable="false">Luis Andrés Valido Fajardo</string>
+    <string name="text_phone_developer" translatable="false">+53 53694742</string>
+    <string name="text_email_developer" translatable="false">luis.valido1989@gmail.com</string>
+    <string name="text_facebook_ucmm" translatable="false"></string>
+    <string name="text_email_ucmm" translatable="false"></string>
+    <string name="text_phone_ucmm" translatable="false"></string>
+    <string name="text_facebook_innovat_srl" translatable="false"></string>
+    <string name="text_email_innovat_srl" translatable="false"></string>
+    <string name="text_phone_innovat_srl" translatable="false"></string>
+    <!-- Fin de los textos presentes en la vista Acerca de ... -->
 
+    <!-- Inicio de los textos presentes en la vista Estadisticas -->
+    <string name="value_empty_date">--/--/----</string>
+    <string name="value_empty">----------</string>
+    <string name="count_games">Cantidad de juegos:</string>
+    <string name="first_game">Primer juego:</string>
+    <string name="last_game">Último juego:</string>
+    <string name="best_score">Mejor puntuación:</string>
+    <string name="worst_score">Peor puntuación:</string>
+    <string name="mean_score">Puntuación promedio:</string>
+    <string name="games_before_accept">Intentos antes de vencer:</string>
+    <string name="date_first_accept">Fecha del nivel superado:</string>
+    <!-- Fin de los textos presentes en la vista Estadisticas ... -->
+
+    <!--Texto que se quitaran en algún momento-->
     <string name="title_activity_quizz">QuizzActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
