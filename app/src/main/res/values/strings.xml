@@ -36,13 +36,26 @@
         elaboración y adaptación de contenidos de este recurso educativo digital
         estuvo a cargo de:</string>
     <string name="descriptions_part_two">El equipo de desarrollo de la aplicación estuvo conformado por:</string>
-    <string name="descriptions_part_three">Pertenecientes a la MIPYMES Innovat Srl. La misma brinda los siguientes servicios:</string>
+    <string name="descriptions_part_three">Pertenecientes a la MIPYMES Innovat Srl. La misma brinda los siguientes servicios:\n
+        \tDiseñar, programar e implementar aplicaciones informáticas\n
+        \tEdición de programas informáticos\n
+        \tPrestar servicios de asistencia técnica\n
+        \tBrindar servicios de montaje, instalación, mantenimiento y reparación de equipos de cómputo\n
+        \tDiseño, soporte técnico y actualización de portales web\n
+        \tComercializar ordenadores, equipos periféricos, programas informáticos y equipos de telecomunicaciones
+        permitidos por la ley y que no provengan de la red del comercio minorista\n
+        \tVenta al por menor por correo y por internet, excepto los productos provenientes de la red del comercio
+        minorista y los prohibidos por la ley</string>
     <string name="text_mark_water_1" translatable="false">Este producto ha sido</string>
     <string name="text_mark_water_2" translatable="false">Desarrollado por :</string>
     <string name="text_mark_water_3" translatable="false">Auspiciado por :</string>
-    <string name="text_name_doctor" translatable="false"></string>
+    <string name="text_name_doctor" translatable="false">M. Sc. Cristóbal Eutasio Mesa Simpson</string>
     <string name="text_phone_doctor" translatable="false">+53 52636877</string>
-    <string name="text_email_doctor" translatable="false"></string>
+    <string name="text_phone_doctor_2" translatable="false">+53 452443070</string>
+    <string name="text_email_doctor" translatable="false">cristobalmesa.mtz@infomed.sld.cu</string>
+    <string name="curriculum_doctor" translatable="false">Máster en Educación Médica. Profesor Auxiliar e Investigador
+        Agregado y Jefe Departamento de Tecnología Educativa de la
+        Universidad de Ciencias Médicas de Matanzas</string>
     <string name="text_name_design" translatable="false"></string>
     <string name="text_phone_design" translatable="false"></string>
     <string name="text_email_design" translatable="false"></string>
@@ -52,9 +65,10 @@
     <string name="text_facebook_ucmm" translatable="false"></string>
     <string name="text_email_ucmm" translatable="false"></string>
     <string name="text_phone_ucmm" translatable="false"></string>
-    <string name="text_facebook_innovat_srl" translatable="false"></string>
-    <string name="text_email_innovat_srl" translatable="false"></string>
-    <string name="text_phone_innovat_srl" translatable="false"></string>
+    <string name="text_facebook_innovat_srl" translatable="false">@Innovat_Srl</string>
+    <string name="text_email_innovat_srl" translatable="false">innovat.mtz@gmail.com</string>
+    <string name="text_phone_innovat_srl" translatable="false">+53 50914394</string>
+    <string name="text_phone_innovat_srl_2" translatable="false">+53 50914325</string>
     <!-- Fin de los textos presentes en la vista Acerca de ... -->
 
     <!-- Inicio de los textos presentes en la vista Estadisticas -->

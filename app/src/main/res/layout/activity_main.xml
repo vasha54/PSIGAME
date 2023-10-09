@@ -6,20 +6,24 @@
         android:id="@+id/containerAB"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_activity_main"
         tools:context=".ui.activity.MainActivity">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
+            android:background="@color/background_bottom_navigation_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_nav_menu"/>
+            app:elevation="0dp"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemTextColor="@color/bottom_nav_color"
+            app:itemIconTint="@color/bottom_nav_color"/>
 
     <LinearLayout
             android:id="@+id/container"
@@ -32,6 +36,19 @@
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical" >
     </LinearLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="-2dp"
+            android:layout_marginLeft="-2dp"
+            android:layout_marginRight="-2dp"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/background_activity_main_bottom_v2"/>
+
+
 
 
 

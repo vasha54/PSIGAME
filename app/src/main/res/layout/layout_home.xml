@@ -29,8 +29,11 @@
                         android:layout_marginRight="2dip"
                         android:maxLines="1"
                         android:text="@string/text_banner_one"
-                        android:textColor="@color/black"
-                        android:gravity="center"/>
+                        android:textColor="#0E194D"
+                        android:gravity="center"
+                        android:fontFamily="@font/tt_interfaces_bold"
+                        app:fontFamily="@font/tt_interfaces_bold"
+                        android:textSize="20sp"/>
 
                 <RelativeLayout
                         android:layout_width="match_parent"
@@ -46,9 +49,12 @@
                             android:layout_marginRight="3dip"
                             android:maxLines="1"
                             android:text="@string/text_banner_two"
-                            android:textColor="@color/black"
+                            android:textColor="#0E194D"
                             android:gravity="center"
-                            android:layout_centerHorizontal="true"/>
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="@font/tt_interfaces_bold"
+                            app:fontFamily="@font/tt_interfaces_bold"
+                            android:textSize="20sp"/>
                     <TextView
                             android:id="@+id/text_three_banner"
                             android:layout_width="wrap_content"
@@ -58,9 +64,12 @@
                             android:layout_marginRight="3dip"
                             android:maxLines="1"
                             android:text="@string/text_banner_three"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:gravity="center"
-                            android:layout_toRightOf="@id/text_two_banner"/>
+                            android:layout_toRightOf="@id/text_two_banner"
+                            android:fontFamily="@font/tt_interfaces_bold"
+                            app:fontFamily="@font/tt_interfaces_bold"
+                            android:textSize="20sp"/>
                 </RelativeLayout>
 
             </LinearLayout>
@@ -76,12 +85,24 @@
                 android:id="@+id/app_bar"
                 android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tt_interfaces_bold"
+                app:fontFamily="@font/tt_interfaces_bold"
+                app:elevation="0dp"
+                android:background="@color/background_bottom_navigation_view">
 
             <com.google.android.material.tabs.TabLayout
                     android:id="@+id/result_tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" tools:ignore="SpeakableTextPresentCheck"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:background="@color/background_bottom_navigation_view"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabTextColor="@color/white"
+                    app:tabSelectedTextColor="@color/white"
+                    android:fontFamily="@font/tt_interfaces_bold"
+                    app:fontFamily="@font/tt_interfaces_bold"
+                    app:elevation="0dp"/>
         </com.google.android.material.appbar.AppBarLayout>
 
 

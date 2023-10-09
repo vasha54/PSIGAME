@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+                                                   android:layout_height="match_parent"
+                                                   android:layout_marginBottom="30dp">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -96,7 +97,7 @@
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                        <cu.innovat.psigplus.ui.component.CircularImageView
                                 android:id="@+id/image_doctor"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
@@ -137,6 +138,20 @@
                                     android:textColor="@color/colorLink"
                                     android:layout_marginTop="3dp"/>
                             <TextView
+                                    android:id="@+id/textview_phone_doctor_2"
+                                    style="@style/CustomTextViewVersion"
+                                    android:drawablePadding="5dp"
+                                    android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left"
+                                    android:paddingLeft="2dp"
+                                    android:text="@string/text_phone_doctor_2"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/colorLink"
+                                    android:layout_marginTop="3dp"/>
+                            <TextView
                                     android:id="@+id/textview_email_doctor"
                                     android:drawablePadding="5dp"
                                     style="@style/CustomTextViewVersion"
@@ -153,7 +168,18 @@
 
                         </LinearLayout>
                     </LinearLayout>
-
+                    <TextView
+                            android:id="@+id/text_view_curriculum_doctor"
+                            style="@style/CustomTextViewDescription"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="all"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbars="vertical"
+                            android:text="@string/curriculum_doctor" >
+                    </TextView>
                     <TextView
                             android:id="@+id/text_view_description"
                             style="@style/CustomTextViewDescription"
@@ -175,7 +201,7 @@
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                        <cu.innovat.psigplus.ui.component.CircularImageView
                                 android:id="@+id/image_design"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
@@ -241,11 +267,11 @@
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                        <cu.innovat.psigameplus.ui.component.CircularImageView
+                        <cu.innovat.psigplus.ui.component.CircularImageView
                                 android:id="@+id/image_developer"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:src="@mipmap/cartman"
+                                android:src="@mipmap/developer"
                                 android:scaleType="fitXY"
                                 android:layout_gravity="center"
                                 android:background="@drawable/shape_circular_image_view"/>
@@ -309,7 +335,7 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:scrollbars="vertical"
-                            android:text="@string/descriptions_part_three" >
+                            android:text="@string/descriptions_part_three">
                     </TextView>
                     <LinearLayout
                             android:layout_width="match_parent"
@@ -359,7 +385,7 @@
                                         android:layout_height="72dip"
                                         android:layout_gravity="center"
                                         android:gravity="center"
-                                        android:src="@mipmap/logo_innovat" />
+                                        android:src="@mipmap/logo_innovatv2" />
 
                                 <TextView
                                         android:id="@+id/textview_phone_innovat_srl"
@@ -372,6 +398,20 @@
                                         android:gravity="left|center"
                                         android:paddingLeft="2dp"
                                         android:text="@string/text_phone_innovat_srl"
+                                        android:textAlignment="textStart"
+                                        android:textColor="@color/colorLink"
+                                        android:layout_marginTop="3dp"/>
+                                <TextView
+                                        android:id="@+id/textview_phone_innovat_srl_2"
+                                        android:drawablePadding="5dp"
+                                        style="@style/CustomTextViewVersion"
+                                        android:drawableLeft="@drawable/ic_number_phone_link_15dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="left|center"
+                                        android:paddingLeft="2dp"
+                                        android:text="@string/text_phone_innovat_srl_2"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
                                         android:layout_marginTop="3dp"/>
@@ -475,6 +515,7 @@
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

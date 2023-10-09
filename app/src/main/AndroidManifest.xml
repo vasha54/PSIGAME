@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="cu.innovat.psigameplus">
+          package="cu.innovat.psigplus">
 
     <application
             android:allowBackup="true"
@@ -10,13 +10,13 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.PSIGAME">
         <activity
-                android:name=".ui.activity.QuizzActivity"
+                android:name="cu.innovat.psigplus.ui.activity.QuizzActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:exported="true"
                 android:label="@string/title_activity_quizz"
                 android:theme="@style/Theme.PSIGAME.Fullscreen"/>
         <activity
-                android:name=".ui.activity.MainActivity"
+                android:name="cu.innovat.psigplus.ui.activity.MainActivity"
                 android:configChanges="orientation"
                 android:exported="true"
                 android:screenOrientation="portrait">

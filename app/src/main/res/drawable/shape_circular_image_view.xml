@@ -3,12 +3,25 @@
 <!-- defines the circular shape and its properties -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:innerRadius="0dp"
+
+       android:thicknessRatio="2.0"
+       android:useLevel="false" >
+
+    <solid
+            android:color="@android:color/white" />
+
+    <stroke
+            android:width="9dp"
+            android:color="@android:color/white" />
+</shape>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:innerRadius="0dp"
        android:shape="ring"
        android:thicknessRatio="2.0"
        android:useLevel="false" >
 
     <solid
-            android:color="@android:color/transparent" />
+            android:color="@android:color/white" />
 
     <stroke
             android:width="9dp"

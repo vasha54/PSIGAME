@@ -17,12 +17,25 @@
                 android:id="@+id/statistics_bar"
                 android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tt_interfaces_bold"
+                app:fontFamily="@font/tt_interfaces_bold"
+                app:elevation="0dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/background_bottom_navigation_view">
 
             <com.google.android.material.tabs.TabLayout
                     android:id="@+id/statistics_course_tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" tools:ignore="SpeakableTextPresentCheck"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:background="@color/background_bottom_navigation_view"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabTextColor="@color/white"
+                    app:tabSelectedTextColor="@color/white"
+                    android:fontFamily="@font/tt_interfaces_bold"
+                    app:fontFamily="@font/tt_interfaces_bold"
+                    app:elevation="0dp"/>
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -30,7 +43,9 @@
                 android:id="@+id/statistics_course_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:ignore="SpeakableTextPresentCheck"/>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:layout_marginBottom="70dp"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
