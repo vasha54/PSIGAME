@@ -11,10 +11,9 @@
             android:theme="@style/Theme.PSIGAME">
         <activity
                 android:name="cu.innovat.psigplus.ui.activity.QuizzActivity"
-                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:configChanges="orientation"
                 android:exported="true"
-                android:label="@string/title_activity_quizz"
-                android:theme="@style/Theme.PSIGAME.Fullscreen"/>
+                android:screenOrientation="portrait"/>
         <activity
                 android:name="cu.innovat.psigplus.ui.activity.MainActivity"
                 android:configChanges="orientation"

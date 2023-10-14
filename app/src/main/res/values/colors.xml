@@ -18,4 +18,6 @@
     <color name="background_bottom_navigation_view">#FFf8039c</color>
     <color name="colorLink">#2196F3</color>
     <color name="status_bar_color">#fdd54f</color>
+    <color name="gray">#c0c0c0</color>
+    <color name="colorIndicatorProgressBar">#03f51f</color>
 </resources>

@@ -1,20 +1,28 @@
 package cu.innovat.psigplus.ui.activity;
 
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener;
+
 import android.os.Bundle;
 import android.widget.Toast;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.view.Window;
+import android.content.Intent;
+import android.os.Process;
 
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.cim.Constant;
+import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
 import cu.innovat.psigplus.ui.fragment.*;
 
-public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements OnItemSelectedListener, IObserverClickButtonGameLevel {
     private BottomNavigationView bottomNavigationView;
     private Toast m_toast;
     private boolean m_exit;
@@ -73,7 +81,12 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                         fragment = new StatisticsFragment();
                         break;
                 }
+
                 if(fragment!=null){
+                    if(fragment instanceof HomeFragment){
+                        ((HomeFragment)fragment).attach(this);
+                    }
+
                     fragmentManager.beginTransaction().
                             replace(R.id.container,fragment).addToBackStack(fragment.toString()).
                             commit();
@@ -95,6 +108,20 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
             if(m_toast!=null)
                 m_toast.cancel();
             finish();
+            Process.killProcess(Process.myPid());
         }
+    }
+
+
+    @Override
+    public void clickedButtonGameLevel(GameLevel level) {
+        this.initQuizz(level);
+    }
+
+    public void initQuizz(GameLevel level){
+        Intent intent = new Intent(MainActivity.this, QuizzActivity.class);
+        intent.putExtra(Constant.LEVEL_GAME,level.ordinal());
+        startActivity(intent);
+        finish();
     }
 }

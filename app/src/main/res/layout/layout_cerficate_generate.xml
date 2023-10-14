@@ -2,5 +2,117 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <ScrollView
+                android:id="@+id/SCROLLER_ID"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="5dp"
+                android:fillViewport="true"
+                android:scrollbars="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
 
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/border_round_8dip">
+
+                    <ImageView android:layout_width="match_parent"
+                               android:layout_height="200dp"
+                               android:src="@drawable/ic_certificate_gary_100dp"
+                               android:scaleType="centerCrop"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="1" />
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:background="#c0c0c0"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_weight="1" />
+                    <TextView
+                            android:id="@+id/text_view_name_level"
+                            style="@style/CustomTextTitleLevelStatistics"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingLeft="10dp"
+                            android:text="@string/formats"
+                            android:textAlignment="textStart" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:orientation="horizontal">
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_weight="1" />
+                            <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/format_pdf"
+                                    android:id="@+id/checkbox_f_pdf"/>
+                            <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1" />
+                            <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/format_png"
+                                    android:id="@+id/checkbox_f_png"/>
+                            <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1" />
+                            <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/format_jpg"
+                                    android:id="@+id/checkbox_f_jpg"/>
+                            <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+                <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_generate_certificate"
+                        android:text="@string/title_button_generate_certificate"/>
+
+                <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

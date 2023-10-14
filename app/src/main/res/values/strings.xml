@@ -72,17 +72,72 @@
     <!-- Fin de los textos presentes en la vista Acerca de ... -->
 
     <!-- Inicio de los textos presentes en la vista Estadisticas -->
-    <string name="value_empty_date">--/--/----</string>
-    <string name="value_empty">----------</string>
-    <string name="count_games">Cantidad de juegos:</string>
-    <string name="first_game">Primer juego:</string>
-    <string name="last_game">Último juego:</string>
-    <string name="best_score">Mejor puntuación:</string>
-    <string name="worst_score">Peor puntuación:</string>
-    <string name="mean_score">Puntuación promedio:</string>
-    <string name="games_before_accept">Intentos antes de vencer:</string>
-    <string name="date_first_accept">Fecha del nivel superado:</string>
+    <string name="value_empty_date" translatable="false">--/--/----</string>
+    <string name="value_empty" translatable="false">----------</string>
+    <string name="count_games" translatable="false">Cantidad de juegos:</string>
+    <string name="first_game" translatable="false">Primer juego:</string>
+    <string name="last_game" translatable="false">Último juego:</string>
+    <string name="best_score" translatable="false">Mejor puntuación:</string>
+    <string name="worst_score" translatable="false">Peor puntuación:</string>
+    <string name="mean_score" translatable="false">Puntuación promedio:</string>
+    <string name="games_before_accept" translatable="false">Intentos antes de vencer:</string>
+    <string name="date_first_accept" translatable="false">Fecha del nivel superado:</string>
     <!-- Fin de los textos presentes en la vista Estadisticas ... -->
+
+    <!-- Inicio de los textos presentes en la vista inicial de Certificado -->
+    <string name="text_begin_register" translatable="false">\tLa aplicación PSIGAME+ permite la generación de certificados que acreditan
+    su nivel en Psicología General y Psicología Médica acorde a los niveles que usted puede alcanzar en el juego.\n\n\tPara
+        la emisión de dichos certificados se hace necesario que usted llene un formulario de registro con algunos
+        dados necesarios para la elaboración de los certificados. De igual forma las estadísticas del juego no comenzarán
+    a funcionar hasta que no se lleve a cabo dicho registro.</string>
+    <string name="button_begin_register" translatable="false">Iniciar registro</string>
+    <!-- Fin de los textos presentes en la vista inicial de Certificado -->
+
+    <!-- Inicio de los textos presentes en la vista registro de Certificado -->
+    <string name="title_button_register" translatable="false">Registrar</string>
+    <string name="title_name" translatable="false">Nombre:</string>
+    <string name="title_surname" translatable="false">Apellidos:</string>
+    <string name="title_ci" translatable="false">No. Carnet Identidad:</string>
+    <string name="title_gruop" translatable="false">Grupo académico:</string>
+    <string name="title_phone_number" translatable="false">Número de teléfono:</string>
+    <string name="title_emi" translatable="false">Emei:</string>
+    <!-- Fin de los textos presentes en la vista registro de Certificado -->
+
+    <!-- Inicio de los textos presentes en la vista generar de Certificado -->
+    <string name="formats">Formatos:</string>
+    <string name="format_pdf">.pdf</string>
+    <string name="format_png">.png</string>
+    <string name="format_jpg">.jpg</string>
+    <string name="title_button_generate_certificate">Generar certificado</string>
+    <!-- Fin de los textos presentes en la vista generar de Certificado -->
+
+    <!-- Inicio de los textos presentes en la vista cuestionario -->
+    <string name="title_button_check" translatable="false">Comprobar</string>
+    <string name="text_format_time" translatable="false">00:00</string>
+    <string name="text_number_questions" translatable="false">#</string>
+    <string name="text_of_questions" translatable="false">de</string>
+    <string name="text_questions" translatable="false">preguntas</string>
+    <string name="text_number_live" translatable="false">##</string>
+    <!-- Fin de los textos presentes en la vista cuestionario -->
+
+    <!-- Inicio de nombres posibles grupos académicos -->
+    <string-array name="list_names_group_student">
+        <item>Invitado</item>
+        <item>M-Colón</item>
+        <item>M-Jaguey</item>
+        <item>M-Cárdenas</item>
+        <item>M-30</item>
+        <item>M-31</item>
+        <item>M-32</item>
+        <item>M-33</item>
+        <item>M-34</item>
+        <item>M-35</item>
+        <item>M-36</item>
+        <item>M-37</item>
+        <item>M-38</item>
+        <item>M-39</item>
+    </string-array>
+    <!-- Fin de nombres posibles grupos académicos -->
 
     <!--Texto que se quitaran en algún momento-->
     <string name="title_activity_quizz">QuizzActivity</string>

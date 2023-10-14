@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.ui.fragment.pageradapter.FragmentPagerAdapter;
+import cu.innovat.psigplus.cim.GameMode;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -25,7 +26,6 @@ public class StatisticsFragment extends BaseFragment{
         View view = inflater.inflate(R.layout.layout_statistics,container, false);
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.statistics_course_viewpager);
         setupViewPager(viewPager);
-//        // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) view.findViewById(R.id.statistics_course_tabs);
         tabs.setupWithViewPager(viewPager);
         return view;
@@ -34,8 +34,8 @@ public class StatisticsFragment extends BaseFragment{
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new StatisticsCourseLevelsFragment(), getString(R.string.title_tab_course_general_psychology));
-        adapter.addFragment(new StatisticsCourseLevelsFragment(), getString(R.string.title_tab_course_medical_psychology));
+        adapter.addFragment(new StatisticsCourseLevelsFragment(GameMode.GENERAL), getString(R.string.title_tab_course_general_psychology));
+        adapter.addFragment(new StatisticsCourseLevelsFragment(GameMode.MEDICAL), getString(R.string.title_tab_course_medical_psychology));
         viewPager.setAdapter(adapter);
     }
 }

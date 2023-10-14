@@ -1,7 +1,21 @@
 package cu.innovat.psigplus.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.cim.Constant;
+import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.ui.fragment.HomeFragment;
 
 
 /**
@@ -9,6 +23,42 @@ import android.os.Bundle;
  * status bar and navigation/system bar) with user interaction.
  */
 public class QuizzActivity extends AppCompatActivity {
+
+    private Toast m_toast;
+
+    public QuizzActivity(){
+        super();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_quizz);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        Intent intent = getIntent();
+
+        int levelInt = intent.getIntExtra(Constant.LEVEL_GAME,-1);
+        GameLevel level = GameLevel.values()[levelInt];
+        m_toast=Toast.makeText(this.getApplicationContext(),
+                level.toString(),
+                Toast.LENGTH_LONG);
+        m_toast.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
+        Bundle b = new Bundle();
+        //TODO falta registrar si inicio el cuestionario como intento
+        startActivity(intent);
+        finish();
+    }
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -93,9 +143,9 @@ public class QuizzActivity extends AppCompatActivity {
 //    };
 //    private ActivityQuizzBinding binding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
 
 //        binding = ActivityQuizzBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());
@@ -116,7 +166,7 @@ public class QuizzActivity extends AppCompatActivity {
 //        // operations to prevent the jarring behavior of controls going away
 //        // while interacting with the UI.
 //        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
-    }
+//    }
 
 //    @Override
 //    protected void onPostCreate(Bundle savedInstanceState) {

@@ -34,9 +34,23 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="CustomTextPropertyFieldRegister" parent="android:Theme">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#323331</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="CustomTextValueLevelStatistics" parent="android:Theme">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#323331</item>
+    </style>
 
+    <style name="CustomTextInformationQuizz" parent="android:Theme">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="CustomTextInformationQuizzTime" parent="android:Theme">
+        <item name="android:textSize">38dp</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 </resources>

@@ -8,8 +8,11 @@ import android.widget.ListView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.adapter.RecyclerViewAdapterStatisticsLevel;
 import cu.innovat.psigplus.cim.item.ItemLevel;
+import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.cim.GameMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.*;
 
@@ -19,11 +22,12 @@ import java.util.*;
  */
 public class StatisticsCourseLevelsFragment extends BaseFragment{
 
-    private ListView listLevel;
     private RecyclerViewAdapterStatisticsLevel adapter;
+    private GameMode m_modeGame;
 
-    public StatisticsCourseLevelsFragment(){
+    public StatisticsCourseLevelsFragment(GameMode mode){
         super();
+        this.m_modeGame = mode;
     }
 
     @Override
@@ -31,6 +35,8 @@ public class StatisticsCourseLevelsFragment extends BaseFragment{
 
         View view = inflater.inflate(R.layout.layout_statistics_course_levels,container, false);
         List<ItemLevel> levels = new ArrayList<ItemLevel>();
+
+
         levels.add(new ItemLevel());
         levels.add(new ItemLevel());
         levels.add(new ItemLevel());
