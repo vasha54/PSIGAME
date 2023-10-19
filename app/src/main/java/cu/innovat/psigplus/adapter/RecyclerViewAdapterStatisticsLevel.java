@@ -1,5 +1,6 @@
 package cu.innovat.psigplus.adapter;
 
+import cu.innovat.psigplus.cim.Statistics;
 import cu.innovat.psigplus.cim.item.ItemLevel;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,9 +17,9 @@ import java.util.*;
  */
 public class RecyclerViewAdapterStatisticsLevel extends RecyclerView.Adapter<ViewHolderStatisticsLevel> {
 
-    private List<ItemLevel> myList;
+    private List<Statistics> myList;
     private LayoutInflater layoutInflater;
-    public RecyclerViewAdapterStatisticsLevel(Context context, List<ItemLevel> data) {
+    public RecyclerViewAdapterStatisticsLevel(Context context, List<Statistics> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.myList = data;
     }
@@ -29,7 +30,8 @@ public class RecyclerViewAdapterStatisticsLevel extends RecyclerView.Adapter<Vie
     }
     @Override
     public void onBindViewHolder(ViewHolderStatisticsLevel holder, int position) {
-        ItemLevel item = myList.get(position);
+        Statistics item = myList.get(position);
+        holder.setTitle(item.getTitleStatistics());
 //        holder.myImageView.setImageResource(item.getImageId());
 //        holder.myTextView.setText(item.getName());
     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.adapter.RecyclerViewAdapterStatisticsLevel;
+import cu.innovat.psigplus.cim.Statistics;
 import cu.innovat.psigplus.cim.item.ItemLevel;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.GameMode;
@@ -33,27 +34,28 @@ public class StatisticsCourseLevelsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.layout_statistics_course_levels,container, false);
-        List<ItemLevel> levels = new ArrayList<ItemLevel>();
+        m_viewFragment = inflater.inflate(R.layout.layout_statistics_course_levels,container, false);
+        List<Statistics> levels = new ArrayList<Statistics>();
 
 
-        levels.add(new ItemLevel());
-        levels.add(new ItemLevel());
-        levels.add(new ItemLevel());
-
+        if( m_modeGame == GameMode.GENERAL){
+            levels.add(new Statistics(m_modeGame,GameLevel.ROOKIE_GENERAL,getString(R.string.title_level_rookie)));
+            levels.add(new Statistics(m_modeGame,GameLevel.COMPETENT_GENERAL,getString(R.string.title_level_competent)));
+            levels.add(new Statistics(m_modeGame,GameLevel.PROFESSIONAL_GENERAL,getString(R.string.title_level_professional)));
+        }else{
+            levels.add(new Statistics(m_modeGame,GameLevel.ROOKIE_MEDICAL,getString(R.string.title_level_rookie)));
+            levels.add(new Statistics(m_modeGame,GameLevel.COMPETENT_MEDICAL,getString(R.string.title_level_competent)));
+            levels.add(new Statistics(m_modeGame,GameLevel.PROFESSIONAL_MEDICAL,getString(R.string.title_level_professional)));
+        }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        RecyclerView recyclerView = view.findViewById(R.id.list_level);
+        RecyclerView recyclerView = m_viewFragment.findViewById(R.id.list_level);
         recyclerView.setLayoutManager(layoutManager);
-
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-//                layoutManager.getOrientation());
-//        recyclerView.addItemDecoration(dividerItemDecoration);
 
         adapter = new RecyclerViewAdapterStatisticsLevel(getContext(), levels);
         recyclerView.setAdapter(adapter);
 
-        return view;
+        return m_viewFragment;
 
     }
 

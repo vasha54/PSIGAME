@@ -205,7 +205,7 @@
                                 android:id="@+id/image_design"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:src="@mipmap/cartman"
+                                android:src="@mipmap/design"
                                 android:scaleType="fitXY"
                                 android:layout_gravity="center"
                                 android:background="@drawable/shape_circular_image_view"/>
@@ -385,7 +385,7 @@
                                         android:layout_height="72dip"
                                         android:layout_gravity="center"
                                         android:gravity="center"
-                                        android:src="@mipmap/logo_innovatv2" />
+                                        android:src="@mipmap/logo_innovatv3" />
 
                                 <TextView
                                         android:id="@+id/textview_phone_innovat_srl"

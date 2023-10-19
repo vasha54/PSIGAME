@@ -20,4 +20,5 @@
     <color name="status_bar_color">#fdd54f</color>
     <color name="gray">#c0c0c0</color>
     <color name="colorIndicatorProgressBar">#03f51f</color>
+    <color name="colorPrimary">#FFf8039c</color>
 </resources>

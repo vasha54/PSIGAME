@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.interfaces.IClickButtonRegisterCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
@@ -20,9 +21,15 @@ import java.util.List;
 public class CertificateRegisterFragment extends BaseFragment implements IClickButtonRegisterCertificate {
 
     private List<IObserverClickButtonRegisterCertificate> observers;
+    private EditText m_editTextIMEI;
+    private EditText m_editTextPhoneNumber;
+    private String IMEI;
+    private String numberPhone;
 
-    public CertificateRegisterFragment(){
+    public CertificateRegisterFragment(String _IMEI, String _numberPhone){
         super();
+        this.IMEI = _IMEI;
+        this.numberPhone = _numberPhone;
         observers = new ArrayList<IObserverClickButtonRegisterCertificate>();
     }
 
@@ -41,9 +48,14 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
     }
     public void prepareUI(){
         if(m_viewFragment !=null){
+
+            m_editTextIMEI = (EditText) m_viewFragment.findViewById(R.id.edit_text_emi);
+            m_editTextPhoneNumber = (EditText) m_viewFragment.findViewById(R.id.edit_text_phone_number);
             Button button = (Button) m_viewFragment.findViewById(R.id.button_register_certificate);
-            if(button!=null)
-                button.setOnClickListener(this);
+
+            if(button != null) button.setOnClickListener(this);
+            if(m_editTextIMEI != null) m_editTextIMEI.setText(this.IMEI);
+            if(m_editTextPhoneNumber != null) m_editTextPhoneNumber.setText(this.numberPhone);
         }
     }
 

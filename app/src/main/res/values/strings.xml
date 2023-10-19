@@ -56,9 +56,9 @@
     <string name="curriculum_doctor" translatable="false">Máster en Educación Médica. Profesor Auxiliar e Investigador
         Agregado y Jefe Departamento de Tecnología Educativa de la
         Universidad de Ciencias Médicas de Matanzas</string>
-    <string name="text_name_design" translatable="false"></string>
-    <string name="text_phone_design" translatable="false"></string>
-    <string name="text_email_design" translatable="false"></string>
+    <string name="text_name_design" translatable="false">Javier Ramírez Chacón</string>
+    <string name="text_phone_design" translatable="false">+53 50914394</string>
+    <string name="text_email_design" translatable="false">javierrc93@nauta.cu</string>
     <string name="text_name_developer" translatable="false">Luis Andrés Valido Fajardo</string>
     <string name="text_phone_developer" translatable="false">+53 53694742</string>
     <string name="text_email_developer" translatable="false">luis.valido1989@gmail.com</string>
@@ -100,7 +100,7 @@
     <string name="title_ci" translatable="false">No. Carnet Identidad:</string>
     <string name="title_gruop" translatable="false">Grupo académico:</string>
     <string name="title_phone_number" translatable="false">Número de teléfono:</string>
-    <string name="title_emi" translatable="false">Emei:</string>
+    <string name="title_emi" translatable="false">IMEI:</string>
     <!-- Fin de los textos presentes en la vista registro de Certificado -->
 
     <!-- Inicio de los textos presentes en la vista generar de Certificado -->
@@ -110,6 +110,11 @@
     <string name="format_jpg">.jpg</string>
     <string name="title_button_generate_certificate">Generar certificado</string>
     <!-- Fin de los textos presentes en la vista generar de Certificado -->
+
+    <!-- Inicio de los textos presentes en la vista de configuración -->
+    <string name="title_reset_stadistics">Reiniciar estadísticas</string>
+    <string name="title_reset_register">Reiniciar datos de registro</string>
+    <!-- Fin de los textos presentes en la vista de configuración -->
 
     <!-- Inicio de los textos presentes en la vista cuestionario -->
     <string name="title_button_check" translatable="false">Comprobar</string>

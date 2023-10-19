@@ -68,14 +68,16 @@
                           android:text="@string/title_phone_number"/>
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/edit_text_phone_number"/>
+                          android:id="@+id/edit_text_phone_number"
+                          android:editable="false"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"
                           android:text="@string/title_emi"/>
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/edit_text_emi"/>
+                          android:id="@+id/edit_text_emi"
+                          android:editable="false"/>
             </LinearLayout>
             <Space
                     android:layout_width="match_parent"
@@ -85,7 +87,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/button_register_certificate"
-                    android:text="@string/title_button_register"/>
+                    android:text="@string/title_button_register"
+                    android:background="@drawable/button_standar"/>
 
             <Space
                     android:layout_width="match_parent"

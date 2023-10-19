@@ -20,12 +20,16 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
     private CertificatePresentationFragment m_fPresentation;
     private CertificateRegisterFragment m_fRegister;
     private CertificateGenerateFragment m_fGenerate;
+    private String IMEI;
+    private String numberPhone;
 
-    public CertificateFragment(){
+    public CertificateFragment(String _IMEI, String _numberPhone){
         super();
+        this.IMEI = _IMEI;
+        this.numberPhone = _numberPhone;
         m_fGenerate = new CertificateGenerateFragment();
         m_fPresentation = new CertificatePresentationFragment();
-        m_fRegister = new CertificateRegisterFragment();
+        m_fRegister = new CertificateRegisterFragment(this.IMEI,this.numberPhone);
     }
 
     @Override

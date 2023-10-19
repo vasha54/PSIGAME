@@ -17,13 +17,12 @@ import java.util.List;
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 3/10/23
  */
-public class CourseMedicalLevelFragment extends BaseFragment implements IClickButtonGameLevel {
+public class CourseMedicalLevelFragment extends BaseFragment {
 
-    private List<IObserverClickButtonGameLevel> observers;
+
 
     public CourseMedicalLevelFragment(){
         super();
-        observers = new ArrayList<IObserverClickButtonGameLevel>();
     }
 
     @Override
@@ -62,23 +61,6 @@ public class CourseMedicalLevelFragment extends BaseFragment implements IClickBu
                 case R.id.button_rookie_medical:
                     this.notifyClickButtonGameLevel(GameLevel.ROOKIE_MEDICAL);break;
             }
-        }
-    }
-
-    @Override
-    public void attach(IObserverClickButtonGameLevel observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void detach(IObserverClickButtonGameLevel observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyClickButtonGameLevel(GameLevel level) {
-        for (IObserverClickButtonGameLevel observer: observers) {
-            observer.clickedButtonGameLevel(level);
         }
     }
 }

@@ -22,17 +22,16 @@ import java.util.List;
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 1/10/23
  */
-public class HomeFragment extends BaseFragment implements IObserverClickButtonGameLevel, IClickButtonGameLevel {
+public class HomeFragment extends BaseFragment implements IObserverClickButtonGameLevel {
 
     private ViewPager m_viewPager;
     private TabLayout m_tabs;
-    private List<IObserverClickButtonGameLevel> observers;
+
     private CourseGeneralLevelFragment m_fCGeneralLevelF;
     private CourseMedicalLevelFragment m_fCMedicalLevelF;
 
     public HomeFragment(){
         super();
-        observers =new ArrayList<IObserverClickButtonGameLevel>();
     }
 
     @Override
@@ -44,11 +43,11 @@ public class HomeFragment extends BaseFragment implements IObserverClickButtonGa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
          m_viewFragment = inflater.inflate(R.layout.layout_home,container, false);
          prepareUI();
-         FragmentActivity activity = getActivity();
+        FragmentActivity activity = getActivity();
          if( activity instanceof MainActivity){
              MainActivity main = (MainActivity)  activity;
              if(main !=null){
-                 attach(main);
+                 this.attachObserverCBGL(main);
              }
          }
          return m_viewFragment;
@@ -59,8 +58,8 @@ public class HomeFragment extends BaseFragment implements IObserverClickButtonGa
         m_fCGeneralLevelF = new CourseGeneralLevelFragment();
         m_fCMedicalLevelF = new CourseMedicalLevelFragment();
 
-        m_fCMedicalLevelF.attach(this);
-        m_fCGeneralLevelF.attach(this);
+        m_fCMedicalLevelF.attachObserverCBGL(this);
+        m_fCGeneralLevelF.attachObserverCBGL(this);
 
         adapter.addFragment(m_fCGeneralLevelF, getString(R.string.title_tab_course_general_psychology));
         adapter.addFragment(m_fCMedicalLevelF, getString(R.string.title_tab_course_medical_psychology));
@@ -77,23 +76,7 @@ public class HomeFragment extends BaseFragment implements IObserverClickButtonGa
         m_tabs.setupWithViewPager(m_viewPager);
     }
 
-    @Override
-    public void attach(IObserverClickButtonGameLevel observer) {
-        observers.add(observer);
-    }
 
-    @Override
-    public void detach(IObserverClickButtonGameLevel observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyClickButtonGameLevel(GameLevel level) {
-        for (IObserverClickButtonGameLevel observer: observers) {
-            observer.clickedButtonGameLevel(level);
-        }
-        
-    }
 
     @Override
     public void clickedButtonGameLevel(GameLevel level) {

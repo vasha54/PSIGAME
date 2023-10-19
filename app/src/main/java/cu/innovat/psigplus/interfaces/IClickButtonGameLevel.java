@@ -7,7 +7,7 @@ import cu.innovat.psigplus.cim.GameLevel;
  * @date 13/10/23
  */
 public interface IClickButtonGameLevel {
-    void attach(IObserverClickButtonGameLevel observer);
-    void detach(IObserverClickButtonGameLevel observer);
+    void attachObserverCBGL(IObserverClickButtonGameLevel observer);
+    void detachObserverCBGL(IObserverClickButtonGameLevel observer);
     void notifyClickButtonGameLevel(GameLevel level);
 }
