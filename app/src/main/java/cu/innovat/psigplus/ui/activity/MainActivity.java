@@ -25,6 +25,7 @@ import android.os.Build;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Constant;
 import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
 import cu.innovat.psigplus.ui.fragment.*;
 
@@ -36,10 +37,81 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     private final int REQUEST_CODE_EMEI = 101;
     private final int REQUEST_CODE_NUMBER_PHONE = 100;
 
+    private String m_emiePhone;
+    private String m_numberPhone;
+
+
     public MainActivity(){
         super();
         m_exit=false;
         m_toast=null;
+        m_numberPhone = "";
+        m_emiePhone = "";
+    }
+
+    private void determineEmieAndNumberPhone(){
+        TelephonyManager tMgr = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            this.m_numberPhone = tMgr.getLine1Number();
+        } else {
+            requestPermissionNumberPhone();
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            this.m_emiePhone = tMgr.getImei();
+        } else {
+            requestPermissionEmie();
+        }
+//        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_CODE_EMEI);
+//        }
+//        String imei = telephonyManager.getImei();
+//        String number="";
+//        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED){
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, REQUEST_CODE_NUMBER_PHONE);
+//        }
+//        Log.i("TAGPEPE","telephonyManager.getLine1Number()");
+//        Log.i("TAGPEPE",telephonyManager.getLine1Number());
+//        number = telephonyManager.getLine1Number();
+//        return number;
+    }
+
+    private void requestPermissionNumberPhone() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.READ_SMS,
+                    Manifest.permission.READ_PHONE_NUMBERS,
+                    Manifest.permission.READ_PHONE_STATE},
+                    REQUEST_CODE_NUMBER_PHONE);
+        }
+    }
+
+    private void requestPermissionEmie(){
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        TelephonyManager tMgr = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+        switch (requestCode) {
+            case REQUEST_CODE_NUMBER_PHONE:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                this.m_numberPhone = tMgr.getLine1Number();
+                break;
+            case REQUEST_CODE_EMEI:
+                break;
+                default:
+                throw new IllegalStateException("Unexpected value: " + requestCode);
+        }
     }
 
     @Override
@@ -49,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        //determineEmieAndNumberPhone();
+        PsiGameController controller = PsiGameController.getInstance(MainActivity.this);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -94,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
             if(m_toast!=null)
                 m_toast.cancel();
             finish();
-            Process.killProcess(Process.myPid());
+            //Process.killProcess(Process.myPid());
         }
     }
 
@@ -117,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 AboutFragment fAboutFragment = new AboutFragment();
                 return fAboutFragment;
             case R.id.navigation_certificate:
-                String IMEI = getIMEI();
+                String IMEI =  getIMEI();
                 String numberPhone = getNumberPhone();
                 CertificateFragment fCertificateFragment = new CertificateFragment(IMEI,numberPhone);
                 return fCertificateFragment;
@@ -135,46 +209,10 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     }
 
     public String getIMEI(){
-        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_CODE_EMEI);
-        }
-        String imei = telephonyManager.getImei();
-        return imei;
+        return this.m_emiePhone;
     }
 
     public String getNumberPhone() {
-        String number="";
-        TelephonyManager telephonyManager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-
-        int permissionREAD_SMS = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
-        int permissionREAD_PHONE_NUMBERS = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS);
-        int permissionREAD_PHONE_STATE = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
-        if ( permissionREAD_SMS != PackageManager.PERMISSION_GRANTED ||
-             permissionREAD_PHONE_NUMBERS != PackageManager.PERMISSION_GRANTED ||
-                permissionREAD_PHONE_STATE != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_CODE_NUMBER_PHONE);
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS},REQUEST_CODE_NUMBER_PHONE);
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_NUMBERS},REQUEST_CODE_NUMBER_PHONE);
-        }
-        number = telephonyManager.getLine1Number();
-        return number;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        switch (requestCode){
-
-            case REQUEST_CODE_EMEI:
-
-                break;
-            case REQUEST_CODE_NUMBER_PHONE:
-
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + requestCode);
-        }
+        return this.m_numberPhone;
     }
 }

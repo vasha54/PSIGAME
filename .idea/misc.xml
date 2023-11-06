@@ -55,6 +55,10 @@
         <entry key="app/src/main/res/layout/layout_course_general_level.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_course_medical_level.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/layout_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/layout_q_complete_word.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/layout_q_multi_choise.xml" value="0.9674479166666666" />
+        <entry key="app/src/main/res/layout/layout_q_single_choise.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/layout_q_true_or_false.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/layout_statistics.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_statistics_course_levels.xml" value="0.18" />
         <entry key="app/src/main/res/layout/layout_statistics_level.xml" value="0.33" />
