@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import cu.innovat.psigplus.cim.AcademicGroup;
+import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.LevelGame;
+import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.questions.Question;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -58,5 +61,27 @@ public class DBManager {
 
     public void addLevel(LevelGame l){
         dbHelper.addLevelGame(l);
+    }
+
+    public void addQuestions(List<Question> questions){
+        for(Question q : questions){
+            addQuestion(q);
+        }
+    }
+
+    public void addQuestion(Question q){ dbHelper.addQuestion(q); }
+
+    public String findIdLevel(GameLevel level){
+        return dbHelper.findIdLevel(level);
+    }
+
+    public void addQuizz(Quizz quizz){
+        Log.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"addQuizz");
+        dbHelper.addQuizz(quizz);
+    }
+
+    public List<Question> getAllQuestionsThisLevel(String idLevel){
+        Log.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"getAllQuestionsThisLevel");
+        return dbHelper.getAllQuestionsThisLevel(idLevel);
     }
 }

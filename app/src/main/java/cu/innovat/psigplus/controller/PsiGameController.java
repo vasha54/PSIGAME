@@ -6,11 +6,17 @@ import android.util.Log;
 import cu.innovat.psigplus.cim.AcademicGroup;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.LevelGame;
+import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.questions.Question;
+import cu.innovat.psigplus.cim.questions.TrueOrFalse;
+import cu.innovat.psigplus.cim.questions.QuestionComparator;
 import cu.innovat.psigplus.dao.DBManager;
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.util.ReadJson;
 import cu.innovat.psigplus.util.Util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -41,14 +47,14 @@ public class PsiGameController {
     }
 
     private void insertDataDefault(){
-
         Log.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
         Log.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
         insertAcademicGroup();
         Log.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
         insertLevelGame();
+        Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
+        insertQuestions();
         Log.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
-
     }
 
     private void insertAcademicGroup(){
@@ -76,4 +82,54 @@ public class PsiGameController {
         }
         this.managerDB.addLevels(l);
     }
+
+    private void insertQuestions(){
+        try{
+            List<Question> questions = ReadJson.readQuestion(this.context,"Q_TRUE_OR_FALSE.json");
+            Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas True o False");
+            this.managerDB.addQuestions(questions);
+        } catch (Exception e){
+            Log.i("TAG_DB_PSIGAME_PLUS","Ocurrio el siguiente error"+e.getMessage());
+        }
+    }
+
+    public Quizz generateQuizz(GameLevel level){
+        Quizz quizz = null;
+        Log.i("TAG_DB_PSIGAME_PLUS","generateQuizz(GameLevel level)");
+        String idLevel = managerDB.findIdLevel(level);
+        if(idLevel != null){
+            quizz =new Quizz();
+            quizz.setIdQuizz(Util.generateUUID());
+            quizz.setDate(Util.getCurrentTimeStamp());
+            quizz.setLevel(level);
+            quizz.setIdLevel(idLevel);
+            List<Question> questions = this.generateQuestions(idLevel,level);
+            quizz.setQuestions(questions);
+            int nquestions = questions.size();
+            int lifes = nquestions-(int)Math.ceil((nquestions*90)/100);
+            lifes = Math.max(1,lifes);
+            quizz.setLifes(lifes);
+
+            //TODO Falta asociar el usuario activo
+            managerDB.addQuizz(quizz);
+        }
+        return quizz;
+    }
+
+    //TODO Aqui es el metodo que debemos trabajar para lograr la verdadera aleotoriedad de las preguntas
+    List<Question> generateQuestions(String idLevel,GameLevel level){
+        Log.i("TAG_DB_PSIGAME_PLUS",PsiGameController.class.getName()+"generateQuestions");
+        List<Question> questions = managerDB.getAllQuestionsThisLevel(idLevel);
+        questions.sort(new QuestionComparator());
+        int select = (int)Math.ceil(questions.size()/3);
+
+        List<Question> selects = new ArrayList<Question>();
+
+        for(int i=0;i<select;i++)
+            selects.add(questions.get(i));
+
+        return selects;
+    }
+
+
 }

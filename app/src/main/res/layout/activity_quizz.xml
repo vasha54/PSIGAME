@@ -57,7 +57,7 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
-                            android:id="@+id/progressBarTime"
+                            android:id="@+id/progress_bar_time"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:max="100"
@@ -158,7 +158,7 @@
 
 
         <LinearLayout
-                android:id="@+id/containerQuestion"
+                android:id="@+id/container_question"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"

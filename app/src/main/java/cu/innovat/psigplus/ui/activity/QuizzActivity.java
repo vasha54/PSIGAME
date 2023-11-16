@@ -1,10 +1,23 @@
 package cu.innovat.psigplus.ui.activity;
 
+import java.io.File;
+import java.io.IOException;
+
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.content.res.AssetFileDescriptor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -15,19 +28,194 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Constant;
 import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.questions.Question;
+import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.ui.fragment.HomeFragment;
+import cu.innovat.psigplus.ui.fragment.question.FactoryViewFragmentQuestion;
+import cu.innovat.psigplus.ui.fragment.question.QuestionFragment;
+import cu.innovat.psigplus.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class QuizzActivity extends AppCompatActivity {
+public class QuizzActivity extends AppCompatActivity implements View.OnClickListener , OnPreparedListener,
+        OnErrorListener{
 
-    private Toast m_toast;
+    private PsiGameController controller;
+    private Quizz quizz;
+    private List<QuestionFragment> fragments;
+    private int indexFragments;
+    private Button buttonCheck;
+    private FragmentManager fragmentManager ;
+    private TextView tviewCurrentQuestion;
+    private TextView tviewNumberQuestions;
+    private TextView tviewTime;
+    private TextView tviewLife;
+    private ProgressBar progressBarTime;
+    private int timeToPass;
+    private int countLifes;
+    private Handler handlerTime = null;
+    private MediaPlayer mediaPlayer;
+
+    private Runnable updateTimeView = new Runnable() {
+        @Override
+        public void run() {
+            timeToPass--;
+            if( timeToPass >= 0 ){
+                if(progressBarTime != null) progressBarTime.setProgress(timeToPass,true);
+                if(tviewTime != null) tviewTime.setText(Util.convertToMMSS(timeToPass));
+                handlerTime.postDelayed(updateTimeView, 1000);
+            }else{
+                handlerTime.removeCallbacks(updateTimeView);
+                checkAnswerTimeOut();
+            }
+
+        }
+    };
 
     public QuizzActivity(){
         super();
+        controller = null;
+        quizz = null;
+        fragments = new ArrayList<QuestionFragment>();
+        handlerTime =null;
+    }
+
+    private void notificationSound(String filename){
+        AssetFileDescriptor descriptor;
+        try {
+            descriptor = getAssets().openFd("sounds"+File.separator+ filename);
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(descriptor.getFileDescriptor(),
+                    descriptor.getStartOffset(),
+                    descriptor.getLength());
+            descriptor.close();
+            mediaPlayer.setVolume(1f, 1f);
+            mediaPlayer.setLooping(false);
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    private void  gameOver(){
+        buttonCheck.setEnabled(false);
+        handlerTime.removeCallbacks(updateTimeView);
+        buttonCheck.setVisibility(View.INVISIBLE);
+    }
+
+    private void winGame(){
+        buttonCheck.setEnabled(false);
+        handlerTime.removeCallbacks(updateTimeView);
+        buttonCheck.setVisibility(View.INVISIBLE);
+    }
+
+    public void checkAnswer(){
+        if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
+        Fragment fragment = null;
+        if(indexFragments < fragments.size()) {
+            fragment = getSupportFragmentManager().findFragmentByTag(fragments.get(indexFragments).getUuid());
+        }
+        if( fragment != null && fragment instanceof QuestionFragment){
+            QuestionFragment questionF = (QuestionFragment) fragment;
+            if(questionF != null){
+                if(questionF.checkQuestion() == 1){
+                    notificationSound("correct.mp3");
+                }else if(questionF.checkQuestion() == 0){
+                    countLifes --;
+                    if(tviewLife != null) tviewLife.setText(Util.convertTo00(countLifes));
+                    notificationSound("wrong.mp3");
+                }
+            }
+        }
+
+        if(countLifes>0) {
+            nextQuestion();
+        }else{
+            //TODO falta logica de cuando termina el cuestionario por falta de vida
+           gameOver();
+        }
+    }
+
+    public void checkAnswerTimeOut(){
+        //TODO Falta logica de cuando se le agoto el tiempo para responder la
+        // pregunta registar en BD
+        countLifes--;
+        if(tviewLife != null) tviewLife.setText(Util.convertTo00(countLifes));
+        notificationSound("wrong.mp3");
+        if(countLifes>0){
+            nextQuestion();
+        }else{
+            //TODO falta logica de cuando termina el cuestionario por falta de vida
+            gameOver();
+        }
+    }
+
+    public void nextQuestion(){
+        indexFragments++;
+        if(indexFragments < fragments.size()){
+            loadNextQuestion();
+        }else{
+            winGame();
+        }
+    }
+
+    public void loadNextQuestion(){
+        if(quizz != null) timeToPass=quizz.getDurationQuestion();
+        if(progressBarTime!=null && quizz!=null){
+            progressBarTime.setMax(quizz.getDurationQuestion());
+            progressBarTime.setProgress(quizz.getDurationQuestion(),false);
+        }
+        if(tviewTime!=null && quizz!=null) tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
+        if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(indexFragments+1));
+        if(indexFragments < fragments.size()){
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_question,fragments.get(indexFragments),fragments.get(indexFragments).getUuid()).
+                    addToBackStack(null).
+                    commit();
+        }
+        if(handlerTime == null) handlerTime =new Handler();
+        handlerTime.postDelayed(updateTimeView,1000);
+    }
+
+    private void prepareUI(){
+        fragmentManager = getSupportFragmentManager();
+        buttonCheck = (Button) findViewById(R.id.button_check);
+        tviewNumberQuestions = (TextView) findViewById(R.id.text_view_number_questions);
+        tviewCurrentQuestion = (TextView) findViewById(R.id.text_view_current_question);
+        tviewTime = (TextView) findViewById(R.id.text_view_time);
+        tviewLife = (TextView) findViewById(R.id.text_view_number_life);
+        progressBarTime = (ProgressBar) findViewById(R.id.progress_bar_time);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setOnPreparedListener(this);
+        mediaPlayer.setOnErrorListener(this);
+        if(buttonCheck != null) buttonCheck.setOnClickListener(this);
+        if(tviewNumberQuestions != null) tviewNumberQuestions.setText(String.valueOf(fragments.size()));
+        if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(0));
+        if(progressBarTime != null){
+            if(quizz != null) {
+                progressBarTime.setMax(quizz.getDurationQuestion());
+                progressBarTime.setProgress(quizz.getDurationQuestion(),true);
+            }
+        }
+        if(tviewLife != null){
+            if(quizz != null){
+                tviewLife.setText(Util.convertTo00(quizz.getLifes()));
+                countLifes = quizz.getLifes();
+            }
+        }
+        if(tviewTime != null){
+            if(quizz != null) {
+                tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
+            }
+        }
     }
 
     @Override
@@ -37,28 +225,69 @@ public class QuizzActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_quizz);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         Intent intent = getIntent();
-
         int levelInt = intent.getIntExtra(Constant.LEVEL_GAME,-1);
         GameLevel level = GameLevel.values()[levelInt];
-        m_toast=Toast.makeText(this.getApplicationContext(),
-                level.toString(),
-                Toast.LENGTH_LONG);
-        m_toast.show();
+
+        controller = PsiGameController.getInstance(QuizzActivity.this);
+
+        if(controller!= null) quizz = controller.generateQuizz(level);
+
+        if(quizz != null){
+            fragments = FactoryViewFragmentQuestion.getFragments(quizz.getQuestions());
+            indexFragments =0 ;
+        }
+
+        prepareUI();
+        loadNextQuestion();
     }
 
     @Override
     public void onBackPressed() {
+        if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
         Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
         Bundle b = new Bundle();
         //TODO falta registrar si inicio el cuestionario como intento
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onClick(View _view) {
+        if(_view!=null){
+            int ID = _view.getId();
+            switch (ID){
+                case R.id.button_check:
+                    checkAnswer();
+                    break;
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+       if(mediaPlayer!=null){
+           mediaPlayer.stop();
+           mediaPlayer.reset();
+       }
+       super.onDestroy();
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer arg0) {
+        // TODO Auto-generated method stub
+        mediaPlayer.start();
+    }
+
+    @Override
+    public boolean onError(MediaPlayer arg0, int arg1, int arg2) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.

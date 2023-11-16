@@ -125,6 +125,11 @@
     <string name="text_number_live" translatable="false">##</string>
     <!-- Fin de los textos presentes en la vista cuestionario -->
 
+    <!-- Inicio de los textos presentes en la vista pregunta verdadero y falso -->
+    <string name="title_button_true" translatable="false">Verdadero</string>
+    <string name="title_button_false" translatable="false">Falso</string>
+    <!-- End de los textos presentes en la vista pregunta verdadero y falso -->
+
     <!-- Inicio de nombres posibles grupos académicos -->
     <string-array name="list_names_group_student">
         <item>Invitado</item>
