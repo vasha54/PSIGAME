@@ -16,6 +16,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
     <color name="transparent_app">#00000000</color>
     <color name="background_bottom_navigation_view">#FFf8039c</color>
     <color name="colorLink">#2196F3</color>

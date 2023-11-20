@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,9 +26,14 @@ import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Constant;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.ResultQuizz;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.controller.PsiGameController;
+import cu.innovat.psigplus.interfaces.IObserverClickButtonResultQuizz;
+import cu.innovat.psigplus.interfaces.IObserverClickButtonStartQuizz;
 import cu.innovat.psigplus.ui.fragment.HomeFragment;
+import cu.innovat.psigplus.ui.fragment.QuizzInformationFragment;
+import cu.innovat.psigplus.ui.fragment.QuizzResultFragment;
 import cu.innovat.psigplus.ui.fragment.question.FactoryViewFragmentQuestion;
 import cu.innovat.psigplus.ui.fragment.question.QuestionFragment;
 import cu.innovat.psigplus.util.Util;
@@ -45,7 +47,7 @@ import java.util.List;
  * status bar and navigation/system bar) with user interaction.
  */
 public class QuizzActivity extends AppCompatActivity implements View.OnClickListener , OnPreparedListener,
-        OnErrorListener{
+        OnErrorListener, IObserverClickButtonStartQuizz, IObserverClickButtonResultQuizz {
 
     private PsiGameController controller;
     private Quizz quizz;
@@ -57,11 +59,17 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     private TextView tviewNumberQuestions;
     private TextView tviewTime;
     private TextView tviewLife;
+    private TextView tviewText1;
+    private TextView tviewText2;
+    private ImageView imageViewHeart;
     private ProgressBar progressBarTime;
     private int timeToPass;
     private int countLifes;
     private Handler handlerTime = null;
     private MediaPlayer mediaPlayer;
+
+    private QuizzInformationFragment fragmentInformation;
+    private QuizzResultFragment fragmentResult;
 
     private Runnable updateTimeView = new Runnable() {
         @Override
@@ -85,6 +93,8 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         quizz = null;
         fragments = new ArrayList<QuestionFragment>();
         handlerTime =null;
+        fragmentInformation = null;
+        fragmentResult = null;
     }
 
     private void notificationSound(String filename){
@@ -109,15 +119,35 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         buttonCheck.setEnabled(false);
         handlerTime.removeCallbacks(updateTimeView);
         buttonCheck.setVisibility(View.INVISIBLE);
+
+        fragmentResult = new QuizzResultFragment(getString(R.string.title_text_lose),
+                getString(R.string.description_text_lose), ResultQuizz.QUIZZ_LOSE);
+        fragmentResult.attachOCBRQ(this);
+        if(fragmentManager!=null){
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_question,fragmentResult,fragmentResult.toString()).
+                    addToBackStack(null).
+                    commit();
+        }
     }
 
     private void winGame(){
         buttonCheck.setEnabled(false);
         handlerTime.removeCallbacks(updateTimeView);
         buttonCheck.setVisibility(View.INVISIBLE);
+
+        fragmentResult = new QuizzResultFragment(getString(R.string.title_text_win),
+                getString(R.string.description_text_win), ResultQuizz.QUIZZ_WIN);
+        fragmentResult.attachOCBRQ(this);
+        if(fragmentManager!=null){
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_question,fragmentResult,fragmentResult.toString()).
+                    addToBackStack(null).
+                    commit();
+        }
     }
 
-    public void checkAnswer(){
+    private void checkAnswer(){
         if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
         Fragment fragment = null;
         if(indexFragments < fragments.size()) {
@@ -144,7 +174,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void checkAnswerTimeOut(){
+    private void checkAnswerTimeOut(){
         //TODO Falta logica de cuando se le agoto el tiempo para responder la
         // pregunta registar en BD
         countLifes--;
@@ -158,7 +188,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void nextQuestion(){
+    private void nextQuestion(){
         indexFragments++;
         if(indexFragments < fragments.size()){
             loadNextQuestion();
@@ -167,7 +197,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void loadNextQuestion(){
+    private void loadNextQuestion(){
         if(quizz != null) timeToPass=quizz.getDurationQuestion();
         if(progressBarTime!=null && quizz!=null){
             progressBarTime.setMax(quizz.getDurationQuestion());
@@ -185,6 +215,38 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         handlerTime.postDelayed(updateTimeView,1000);
     }
 
+    private void initQuizz(){
+        if(buttonCheck!=null) buttonCheck.setVisibility(View.INVISIBLE);
+        if(progressBarTime!=null) progressBarTime.setVisibility(View.INVISIBLE);
+        if(tviewLife!=null) tviewLife.setVisibility(View.INVISIBLE);
+        if(tviewTime!=null) tviewTime.setVisibility(View.INVISIBLE);
+        if(tviewCurrentQuestion!=null) tviewCurrentQuestion.setVisibility(View.INVISIBLE);
+        if(tviewNumberQuestions!=null) tviewNumberQuestions.setVisibility(View.INVISIBLE);
+        if(tviewText1!=null) tviewText1.setVisibility(View.INVISIBLE);
+        if(tviewText2!=null) tviewText2.setVisibility(View.INVISIBLE);
+        if(imageViewHeart!=null) imageViewHeart.setVisibility(View.INVISIBLE);
+        if(fragmentManager!=null){
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_question,fragmentInformation,fragmentInformation.toString()).
+                    addToBackStack(null).
+                    commit();
+        }
+    }
+
+    private void startQuizz(){
+        if(buttonCheck!=null) buttonCheck.setVisibility(View.VISIBLE);
+        if(progressBarTime!=null) progressBarTime.setVisibility(View.VISIBLE);
+        if(tviewLife!=null) tviewLife.setVisibility(View.VISIBLE);
+        if(tviewTime!=null) tviewTime.setVisibility(View.VISIBLE);
+        if(tviewCurrentQuestion!=null) tviewCurrentQuestion.setVisibility(View.VISIBLE);
+        if(tviewNumberQuestions!=null) tviewNumberQuestions.setVisibility(View.VISIBLE);
+        if(tviewText1!=null) tviewText1.setVisibility(View.VISIBLE);
+        if(tviewText2!=null) tviewText2.setVisibility(View.VISIBLE);
+        if(imageViewHeart!=null) imageViewHeart.setVisibility(View.VISIBLE);
+        indexFragments =0;
+        loadNextQuestion();
+    }
+
     private void prepareUI(){
         fragmentManager = getSupportFragmentManager();
         buttonCheck = (Button) findViewById(R.id.button_check);
@@ -192,7 +254,10 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         tviewCurrentQuestion = (TextView) findViewById(R.id.text_view_current_question);
         tviewTime = (TextView) findViewById(R.id.text_view_time);
         tviewLife = (TextView) findViewById(R.id.text_view_number_life);
+        tviewText1 = (TextView) findViewById(R.id.text_view_text_1);
+        tviewText2 = (TextView) findViewById(R.id.text_view_text_2);
         progressBarTime = (ProgressBar) findViewById(R.id.progress_bar_time);
+        imageViewHeart = (ImageView) findViewById(R.id.image_view_icon_heart);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setOnPreparedListener(this);
         mediaPlayer.setOnErrorListener(this);
@@ -215,6 +280,11 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
             if(quizz != null) {
                 tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
             }
+        }
+
+        if(quizz != null){
+            fragmentInformation = new QuizzInformationFragment(quizz.information());
+            fragmentInformation.attachOCBSQ(this);
         }
     }
 
@@ -241,7 +311,8 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         }
 
         prepareUI();
-        loadNextQuestion();
+        initQuizz();
+
     }
 
     @Override
@@ -287,8 +358,21 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         return false;
     }
 
+    @Override
+    public void clickedButtonStartQuizz() {
+        this.startQuizz();
+    }
 
-    /**
+    @Override
+    public void clickedButtonResultQuizz() {
+        if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
+        Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
+        Bundle b = new Bundle();
+        //TODO falta registrar si inicio el cuestionario como intento
+        startActivity(intent);
+        finish();
+    }
+/**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */

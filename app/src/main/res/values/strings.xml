@@ -130,6 +130,24 @@
     <string name="title_button_false" translatable="false">Falso</string>
     <!-- End de los textos presentes en la vista pregunta verdadero y falso -->
 
+    <!-- Inicio de los textos presentes en la vista de informacion del cuestionario -->
+    <string name="title_text" translatable="false">INFORMACIÓN !!!</string>
+    <string name="title_button_start_quizz" translatable="false">Comenzar</string>
+    <!-- End de los textos presentes en la vista de informacion del cuestionario -->
+
+    <!-- Inicio de los textos presentes en la vista de resultado del cuestionario -->
+    <string name="title_text_win" translatable="false">ENHORABUENA !!!</string>
+    <string name="description_text_win" translatable="false"><i><b>Felicidades</b>, has logrado superado el
+        cuestionario
+        de este nivel y has desbloquedado el siguiente nivel del juego.</i></string>
+    <string name="title_text_lose" translatable="false">QUE LASTIMA !!!</string>
+    <string name="description_text_lose"
+            translatable="false"><i>Esta vez no ha podido ser. Estudia un poco más y veras que los resultados serán
+        mejores
+        .</i></string>
+    <string name="title_button_result_continue" translatable="false">Continuar</string>
+    <!-- End de los textos presentes en la vista de resultado del cuestionario -->
+
     <!-- Inicio de nombres posibles grupos académicos -->
     <string-array name="list_names_group_student">
         <item>Invitado</item>

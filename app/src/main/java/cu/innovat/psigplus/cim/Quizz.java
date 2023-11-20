@@ -94,4 +94,12 @@ public class Quizz {
     public int getLifes() { return lifes;}
 
     public void setLifes(int lifes) { this.lifes = lifes;}
+
+    public String information(){
+        return String.format("A continuación se enfrentará a un cuestionario " +
+                "conformado por %d preguntas. Para vencer dicho cuestionario debe " +
+                "responder de forma aceptada al menos %d preguntas. Cuando estes " +
+                "listo para comenzar puede presionar el botón <b>Comenzar</b>. <i>Suerte " +
+                "y exitos!!!!</i>",questions.size(),questions.size()-lifes);
+    }
 }

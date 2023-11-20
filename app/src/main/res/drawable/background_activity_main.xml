@@ -4,7 +4,8 @@
 <layer-list
         xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- set image to be shown on circular ImageView -->
+    <item android:drawable="@color/white"/>
     <item android:drawable="@drawable/background_activity_main_top"/>
-   <!-- <item android:drawable="@drawable/background_activity_main_bottom"/> -->
+    <!--<item android:drawable="@drawable/background_activity_main_bottom"/> -->
 
 </layer-list>
