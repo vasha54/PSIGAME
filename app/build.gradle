@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        key {
+        storeFile file('/media/Datos/workspace/workspaceAndroid/PSIGAME/key/innovat-psigplus.keystore')
+            storePassword 'cidra54*'
+            keyPassword 'cidra54*'
+            keyAlias 'alias_name'
+        }
+    }
     compileSdk 33
 
     defaultConfig {
@@ -13,6 +21,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.key
     }
 
     buildTypes {

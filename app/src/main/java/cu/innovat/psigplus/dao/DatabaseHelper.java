@@ -150,6 +150,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }catch (Exception e){
                     Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
                 }
+            }else{
+                Log.e(SchemaBD.TAG_DATABASE, "Existe una pregunta con ID: "+q.getUuid());
             }
         }
     }
@@ -239,40 +241,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean existQuestion(String id){
-        boolean exist = true;
+        boolean exist = false;
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             String[] args = {id};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_QUESTION_WITH_ID,args);
-            if (cursor.getInt(0) == 0){
-                exist = false;
-                Log.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
-            }else{
-                exist = true;
-                Log.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    Log.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
+                }else{
+                    exist = false;
+                    Log.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
+                }
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una pregunta: "+e.getMessage());
         }finally{
             return exist;
         }
     }
 
     public boolean existAcademicGroup(String slug){
-        boolean exist =true;
+        boolean exist =false;
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             String[] args = {slug};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_ACADEMIC_GROUP_WITH_SLUG,args);
-            cursor.moveToFirst();
-            if (cursor.getInt(0) == 0){
-                exist = false;
-                Log.i(SchemaBD.TAG_DATABASE, "Existe un grupo academico con slug: "+slug);
-            }else{
-                exist = true;
-                Log.i(SchemaBD.TAG_DATABASE, "No existe un grupo academico con slug: "+slug);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    Log.i(SchemaBD.TAG_DATABASE, "Existe un grupo academico con slug: "+slug);
+                }else{
+                    exist = false;
+                    Log.i(SchemaBD.TAG_DATABASE, "No existe un grupo academico con slug: "+slug);
+                }
             }
             cursor.close();
             db.close();
@@ -284,18 +289,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean existLevelGame(String slug){
-        boolean exist =true;
+        boolean exist =false;
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             String[] args = {slug};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_LEVEL_WITH_SLUG,args);
-            cursor.moveToFirst();
-            if (cursor.getInt(0) == 0){
-                exist =false;
-                Log.i(SchemaBD.TAG_DATABASE, "Existe un nivel de juego con slug: "+slug);
-            }else{
-                exist = true;
-                Log.i(SchemaBD.TAG_DATABASE, "No existe un nivel de juego con slug: "+slug);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    Log.i(SchemaBD.TAG_DATABASE, "Existe un nivel de juego con slug: "+slug);
+                }else{
+                    exist = false;
+                    Log.i(SchemaBD.TAG_DATABASE, "No existe un nivel de juego con slug: "+slug);
+                }
             }
             cursor.close();
             db.close();
