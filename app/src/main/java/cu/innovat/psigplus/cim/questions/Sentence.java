@@ -11,6 +11,7 @@ public class Sentence {
         this.text = text;
         this.slug = slug;
         this.id = id;
+        this.isCorrect = false;
     }
 
     public Sentence(String text, String slug, String id, boolean isCorrect) {

@@ -9,22 +9,22 @@ import cu.innovat.psigplus.util.Util;
  */
 public class TrueOrFalse extends Question{
 
-    private int answer;
+    private boolean answer;
 
-   public TrueOrFalse(String uuid, String sentence, long lastUse, int used, String idlevel, int answer){
+   public TrueOrFalse(String uuid, String sentence, long lastUse, int used, String idlevel, boolean answer){
         super(uuid,sentence,lastUse,used,idlevel);
         this.answer = answer;
     }
-    public TrueOrFalse(String uuid, String sentence, long lastUse,GameLevel level, int answer){
+    public TrueOrFalse(String uuid, String sentence, long lastUse,GameLevel level, boolean answer){
        super(uuid,sentence,lastUse,level);
        this.answer=answer;
     }
 
-    public int isAnswer() {
+    public boolean isAnswer() {
         return answer;
     }
 
-    public void setAnswer(int answer) {
+    public void setAnswer(boolean answer) {
         this.answer = answer;
     }
 

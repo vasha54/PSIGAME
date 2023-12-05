@@ -1,5 +1,6 @@
 package cu.innovat.psigplus.ui.fragment.question;
 
+import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 
@@ -16,6 +17,9 @@ public class FactoryViewFragmentQuestion {
         for(Question q : questions){
             if( q instanceof TrueOrFalse){
                 TrueOrFalseFragment f = new TrueOrFalseFragment(q);
+                fragments.add(f);
+            }else if (q instanceof MultipleChoise){
+                MultipleChoiseFragment f = new MultipleChoiseFragment(q);
                 fragments.add(f);
             }
         }

@@ -8,7 +8,9 @@ import java.io.InputStreamReader;
 
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.LevelGame;
+import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
+import cu.innovat.psigplus.cim.questions.Sentence;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 
 import org.json.JSONArray;
@@ -62,9 +64,51 @@ public class ReadJson {
                 _objJSON.has("statement") && _objJSON.has("isTrue")){
             String id = _objJSON.getString("id");
             String statement = _objJSON.getString("statement");
-            int isTrue = Integer.parseInt(_objJSON.getString("isTrue"));
+            boolean isTrue = _objJSON.getBoolean("isTrue");
             GameLevel level = GameLevel.valueOf(_objJSON.getString("level"));
             p = new TrueOrFalse(id,statement,Util.getCurrentTimeStamp(),level,isTrue);
+        }
+        return p;
+    }
+
+    public static Sentence readSentence(JSONObject objJSON) throws  JSONException{
+        Sentence s = null;
+        if( objJSON.has("idSentence") && objJSON.has("isChoice")){
+            JSONObject sentenceJSON = objJSON.getJSONObject("idSentence");
+            if( sentenceJSON.has("id") && sentenceJSON.has("text") && sentenceJSON.has("slug")){
+                String id = sentenceJSON.getString("id");
+                String text = sentenceJSON.getString("text");
+                String slug = sentenceJSON.getString("slug");
+                boolean isChoise = objJSON.getBoolean("isChoice");
+
+                s = new Sentence(text, slug, id, isChoise);
+            }
+        }
+        return s;
+    }
+
+    public static List<Sentence> readSentences(JSONArray array) throws  JSONException{
+        List<Sentence> sentences =new ArrayList<Sentence>();
+        for(int i=0;i<array.length();i++){
+            JSONObject objJSON = array.getJSONObject(i);
+            Sentence s = readSentence(objJSON);
+            if( s!= null) sentences.add(s);
+        }
+        return sentences;
+    }
+
+    public static MultipleChoise readMultipleChoise(JSONObject _objJSON) throws  JSONException{
+        MultipleChoise p = null;
+        if(_objJSON.has("id") && _objJSON.has("level") &&
+                _objJSON.has("statement") && _objJSON.has("choise")){
+            String id = _objJSON.getString("id");
+            String statement = _objJSON.getString("statement");
+            GameLevel level = GameLevel.valueOf(_objJSON.getString("level"));
+            JSONArray setencesArray = _objJSON.getJSONArray("choise");
+            List<Sentence> sentences = readSentences(setencesArray);
+            if( !sentences.isEmpty()) {
+                p = new MultipleChoise(id, statement, Util.getCurrentTimeStamp(), level, sentences);
+            }
         }
         return p;
     }
@@ -75,6 +119,9 @@ public class ReadJson {
         switch (type){
             case "trueorfalse":
                 q = readTrueOrFalse(_objJSON);
+                break;
+            case "multiplechoise":
+                q = readMultipleChoise(_objJSON);
                 break;
         }
         return q;

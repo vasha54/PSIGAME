@@ -1,0 +1,554 @@
+[
+    {
+        "id": "28e5c3c7-93d1-4b07-97d7-75a0cc0242b5",
+        "statement": "¿Cuál de las siguientes opciones describe mejor el objetivo de la entrevista médica?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "d6506f55-6359-4677-823d-2053ad354ff4",
+                    "text": "Diagnosticar al paciente",
+                    "slug": "diagnosticar-al-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "484759f7-de18-4f9b-a68b-fdb9d597430d",
+                    "text": "Prescribir medicamentos al paciente.",
+                    "slug": "prescribir-medicamentos-al-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "cc5a5534-62e1-4d42-897b-8870b2c15e5b",
+                    "text": "Establecer una relación terapéutica con el paciente.",
+                    "slug": "establecer-una-relacion-terapeutica-con-el-paciente"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "20a21de4-5a12-46e5-a2ab-422df9de61ec",
+                    "text": "Realizar un examen físico del paciente",
+                    "slug": "realizar-un-examen-fisico-del-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "3b9b852a-cf8b-4728-9235-8b327f705b63",
+                    "text": "Ninguna de las anteriores",
+                    "slug": "ninguna-de-las-anteriores"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "6e132f64-36d3-4abd-ab65-ca76b0c07d63",
+        "statement": "¿Cuál de las siguientes opciones describe mejor la importancia de la empatía en la entrevista médica?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "6415e234-27fa-40ad-91ba-0d2c2d935376",
+                    "text": "La empatía no es importante en la entrevista médica",
+                    "slug": "la-empatia-no-es-importante-en-la-entrevista-medica"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "02fb0535-de51-436d-80bc-304f7f8e6e81",
+                    "text": "La empatía es importante solo para el médico",
+                    "slug": "la-empatia-es-importante-solo-para-el-medico"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "7d11b77f-3e65-426f-92c5-631691ba1a60",
+                    "text": "La empatía es importante solo para el paciente",
+                    "slug": "la-empatia-es-importante-solo-para-el-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "36d398af-4a84-477b-bdca-6e2a7ce237c9",
+                    "text": "La empatía es importante para el médico y el paciente",
+                    "slug": "la-empatia-es-importante-para-el-medico-y-el-paciente"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "588e10d5-97c5-4d2c-9496-2d8a859b5d09",
+                    "text": "La empatía es importante solo para el diagnóstico",
+                    "slug": "la-empatia-es-importante-solo-para-el-diagnostico"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "21844192-190c-4b41-884e-a4e5ae63c872",
+        "statement": "¿Cuál de las siguientes opciones describe mejor la importancia de la comunicación no verbal en la entrevista médica?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "21214e36-5e5f-4570-aca9-c5cf03f759ef",
+                    "text": "La comunicación no verbal no es importante en la entrevista médica",
+                    "slug": "la-comunicacion-no-verbal-no-es-importante-en-la-entrevista-medica"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "e4cefce2-7a8b-48e1-891c-59c97082930b",
+                    "text": "La comunicación no verbal es importante solo para el paciente",
+                    "slug": "la-comunicacion-no-verbal-es-importante-solo-para-el-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "f565a330-efdf-43da-bf7f-655440315758",
+                    "text": "La comunicación no verbal es importante para el médico y el paciente",
+                    "slug": "la-comunicacion-no-verbal-es-importante-para-el-medico-y-el-paciente"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "4b895dec-bbf0-41ae-8d4d-c8d7a7c743cb",
+                    "text": "La comunicación no verbal es importante solo para el médico.",
+                    "slug": "la-comunicacion-no-verbal-es-importante-solo-para-el-medico"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "cf7e4a37-30aa-4961-a6a4-bd6e950db660",
+                    "text": "La comunicación no verbal es importante solo para el diagnóstico",
+                    "slug": "la-comunicacion-no-verbal-es-importante-solo-para-el-diagnostico"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "a1d57c88-41c4-4178-8bd6-5d5923ca5ebb",
+        "statement": "La iatrogenia se refiere a:",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "17ca66be-4a2d-47e2-847c-9f563355cfc8",
+                    "text": "Los efectos negativos producidos por la intervención médica.",
+                    "slug": "los-efectos-negativos-producidos-por-la-intervencion-medica"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "27a8b101-0a73-4476-b4e8-94aabad89c9c",
+                    "text": "Los efectos positivos producidos por la intervención médica.",
+                    "slug": "los-efectos-positivos-producidos-por-la-intervencion-medica"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "6ef08831-53c2-46be-a0cc-b54fed9ae883",
+                    "text": "Los efectos negativos producidos por la intervención quirúrgica.",
+                    "slug": "los-efectos-negativos-producidos-por-la-intervencion-quirurgica"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "a46d75b0-05fc-401d-af8c-81e99ce6d01c",
+                    "text": "Los efectos positivos producidos por la intervención quirúrgica.",
+                    "slug": "los-efectos-positivos-producidos-por-la-intervencion-quirurgica"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "3149511e-9893-42e0-ab2a-c56105347c0c",
+        "statement": "¿Qué es la iatrogenia?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "60db6eae-73e9-4680-832c-90de7fb7f512",
+                    "text": "Una enfermedad causada por un médico.",
+                    "slug": "una-enfermedad-causada-por-un-medico"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "afafa537-6c2d-47ff-8f19-c1433fbcbeb6",
+                    "text": "Una enfermedad causada por un paciente.",
+                    "slug": "una-enfermedad-causada-por-un-paciente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "43f0c0bc-fbfc-41ca-a7c4-724b170c5e5c",
+                    "text": "Una enfermedad causada por un virus.",
+                    "slug": "una-enfermedad-causada-por-un-virus"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "e4458469-9b4a-423a-9975-03ab0fc3ac23",
+                    "text": "Una enfermedad causada por un accidente.",
+                    "slug": "una-enfermedad-causada-por-un-accidente"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "09c1c551-cec1-42d5-8772-d07fb702508a",
+                    "text": "Una enfermedad causada por una mala alimentación.",
+                    "slug": "una-enfermedad-causada-por-una-mala-alimentacion"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "63943e7b-4336-41f4-9bb1-1edfe42daaed",
+        "statement": "¿Cuál de las siguientes opciones describe mejor la psicología médica?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "465c1a25-d5c1-4cec-a520-7fd8cecbaa25",
+                    "text": "El estudio de los trastornos mentales.",
+                    "slug": "el-estudio-de-los-trastornos-mentales"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "4426b318-f955-47ca-87bc-bc535c7a70e9",
+                    "text": "La aplicación de la psicología en el ámbito de la medicina.",
+                    "slug": "la-aplicacion-de-la-psicologia-en-el-ambito-de-la-medicina"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "b4ddaaba-9603-4514-b617-b3c45a0281b9",
+                    "text": "El estudio de la relación entre la mente y el cuerpo.",
+                    "slug": "el-estudio-de-la-relacion-entre-la-mente-y-el-cuerpo"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "ffa90b9c-05fe-41ef-ac6d-5e2d0c6c0e55",
+                    "text": "La aplicación de la psicología en el ámbito de la salud.",
+                    "slug": "la-aplicacion-de-la-psicologia-en-el-ambito-de-la-salud"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "29544107-44ce-4445-82a1-4ab6e7b8d450",
+        "statement": "¿Cuál de las siguientes opciones es un objetivo de la psicología médica?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "680385d5-70b9-419e-9192-bf2472af74e6",
+                    "text": "Tratar trastornos mentales.",
+                    "slug": "tratar-trastornos-mentales"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "eeb577b9-a6c4-4a83-b3d0-ae0d8d8306e0",
+                    "text": "Mejorar la calidad de vida de los pacientes.",
+                    "slug": "mejorar-la-calidad-de-vida-de-los-pacientes"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "e10b4c3e-95b2-4cd3-a560-ce4ac325ccf6",
+                    "text": "Estudiar la relación entre la mente y el cuerpo.",
+                    "slug": "estudiar-la-relacion-entre-la-mente-y-el-cuerpo"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "baa32802-c681-48d3-86d4-a15118d26613",
+                    "text": "Prevenir enfermedades",
+                    "slug": "prevenir-enfermedades"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "bd7132d2-3053-4e99-b089-25da5fd63d2e",
+        "statement": "¿Cuál de las siguientes opciones es un factor de riesgo psicosocial en la salud?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "71e95365-2c7c-48fd-baa3-434de89f3e0c",
+                    "text": "La genética.",
+                    "slug": "la-genetica"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "27ffc7d9-c62d-4445-9b7d-4d0c09757554",
+                    "text": "El estrés.",
+                    "slug": "el-estres"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "171aa2d5-2cae-405c-af5e-c284c1d6ec20",
+                    "text": "La dieta.",
+                    "slug": "la-dieta"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "5299cc98-7fc3-436e-9cf6-24c32461d146",
+                    "text": "La actividad física",
+                    "slug": "la-actividad-fisica"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "3f1e72e9-eadd-4aef-926e-00e60bd3a1ab",
+        "statement": "¿Cuál de las siguientes opciones es un ejemplo de estrategia de afrontamiento?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "ec30ff8c-59c0-4072-a1e2-eaaf6221ea1f",
+                    "text": "La negación",
+                    "slug": "la-negacion"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "006d8694-32da-4033-9111-d6ff26e1b301",
+                    "text": "La evitación",
+                    "slug": "la-evitacion"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "d475d21a-1044-47f6-9984-b9a4238575a8",
+                    "text": "La resolución de problemas.",
+                    "slug": "la-resolucion-de-problemas"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "042b10a3-a32e-40c9-887a-c6ae680fd0c4",
+                    "text": "La rumiación.",
+                    "slug": "la-rumiacion"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "7cd0b16b-87b5-4a0d-b224-62a506341714",
+        "statement": "¿Cuál de las siguientes opciones es un síntoma de depresión?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "d91b7d03-b1c9-45ac-af39-da280a9a54ca",
+                    "text": "La euforia.",
+                    "slug": "la-euforia"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "54d5da4b-ff30-4e17-8b07-2f35213867a2",
+                    "text": "La tristeza persistente.",
+                    "slug": "la-tristeza-persistente"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "f2044a13-3cfc-4c29-a309-0c1d937910a6",
+                    "text": "La hiperactividad.",
+                    "slug": "la-hiperactividad"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "27feb18c-0ae7-44f0-b99b-fd95255c4173",
+                    "text": "La agresividad.",
+                    "slug": "la-agresividad"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "cbf7ba8e-1068-4aeb-b6fc-80e4de928fbc",
+        "statement": "¿Cuál de las siguientes opciones es un trastorno de la conducta alimentaria?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "d3a098f0-0dbc-4a24-a76a-3e71a147a927",
+                    "text": "La esquizofrenia.",
+                    "slug": "la-esquizofrenia"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "0bcfcc62-cf1d-4c53-86a4-3f5ca56a62fc",
+                    "text": "El trastorno de pánico.",
+                    "slug": "el-trastorno-de-panico"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "08837950-0d1b-46cc-910e-4b2df49558db",
+                    "text": "La bulimia nerviosa.",
+                    "slug": "la-bulimia-nerviosa"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "7f3c7191-42fe-4a75-9d08-8a2b938fc83a",
+                    "text": "El trastorno de sueño.",
+                    "slug": "el-trastorno-de-sueno"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "6ec68a3a-3fd3-4f6d-9f2e-28d36bce7372",
+        "statement": "¿Cuál de las siguientes opciones es un trastorno del sueño?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "1e836a1c-359c-41b3-a905-6206813c2770",
+                    "text": "La depresión.",
+                    "slug": "la-depresion"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "22620574-83c3-4780-8293-b9d7c539cdf5",
+                    "text": "El trastorno de ansiedad generalizada.",
+                    "slug": "el-trastorno-de-ansiedad-generalizada"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "3c0852c3-6946-4b8b-95c3-5544b06eedb4",
+                    "text": "El insomnio.",
+                    "slug": "el-insomnio"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "646c58f5-a3fd-4e7b-9a8c-39ba7f8b200b",
+                    "text": "El trastorno de estrés agudo.",
+                    "slug": "el-trastorno-de-estres-agudo"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    },
+    {
+        "id": "39ec5e4a-1487-41ae-8cf3-bb7b4f43b4bd",
+        "statement": "¿Cuál de las siguientes opciones es un ejemplo de intervención psicológica en el ámbito de la medicina?",
+        "choise": [
+            {
+                "idSentence": {
+                    "id": "0786cb89-0f94-4dcd-90dc-faa5dc908fd6",
+                    "text": "La terapia de pareja.",
+                    "slug": "la-terapia-de-pareja"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "086e70f0-8ee7-4124-90e8-647ad0228fa3",
+                    "text": "La terapia de apoyo",
+                    "slug": "la-terapia-de-apoyo"
+                },
+                "isChoice": true
+            },
+            {
+                "idSentence": {
+                    "id": "89a5c9d5-5ade-497f-aa2f-6c162b44459f",
+                    "text": "La terapia ocupacional.",
+                    "slug": "la-terapia-ocupacional"
+                },
+                "isChoice": false
+            },
+            {
+                "idSentence": {
+                    "id": "fa366ac4-24c9-426d-8acb-688e09bc73cf",
+                    "text": "La terapia de lenguaje.",
+                    "slug": "la-terapia-de-lenguaje"
+                },
+                "isChoice": false
+            }
+        ],
+        "type_question": "multiplechoise",
+        "level": "ROOKIE_MEDICAL"
+    }
+]

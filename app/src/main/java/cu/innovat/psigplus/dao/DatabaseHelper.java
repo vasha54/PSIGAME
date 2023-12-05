@@ -12,7 +12,9 @@ import cu.innovat.psigplus.cim.AcademicGroup;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.LevelGame;
 import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
+import cu.innovat.psigplus.cim.questions.Sentence;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 
 import cu.innovat.psigplus.dao.SchemaBD;
@@ -20,6 +22,10 @@ import cu.innovat.psigplus.dao.SchemaBD.AcademicGroupTable;
 import cu.innovat.psigplus.dao.SchemaBD.LevelTable;
 import cu.innovat.psigplus.dao.SchemaBD.QuestionTable;
 import cu.innovat.psigplus.dao.SchemaBD.TrueOrFalseTable;
+import cu.innovat.psigplus.dao.SchemaBD.SentenceTable;
+import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseTable;
+import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseSentenceTable;
+
 import cu.innovat.psigplus.util.Util;
 
 import java.util.ArrayList;
@@ -51,14 +57,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void onCreateSchemeDataBase(SQLiteDatabase db){
         db.execSQL(SchemaBD.SQL_CREATE_ACADEMIC_GROUP_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_LEVEL_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_SENTENCE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_QUESTION_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_TRUE_OR_FALSE_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_SENTENCE_TABLE);
     }
 
     private void onDropSchemeDataBase(SQLiteDatabase db){
         db.execSQL(SchemaBD.SQL_DROP_ACADEMIC_GROUP_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_LEVEL_TABLE);
+        db.execSQL(SchemaBD.SQL_DROP_MULTIPLE_CHOISE_SENTENCE_TABLE);
+        db.execSQL(SchemaBD.SQL_DROP_SENTENCE_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_TRUE_OR_FALSE_TABLE);
+        db.execSQL(SchemaBD.SQL_DROP_MULTIPLE_CHOISE_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_QUESTION_TABLE);
     }
 
@@ -140,6 +152,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         TrueOrFalse tof = (TrueOrFalse) q;
                         if(tof !=null)
                             addQTrueOrFalse(tof,db);
+                    }else if( q instanceof MultipleChoise){
+                        MultipleChoise mc = (MultipleChoise) q;
+                        if(mc != null)
+                            addMultipleChoise(mc,db);
                     }
                     db.close();
 
@@ -156,11 +172,76 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void addSentences(List<Sentence> senteneces,SQLiteDatabase db){
+        for (Sentence s: senteneces) {
+            addSentence(s,db);
+        }
+    }
+
+    public void addSentence(Sentence s,SQLiteDatabase db){
+        if( !existSentence(s.getId())){
+            ContentValues values = new ContentValues();
+
+            values.put(SentenceTable.C_SENTENCE,s.getText());
+            values.put(SentenceTable.C_ID,s.getId());
+            values.put(SentenceTable.C_SLUG,s.getSlug());
+
+            long valueInsert = db.insert(SentenceTable.TABLE_NAME, null, values);
+
+            if(valueInsert!=-1)
+                Log.d(SchemaBD.TAG_DATABASE, "Se insertó la sentencia: "+s.toString());
+            else
+                Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la sentencia: "+s.toString());
+
+        }else{
+            Log.e(SchemaBD.TAG_DATABASE, "Existe una sentencia con ID: "+s.getId());
+        }
+    }
+
+    public void addMultipleChoiseSentences(MultipleChoise mch, List<Sentence> sentences,SQLiteDatabase db){
+        if (mch != null && !sentences.isEmpty()){
+            for(Sentence s: sentences){
+                ContentValues values = new ContentValues();
+
+                values.put(MultipleChoiseSentenceTable.C_ID_SENTENCE,s.getId());
+                values.put(MultipleChoiseSentenceTable.C_ID_QUESTION,mch.getUuid());
+                values.put(MultipleChoiseSentenceTable.C_CHOISE,(s.isCorrect()==true ? 1: 0));
+
+                long valueInsert = db.insert(MultipleChoiseSentenceTable.TABLE_NAME, null, values);
+
+                if(valueInsert!=-1)
+                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó la asociacion entre la sentencia: "+s.toString()+
+                            " y la pregunta:"+mch.toString());
+                else
+                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la asociacion entre la sentencia: "+
+                            s.toString()+ " y la pregunta:"+mch.toString());
+            }
+        }
+    }
+
+    public void addMultipleChoise(MultipleChoise mch, SQLiteDatabase db){
+        List<Sentence> sentences = mch.getSentences();
+
+        ContentValues values = new ContentValues();
+        values.put(MultipleChoiseTable.C_ID, mch.getUuid());
+
+        long valueInsert = db.insert(MultipleChoiseTable.TABLE_NAME, null, values);
+
+        if(valueInsert!=-1)
+            Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+mch.toString());
+        else
+            Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+mch.toString());
+
+        addSentences(sentences,db);
+
+        if(valueInsert !=-1) addMultipleChoiseSentences(mch,sentences,db);
+    }
+
     public void addQTrueOrFalse(TrueOrFalse tof,SQLiteDatabase db){
         ContentValues values = new ContentValues();
 
         values.put(TrueOrFalseTable.C_ID, tof.getUuid());
-        values.put(TrueOrFalseTable.C_RESULT,tof.isAnswer());
+        values.put(TrueOrFalseTable.C_RESULT,(tof.isAnswer()==true ? 1 : 0));
 
         long valueInsert = db.insert(TrueOrFalseTable.TABLE_NAME, null, values);
 
@@ -174,10 +255,87 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel");
         List<Question> questions = new ArrayList<Question>();
         List<Question> qTOF = getAllQuestionsTOFThisLevel(idLevel);
-
+        List<MultipleChoise> qMCH = getAllQuestionsMCHThisLevel(idLevel);
+        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
         questions.addAll(questions.size(),qTOF);
+        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
+        questions.addAll(questions.size(),qMCH);
+        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
 
         return questions;
+    }
+
+    private List<Sentence> findChoiseSentences(String idQMultipleChoise){
+        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
+        List<Sentence> sentences = new ArrayList<Sentence>();
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            String[] args = {idQMultipleChoise};
+            Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
+            Cursor cursor = db.query(
+                    MultipleChoiseSentenceTable.TABLE_NAME + " , " + SentenceTable.TABLE_NAME,
+                    new String[] {SentenceTable.C_ID,SentenceTable.C_SENTENCE,SentenceTable.C_SLUG,
+                            MultipleChoiseSentenceTable.C_CHOISE},
+                    MultipleChoiseSentenceTable.C_ID_SENTENCE + " = " + SentenceTable.C_ID + " AND " +
+                            MultipleChoiseSentenceTable.C_ID_QUESTION + " = '" +  idQMultipleChoise+
+                            "'", null, null, null, null);
+            Log.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
+            if(cursor.moveToFirst()){
+                do{
+                    String ID = cursor.getString(0);
+                    String sentence = cursor.getString(1);
+                    String slug = cursor.getString(2);
+                    boolean choise = (cursor.getInt(3) == 1 ? true : false);
+                    Sentence s = new Sentence(sentence,slug,ID,choise);
+                    sentences.add(s);
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return sentences;
+        }
+
+    }
+
+    private List<MultipleChoise> getAllQuestionsMCHThisLevel(String idLevel){
+        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel");
+        List<MultipleChoise> questions = new ArrayList<MultipleChoise>();
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            String[] args = {idLevel};
+            Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel"+idLevel);
+            Cursor cursor = db.query(
+                    QuestionTable.TABLE_NAME + " , " + MultipleChoiseTable.TABLE_NAME,
+                    new String[] {QuestionTable.C_ID,QuestionTable.C_LEVEL,QuestionTable.C_STATEMENT,
+                            QuestionTable.C_AMOUNT_USE,QuestionTable.C_LAST_USE},
+                    QuestionTable.C_ID + " = " + MultipleChoiseTable.C_ID + " AND " + QuestionTable.C_LEVEL + " = '" +  idLevel+"'",
+                    null, null, null, null);
+            Log.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
+            if(cursor.moveToFirst()){
+                do{
+                    String ID = cursor.getString(0);
+                    String level = cursor.getString(1);
+                    String statement = cursor.getString(2);
+                    int amountUse = cursor.getInt(3);
+                    long lastUse = cursor.getLong(4);
+                    MultipleChoise q = new MultipleChoise(ID,statement,lastUse,amountUse,level);
+                    questions.add(q);
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+            for(MultipleChoise q :questions){
+                List<Sentence> sentences = findChoiseSentences(q.getUuid());
+                q.setSentences(sentences);
+            }
+        }catch (Exception e){
+            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return questions;
+        }
     }
 
     private List<Question> getAllQuestionsTOFThisLevel(String idLevel){
@@ -202,7 +360,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     String statement = cursor.getString(2);
                     int amountUse = cursor.getInt(3);
                     long lastUse = cursor.getLong(4);
-                    int answer = cursor.getInt(5);
+                    boolean answer =  (cursor.getInt(5)==1 ? true : false);
                     //TODO String uuid, String sentence, long lastUse, int used, String idlevel, int answer
                     TrueOrFalse q =new TrueOrFalse(ID,statement,lastUse,amountUse,level,answer);
                     questions.add(q);
@@ -238,6 +396,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }finally{
             return id;
         }
+    }
+
+    public boolean existSentence(String id){
+        boolean exist = false;
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            String[] args = {id};
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_SENTENCE_WITH_ID,args);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    Log.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
+                }else{
+                    exist = false;
+                    Log.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
+                }
+            }
+            cursor.close();
+            db.close();
+        } catch (Exception e){
+            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una sentencia: "+e.getMessage());
+        } finally {
+            return exist;
+        }
+
     }
 
     public boolean existQuestion(String id){

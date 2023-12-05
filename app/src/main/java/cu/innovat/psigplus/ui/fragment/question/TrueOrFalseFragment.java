@@ -33,9 +33,9 @@ public class TrueOrFalseFragment extends QuestionFragment{
         if( question instanceof TrueOrFalse){
             TrueOrFalse tof = (TrueOrFalse) question;
             if(tof != null && toogleButtonFalse != null && toogleButtonTrue != null){
-                if( (toogleButtonTrue.isChecked() && tof.isAnswer() ==1) || (toogleButtonFalse.isChecked() && tof.isAnswer() ==0))
+                if( (toogleButtonTrue.isChecked() && tof.isAnswer() == true) || (toogleButtonFalse.isChecked() && tof.isAnswer() == false))
                     check = 1;
-                if ((toogleButtonTrue.isChecked() && tof.isAnswer() ==0) || (toogleButtonFalse.isChecked() && tof.isAnswer() ==1))
+                if ((toogleButtonTrue.isChecked() && tof.isAnswer() == false) || (toogleButtonFalse.isChecked() && tof.isAnswer() == true))
                     check = 0;
             }
         }

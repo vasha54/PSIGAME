@@ -85,8 +85,14 @@ public class PsiGameController {
 
     private void insertQuestions(){
         try{
-            List<Question> questions = ReadJson.readQuestion(this.context,"Q_TRUE_OR_FALSE.json");
-            Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas True o False");
+            List<Question> questionsTOF = ReadJson.readQuestion(this.context,"Q_TRUE_OR_FALSE.json");
+            List<Question> questionsMCH = ReadJson.readQuestion(this.context,"Q_MULTIPLE_CHOISE.json");
+
+            List<Question> questions = new ArrayList<Question>();
+            questions.addAll(questions.size(),questionsTOF);
+            questions.addAll(questions.size(),questionsMCH);
+
+            Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
             this.managerDB.addQuestions(questions);
         } catch (Exception e){
             Log.i("TAG_DB_PSIGAME_PLUS","Ocurrio el siguiente error"+e.getMessage());

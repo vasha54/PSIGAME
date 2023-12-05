@@ -13,6 +13,8 @@ public final class SchemaBD {
     public static final int DATABASE_VERSION = 1;
     public static final String TAG_DATABASE = "TAG_DB_PSIGAME_PLUS";
 
+
+
    public static class LevelTable implements BaseColumns {
         public static final String TABLE_NAME = "level";
         public static final String C_ID = "id";
@@ -36,6 +38,8 @@ public final class SchemaBD {
             " WHERE "+LevelTable.C_SLUG+"=? LIMIT 1";
     public static final String SQL_DROP_LEVEL_TABLE = "DROP TABLE IF EXISTS "+LevelTable.TABLE_NAME;
 
+
+
     public static class AcademicGroupTable implements BaseColumns {
         public static final String TABLE_NAME = "academic_group";
         public static final String C_ID = "id";
@@ -52,6 +56,8 @@ public final class SchemaBD {
     public static final String SQL_EXIST_ACADEMIC_GROUP_WITH_SLUG = "SELECT EXISTS (SELECT * FROM "+AcademicGroupTable.TABLE_NAME+
             " WHERE "+AcademicGroupTable.C_SLUG+"=? LIMIT 1)";
     public static final String SQL_DROP_ACADEMIC_GROUP_TABLE = "DROP TABLE IF EXISTS "+AcademicGroupTable.TABLE_NAME;
+
+
 
     public static class QuestionTable implements BaseColumns {
         public static final String TABLE_NAME = "question";
@@ -74,6 +80,8 @@ public final class SchemaBD {
             " WHERE "+QuestionTable.C_ID+"=? LIMIT 1)";
     public static final String SQL_DROP_QUESTION_TABLE = "DROP TABLE IF EXISTS "+QuestionTable.TABLE_NAME;
 
+
+
     public static class TrueOrFalseTable implements BaseColumns {
         public static final String TABLE_NAME = "true_or_false_question";
         public static final String C_ID = "id_question";
@@ -92,6 +100,56 @@ public final class SchemaBD {
             QuestionTable.TABLE_NAME+"."+QuestionTable.C_ID+" WHERE "+QuestionTable.C_LEVEL+"=?";
     public static final String SQL_DROP_TRUE_OR_FALSE_TABLE = "DROP TABLE IF EXISTS "+TrueOrFalseTable.TABLE_NAME;
 
+
+
+    public static class MultipleChoiseTable implements BaseColumns {
+        public static final String TABLE_NAME = "multiple_choise_question";
+        public static final String C_ID = "id_question";
+    }
+    public static final String SQL_CREATE_MULTIPLE_CHOISE_TABLE = "CREATE TABLE IF NOT EXISTS "+MultipleChoiseTable.TABLE_NAME + " ( "+
+            MultipleChoiseTable.C_ID+" TEXT NOT NULL,"+
+            "PRIMARY KEY ("+ MultipleChoiseTable.C_ID +"),"+
+            "FOREIGN KEY("+ MultipleChoiseTable.C_ID +") REFERENCES "+QuestionTable.TABLE_NAME+"( "+QuestionTable.C_ID+" )"+
+            ")";
+    public static final String SQL_DROP_MULTIPLE_CHOISE_TABLE = "DROP TABLE IF EXISTS "+MultipleChoiseTable.TABLE_NAME;
+
+
+
+    public static class SentenceTable implements BaseColumns {
+        public static final String TABLE_NAME = "sentence";
+        public static final String C_ID = "id";
+        public static final String C_SENTENCE = "sentence";
+        public static final String C_SLUG = "slug";
+    }
+    public static final String SQL_CREATE_SENTENCE_TABLE = "CREATE TABLE IF NOT EXISTS "+SentenceTable.TABLE_NAME+" ( "+
+            SentenceTable.C_ID+" TEXT NOT NULL,"+
+            SentenceTable.C_SENTENCE+" TEXT NOT NULL,"+
+            SentenceTable.C_SLUG+" TEXT NOT NULL,"+
+            "PRIMARY KEY ("+ SentenceTable.C_ID +"), "+
+            " UNIQUE ( "+SentenceTable.C_SLUG+" ) "+
+            ")";
+    public static final String SQL_EXIST_SENTENCE_WITH_ID = "SELECT EXISTS (SELECT * FROM "+SentenceTable.TABLE_NAME+
+            " WHERE "+SentenceTable.C_ID+"=? LIMIT 1)";
+    public static final String SQL_DROP_SENTENCE_TABLE = "DROP TABLE IF EXISTS "+SentenceTable.TABLE_NAME;
+
+
+
+    public static class MultipleChoiseSentenceTable implements BaseColumns{
+        public static final String TABLE_NAME = "multiple_choise_sentence";
+        public static final String C_ID_QUESTION = "id_question";
+        public static final String C_ID_SENTENCE = "id_sentence";
+        public static final String C_CHOISE = "choise";
+    }
+    public static final String SQL_CREATE_MULTIPLE_CHOISE_SENTENCE_TABLE = "CREATE TABLE IF NOT EXISTS "+MultipleChoiseSentenceTable.TABLE_NAME+" ( "+
+            MultipleChoiseSentenceTable.C_ID_QUESTION+" TEXT NOT NULL,"+
+            MultipleChoiseSentenceTable.C_ID_SENTENCE+" TEXT NOT NULL,"+
+            MultipleChoiseSentenceTable.C_CHOISE+" INTEGER NOT NULL,"+
+            "PRIMARY KEY ("+ MultipleChoiseSentenceTable.C_ID_SENTENCE +","+MultipleChoiseSentenceTable.C_ID_QUESTION+") ,"+
+            "FOREIGN KEY("+ MultipleChoiseSentenceTable.C_ID_QUESTION+") REFERENCES "+MultipleChoiseTable.TABLE_NAME+
+            "( "+MultipleChoiseTable.C_ID+" ),"+
+            "FOREIGN KEY("+ MultipleChoiseSentenceTable.C_ID_SENTENCE +") REFERENCES "+SentenceTable.TABLE_NAME+"( "+SentenceTable.C_ID+" )"+
+                    ")";
+    public static final String SQL_DROP_MULTIPLE_CHOISE_SENTENCE_TABLE = "DROP TABLE IF EXISTS "+MultipleChoiseSentenceTable.TABLE_NAME;
 /*
     public static class PlayerTable implements BaseColumns {
         public static final String TABLE_NAME = "player";
@@ -162,13 +220,9 @@ public final class SchemaBD {
     public static final String SQL_CREATE_SINGLE_CHOISE_TABLE = "";
     public static final String SQL_DROP_SINGLE_CHOISE_TABLE = "DROP TABLE IF EXISTS "+SingleChoiseTable.TABLE_NAME;
 
-    public static class MultipleChoiseTable implements BaseColumns {
-        public static final String TABLE_NAME = "multiple_choise_question";
-        public static final String C_ID = "id_question";
-    }
 
-    public static final String SQL_CREATE_MULTIPLE_CHOISE_TABLE = "";
-    public static final String SQL_DROP_MULTIPLE_CHOISE_TABLE = "DROP TABLE IF EXISTS "+MultipleChoiseTable.TABLE_NAME;
+
+
 
     public static class JudgmentTable implements BaseColumns {
         public static final String TABLE_NAME = "judgment";
