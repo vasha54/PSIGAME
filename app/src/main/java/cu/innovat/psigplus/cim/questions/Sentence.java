@@ -6,12 +6,14 @@ public class Sentence {
     private String id;
 
     private boolean isCorrect;
+    private boolean isSelect;
 
     public Sentence(String text, String slug, String id) {
         this.text = text;
         this.slug = slug;
         this.id = id;
         this.isCorrect = false;
+        this.isSelect = false;
     }
 
     public Sentence(String text, String slug, String id, boolean isCorrect) {
@@ -19,6 +21,7 @@ public class Sentence {
         this.slug = slug;
         this.id = id;
         this.isCorrect = isCorrect;
+        this.isSelect = false;
     }
 
     public String getText() {
@@ -52,6 +55,10 @@ public class Sentence {
     public void setCorrect(boolean correct) {
         isCorrect = correct;
     }
+
+    public boolean isSelect() { return isSelect; }
+
+    public void setSelect(boolean select) { isSelect = select; }
 
     @Override
     public String toString() {

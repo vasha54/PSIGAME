@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.questions.Question;
 
@@ -12,6 +14,9 @@ import cu.innovat.psigplus.cim.questions.Question;
  * @date 3/12/23
  */
 public class MultipleChoiseFragment extends QuestionFragment{
+
+    TextView tv_sentence;
+    RecyclerView rv_listChoise;
 
     public MultipleChoiseFragment(Question q) {
         super(q);
@@ -43,7 +48,8 @@ public class MultipleChoiseFragment extends QuestionFragment{
 
     @Override
     public void prepareUI() {
-
+        tv_sentence = (TextView) m_viewFragment.findViewById(R.id.text_view_sentence_mc);
+        rv_listChoise = (RecyclerView) m_viewFragment.findViewById(R.id.list_choise);
     }
 
     @Override
