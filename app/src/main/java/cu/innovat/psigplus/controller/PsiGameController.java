@@ -137,5 +137,11 @@ public class PsiGameController {
         return selects;
     }
 
+    public void updateLastUseQuestion(String idQuestion){
+        managerDB.updateLastUseQuestion(idQuestion);
+    }
 
+    public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
+        managerDB.registerAnswer(idUser,idQuizz,idQuestion,result);
+    }
 }

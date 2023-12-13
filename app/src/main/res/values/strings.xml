@@ -128,7 +128,7 @@
     <!-- Inicio de los textos presentes en la vista pregunta verdadero y falso -->
     <string name="title_button_true" translatable="false">Verdadero</string>
     <string name="title_button_false" translatable="false">Falso</string>
-    <!-- End de los textos presentes en la vista pregunta verdadero y falso
+    <!-- End de los textos presentes en la vista pregunta verdadero y falso -->
 
     <!-- Inicio de los textos presentes en la vista pregunta multiples opciones -->
     <string name="title_text_introduction" translatable="false">A partir de la siguiente sentencia seleccione

@@ -156,13 +156,18 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if( fragment != null && fragment instanceof QuestionFragment){
             QuestionFragment questionF = (QuestionFragment) fragment;
             if(questionF != null){
+                int result = -1;
                 if(questionF.checkQuestion() == 1){
                     notificationSound("correct.mp3");
+                    result = 1;
                 }else if(questionF.checkQuestion() == 0){
                     countLifes --;
                     if(tviewLife != null) tviewLife.setText(Util.convertTo00(countLifes));
                     notificationSound("wrong.mp3");
+                    result = 0;
                 }
+                controller.registerAnswer(quizz.getIdUsser(),quizz.getIdQuizz(),questionF.getIdQuestion(),result);
+                controller.updateLastUseQuestion(questionF.getIdQuestion());
             }
         }
 

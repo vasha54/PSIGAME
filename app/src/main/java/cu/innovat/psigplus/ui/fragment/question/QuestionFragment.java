@@ -26,6 +26,12 @@ public abstract class QuestionFragment extends BaseFragment {
         return id;
     }
 
+    public String getIdQuestion(){
+        String id = null;
+        if(this.question!=null) id = this.question.getUuid();
+        return id;
+    }
+
     @Override
     public String toString() {
         return "QuestionFragment{" +

@@ -149,6 +149,8 @@ public final class SchemaBD {
             "( "+MultipleChoiseTable.C_ID+" ),"+
             "FOREIGN KEY("+ MultipleChoiseSentenceTable.C_ID_SENTENCE +") REFERENCES "+SentenceTable.TABLE_NAME+"( "+SentenceTable.C_ID+" )"+
                     ")";
+    public static final String SQL_EXIST_MULTIPLE_CHOISE_SENTENCE_ID = "SELECT EXISTS (SELECT * FROM "+MultipleChoiseSentenceTable.TABLE_NAME+
+            " WHERE "+MultipleChoiseSentenceTable.C_ID_QUESTION+"=? AND "+MultipleChoiseSentenceTable.C_ID_SENTENCE+"=? LIMIT 1)";
     public static final String SQL_DROP_MULTIPLE_CHOISE_SENTENCE_TABLE = "DROP TABLE IF EXISTS "+MultipleChoiseSentenceTable.TABLE_NAME;
 /*
     public static class PlayerTable implements BaseColumns {

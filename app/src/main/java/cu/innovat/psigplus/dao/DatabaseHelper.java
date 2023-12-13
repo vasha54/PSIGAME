@@ -159,6 +159,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     }
                     db.close();
 
+
+
                     if(valueInsert!=-1)
                         Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+q.toString());
                     else
@@ -172,14 +174,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addSentences(List<Sentence> senteneces,SQLiteDatabase db){
+    public void addSentences(List<Sentence> senteneces){
+        Log.d(SchemaBD.TAG_DATABASE,"Cantidad de sentencias a insertar es:"+String.valueOf(senteneces.size()));
         for (Sentence s: senteneces) {
-            addSentence(s,db);
+            addSentence(s);
         }
     }
 
-    public void addSentence(Sentence s,SQLiteDatabase db){
-        if( !existSentence(s.getId())){
+    public void addSentence(Sentence s){
+        if( existSentence(s.getId()) == false){
+            SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
 
             values.put(SentenceTable.C_SENTENCE,s.getText());
@@ -192,29 +196,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Log.d(SchemaBD.TAG_DATABASE, "Se insertó la sentencia: "+s.toString());
             else
                 Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la sentencia: "+s.toString());
-
+            db.close();
         }else{
             Log.e(SchemaBD.TAG_DATABASE, "Existe una sentencia con ID: "+s.getId());
         }
     }
 
-    public void addMultipleChoiseSentences(MultipleChoise mch, List<Sentence> sentences,SQLiteDatabase db){
-        if (mch != null && !sentences.isEmpty()){
-            for(Sentence s: sentences){
-                ContentValues values = new ContentValues();
+    public void addMultipleChoiseSentences(MultipleChoise mch, List<Sentence> sentences){
+        if(mch != null && !sentences.isEmpty()){
+            String idMCH = mch.getUuid();
+            for(Sentence s : sentences){
+                if(existMultipleChoiseSentence(idMCH,s.getId()) == false){
+                    ContentValues values = new ContentValues();
 
-                values.put(MultipleChoiseSentenceTable.C_ID_SENTENCE,s.getId());
-                values.put(MultipleChoiseSentenceTable.C_ID_QUESTION,mch.getUuid());
-                values.put(MultipleChoiseSentenceTable.C_CHOISE,(s.isCorrect()==true ? 1: 0));
+                    SQLiteDatabase db = this.getWritableDatabase();
 
-                long valueInsert = db.insert(MultipleChoiseSentenceTable.TABLE_NAME, null, values);
+                    values.put(MultipleChoiseSentenceTable.C_ID_SENTENCE,s.getId());
+                    values.put(MultipleChoiseSentenceTable.C_ID_QUESTION,mch.getUuid());
+                    values.put(MultipleChoiseSentenceTable.C_CHOISE,(s.isCorrect()==true ? 1: 0));
 
-                if(valueInsert!=-1)
-                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó la asociacion entre la sentencia: "+s.toString()+
+                    long valueInsert = db.insert(MultipleChoiseSentenceTable.TABLE_NAME, null, values);
+                    if(valueInsert!=-1)
+                        Log.d(SchemaBD.TAG_DATABASE, "Se insertó la asociacion entre la sentencia: "+s.toString()+
                             " y la pregunta:"+mch.toString());
-                else
-                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la asociacion entre la sentencia: "+
+                    else
+                        Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la asociacion entre la sentencia: "+
                             s.toString()+ " y la pregunta:"+mch.toString());
+
+                    db.close();
+                }else{
+                    Log.e(SchemaBD.TAG_DATABASE, "Existe una asociacion entre la sentencia con ID :"+s.getId()+
+                            " y la pregunta con ID:"+idMCH);
+                }
             }
         }
     }
@@ -231,10 +244,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+mch.toString());
         else
             Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+mch.toString());
-
-        addSentences(sentences,db);
-
-        if(valueInsert !=-1) addMultipleChoiseSentences(mch,sentences,db);
     }
 
     public void addQTrueOrFalse(TrueOrFalse tof,SQLiteDatabase db){
@@ -407,10 +416,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
+                    Log.i(SchemaBD.TAG_DATABASE, "Existe una sentencia con id: "+id);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
+                    Log.i(SchemaBD.TAG_DATABASE, "No existe una sentencia con ID: "+id);
                 }
             }
             cursor.close();
@@ -495,5 +504,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean existMultipleChoiseSentence(String idMCH, String idSentence){
+        boolean exist =false;
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            String[] args = {idMCH,idSentence};
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_MULTIPLE_CHOISE_SENTENCE_ID,args);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    Log.i(SchemaBD.TAG_DATABASE,
+                            "Existe una relación entre la pregunta con id: "+idMCH+" y la sentencia con id: "+idSentence);
+                }else{
+                    exist = false;
+                    Log.i(SchemaBD.TAG_DATABASE,
+                            "No existe una relación entre la pregunta con id: "+idMCH+" y la sentencia con id: "+idSentence);
+                }
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return exist;
+        }
+    }
 
+    public void updateLastUseQuestion(String idQuestion){
+
+    }
+
+    public void incrementCountUseQuestion(String idQuestion){
+
+    }
+
+    public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
+
+    }
 }

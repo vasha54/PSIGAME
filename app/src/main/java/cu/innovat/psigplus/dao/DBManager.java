@@ -12,7 +12,9 @@ import cu.innovat.psigplus.cim.AcademicGroup;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.LevelGame;
 import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
+import cu.innovat.psigplus.cim.questions.Sentence;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -66,7 +68,26 @@ public class DBManager {
     public void addQuestions(List<Question> questions){
         for(Question q : questions){
             addQuestion(q);
+            if( q instanceof MultipleChoise){
+                MultipleChoise mch = (MultipleChoise) q;
+                if(mch !=null){
+                    List<Sentence> sentences = mch.getSentences();
+                    Log.i("TAG_DB_PSIGAME_PLUS","Insertando las opciones ("+String.valueOf(sentences.size())+") de la" +
+                            " pregunta :"+mch.getUuid());
+                    addSentences(sentences);
+                    addMultipleChoiseSentences(mch,sentences);
+                }
+
+            }
         }
+    }
+
+    public void addSentences(List<Sentence> sentences){
+        dbHelper.addSentences(sentences);
+    }
+
+    public void addMultipleChoiseSentences(MultipleChoise mch, List<Sentence> sentences){
+        dbHelper.addMultipleChoiseSentences(mch,sentences);
     }
 
     public void addQuestion(Question q){ dbHelper.addQuestion(q); }
@@ -83,5 +104,14 @@ public class DBManager {
     public List<Question> getAllQuestionsThisLevel(String idLevel){
         Log.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"getAllQuestionsThisLevel");
         return dbHelper.getAllQuestionsThisLevel(idLevel);
+    }
+
+    public void updateLastUseQuestion(String idQuestion){
+        dbHelper.updateLastUseQuestion(idQuestion);
+        dbHelper.incrementCountUseQuestion(idQuestion);
+    }
+
+    public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
+        dbHelper.registerAnswer(idUser, idQuizz, idQuestion, result);
     }
 }
