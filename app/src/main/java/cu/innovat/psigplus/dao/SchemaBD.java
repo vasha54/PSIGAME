@@ -78,6 +78,8 @@ public final class SchemaBD {
             ")";
     public static final String SQL_EXIST_QUESTION_WITH_ID = "SELECT EXISTS (SELECT * FROM "+QuestionTable.TABLE_NAME+
             " WHERE "+QuestionTable.C_ID+"=? LIMIT 1)";
+    public static final String SQL_SELECT_AMOUNT_USE_QUESTION_WITH_ID = "SELECT "+QuestionTable.C_AMOUNT_USE+" FROM "+
+            QuestionTable.TABLE_NAME+" WHERE "+QuestionTable.C_ID+"=?";
     public static final String SQL_DROP_QUESTION_TABLE = "DROP TABLE IF EXISTS "+QuestionTable.TABLE_NAME;
 
 

@@ -278,7 +278,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
         List<Sentence> sentences = new ArrayList<Sentence>();
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idQMultipleChoise};
             Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
             Cursor cursor = db.query(
@@ -313,7 +313,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel");
         List<MultipleChoise> questions = new ArrayList<MultipleChoise>();
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idLevel};
             Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel"+idLevel);
             Cursor cursor = db.query(
@@ -351,7 +351,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel");
         List<Question> questions = new ArrayList<Question>();
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idLevel};
             Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel"+idLevel);
             Cursor cursor = db.query(
@@ -389,7 +389,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String id =null;
         String slug = Util.toSlug(level.toString());
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {slug};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_SELECT_ID_WITH_SLUG,args);
             if(cursor.moveToFirst()){
@@ -410,7 +410,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean existSentence(String id){
         boolean exist = false;
         try {
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {id};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_SENTENCE_WITH_ID,args);
             if(cursor.moveToFirst()){
@@ -435,7 +435,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean existQuestion(String id){
         boolean exist = false;
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {id};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_QUESTION_WITH_ID,args);
             if(cursor.moveToFirst()){
@@ -459,7 +459,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean existAcademicGroup(String slug){
         boolean exist =false;
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {slug};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_ACADEMIC_GROUP_WITH_SLUG,args);
             if(cursor.moveToFirst()){
@@ -483,7 +483,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean existLevelGame(String slug){
         boolean exist =false;
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {slug};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_LEVEL_WITH_SLUG,args);
             if(cursor.moveToFirst()){
@@ -507,7 +507,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean existMultipleChoiseSentence(String idMCH, String idSentence){
         boolean exist =false;
         try{
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idMCH,idSentence};
             Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_MULTIPLE_CHOISE_SENTENCE_ID,args);
             if(cursor.moveToFirst()){
@@ -531,11 +531,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void updateLastUseQuestion(String idQuestion){
+        if( existQuestion(idQuestion) ){
+            try{
+                SQLiteDatabase db = this.getWritableDatabase();
+                long timstamp = Util.getCurrentTimeStamp();
+                ContentValues update = new ContentValues();
+                update.put(QuestionTable.C_LAST_USE, timstamp);
+                String[] args = new String []{idQuestion};
+                db.update(QuestionTable.TABLE_NAME, update, QuestionTable.C_ID+"=?", args);
+                db.close();
+            }catch (Exception e){
+                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }finally {
 
+            }
+        }
     }
 
     public void incrementCountUseQuestion(String idQuestion){
+        if( existQuestion(idQuestion)){
+            try{
+                int aomuntUse = Integer.MIN_VALUE;
+                SQLiteDatabase db = this.getReadableDatabase();
+                String[] args = {idQuestion};
+                Cursor cursor = db.rawQuery(SchemaBD.SQL_SELECT_AMOUNT_USE_QUESTION_WITH_ID,args);
+                if(cursor.moveToFirst()){
+                    aomuntUse = cursor.getInt(0);
+                }
+                cursor.close();
+                db.close();
 
+                if(aomuntUse != Integer.MIN_VALUE){
+                    aomuntUse++;
+                    db = this.getReadableDatabase();
+                    ContentValues update = new ContentValues();
+                    update.put(QuestionTable.C_AMOUNT_USE, aomuntUse);
+                    db.update(QuestionTable.TABLE_NAME, update, QuestionTable.C_ID+"=?", args);
+                    db.close();
+                }
+
+            }catch (Exception e){
+                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }finally {
+
+            }
+        }
     }
 
     public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){

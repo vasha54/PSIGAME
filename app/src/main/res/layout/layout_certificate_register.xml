@@ -57,11 +57,8 @@
                           style="@style/CustomTextPropertyFieldRegister"
                           android:text="@string/title_gruop"/>
                 <Spinner android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:id="@+id/spinner_gruop"
-                          android:spinnerMode="dialog"
-                          android:prompt="@string/title_gruop"
-                         android:entries="@array/list_names_group_student"/>
+                         android:layout_height="32dp"
+                         android:id="@+id/spinner_gruop"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"

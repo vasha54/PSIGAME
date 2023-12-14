@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.interfaces.IClickButtonRegisterCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
@@ -23,6 +25,7 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
     private List<IObserverClickButtonRegisterCertificate> observers;
     private EditText m_editTextIMEI;
     private EditText m_editTextPhoneNumber;
+    private Spinner spinnerGruop;
     private String IMEI;
     private String numberPhone;
 
@@ -51,11 +54,19 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
 
             m_editTextIMEI = (EditText) m_viewFragment.findViewById(R.id.edit_text_emi);
             m_editTextPhoneNumber = (EditText) m_viewFragment.findViewById(R.id.edit_text_phone_number);
+            spinnerGruop = (Spinner) m_viewFragment.findViewById(R.id.spinner_gruop);
             Button button = (Button) m_viewFragment.findViewById(R.id.button_register_certificate);
 
             if(button != null) button.setOnClickListener(this);
             if(m_editTextIMEI != null) m_editTextIMEI.setText(this.IMEI);
             if(m_editTextPhoneNumber != null) m_editTextPhoneNumber.setText(this.numberPhone);
+            if(spinnerGruop != null){
+                ArrayAdapter<CharSequence> adapterGroups = ArrayAdapter.createFromResource(
+                        getContext(), R.array.list_names_group_student, android.R.layout.simple_spinner_dropdown_item);
+                adapterGroups.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerGruop.setAdapter(adapterGroups);
+                spinnerGruop.setSelection(0);
+            }
         }
     }
 
