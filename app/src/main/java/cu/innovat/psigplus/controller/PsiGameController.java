@@ -3,10 +3,7 @@ package cu.innovat.psigplus.controller;
 import android.content.Context;
 import android.util.Log;
 
-import cu.innovat.psigplus.cim.AcademicGroup;
-import cu.innovat.psigplus.cim.GameLevel;
-import cu.innovat.psigplus.cim.LevelGame;
-import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 import cu.innovat.psigplus.cim.questions.QuestionComparator;
@@ -143,5 +140,9 @@ public class PsiGameController {
 
     public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
         managerDB.registerAnswer(idUser,idQuizz,idQuestion,result);
+    }
+
+    public boolean registerPlayer(Player player){
+        return managerDB.registerPlayer(player);
     }
 }

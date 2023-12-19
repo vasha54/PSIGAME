@@ -43,4 +43,27 @@ public class Util {
     public static String convertTo00(int _number){
         return String.format("%02d",_number);
     }
+
+    public static boolean isEmptyString(String str){
+        boolean empty = true;
+        //TODO Falta
+        return empty;
+    }
+
+    public static boolean isValidCI(String ci){
+        boolean valid = true;
+        return valid;
+    }
+
+    public static boolean isValidNumberPhone(String numberPhone){
+        boolean valid = true;
+        //TODO Falta
+        return valid;
+    }
+
+    public static boolean isValidIMEI(String imei){
+        boolean valid = true;
+        //TODO Falta
+        return valid;
+    }
 }

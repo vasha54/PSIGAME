@@ -6,16 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.cim.Player;
+import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGenerateCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
+import cu.innovat.psigplus.interfaces.IObserverRegisterPlayer;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 1/10/23
  */
 public class CertificateFragment extends BaseFragment implements IObserverClickButtonBeginRegisterCertificate,
-        IObserverClickButtonRegisterCertificate, IObserverClickButtonGenerateCertificate {
+        IObserverClickButtonRegisterCertificate, IObserverClickButtonGenerateCertificate,
+        IObserverRegisterPlayer {
 
     private CertificatePresentationFragment m_fPresentation;
     private CertificateRegisterFragment m_fRegister;
@@ -50,7 +54,8 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
     public void prepareUI(){
 
         m_fPresentation.attach(this);
-        m_fRegister.attach(this);
+        m_fRegister.attachOCBRC(this);
+        m_fRegister.attachORP(this);
         m_fGenerate.attach(this);
 
         FragmentManager fragmentManager = getChildFragmentManager();
@@ -79,5 +84,10 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
     @Override
     public void clickedButtonGenerateCertificate() {
 
+    }
+
+    @Override
+    public boolean registerPlayer(Player player) {
+        return PsiGameController.getInstance(getContext()).registerPlayer(player);
     }
 }

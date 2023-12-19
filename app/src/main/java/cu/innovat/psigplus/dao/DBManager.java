@@ -8,10 +8,7 @@ import android.util.Log;
 import java.util.List;
 import java.util.ArrayList;
 
-import cu.innovat.psigplus.cim.AcademicGroup;
-import cu.innovat.psigplus.cim.GameLevel;
-import cu.innovat.psigplus.cim.LevelGame;
-import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.Sentence;
@@ -113,5 +110,9 @@ public class DBManager {
 
     public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
         dbHelper.registerAnswer(idUser, idQuizz, idQuestion, result);
+    }
+
+    public boolean registerPlayer(Player player){
+        return dbHelper.registerPlayer(player);
     }
 }

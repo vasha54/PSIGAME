@@ -101,6 +101,12 @@
     <string name="title_gruop" translatable="false">Grupo académico:</string>
     <string name="title_phone_number" translatable="false">Número de teléfono:</string>
     <string name="title_emi" translatable="false">IMEI:</string>
+    <string name="error_ci"> El número de carnet de identidad no es correcto.</string>
+    <string name="error_group"> Seleccione un grupo académico.</string>
+    <string name="error_surname"> El campo apellido no puede estar vacío.</string>
+    <string name="error_imei"> El valor del IMEI no es correcto.</string>
+    <string name="error_name"> El campo nombre no puede estar vacío.</string>
+    <string name="error_number_phone"> El valor del número de teléfono no es correcto.</string>
     <!-- Fin de los textos presentes en la vista registro de Certificado -->
 
     <!-- Inicio de los textos presentes en la vista generar de Certificado -->

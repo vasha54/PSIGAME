@@ -154,7 +154,9 @@ public final class SchemaBD {
     public static final String SQL_EXIST_MULTIPLE_CHOISE_SENTENCE_ID = "SELECT EXISTS (SELECT * FROM "+MultipleChoiseSentenceTable.TABLE_NAME+
             " WHERE "+MultipleChoiseSentenceTable.C_ID_QUESTION+"=? AND "+MultipleChoiseSentenceTable.C_ID_SENTENCE+"=? LIMIT 1)";
     public static final String SQL_DROP_MULTIPLE_CHOISE_SENTENCE_TABLE = "DROP TABLE IF EXISTS "+MultipleChoiseSentenceTable.TABLE_NAME;
-/*
+
+
+
     public static class PlayerTable implements BaseColumns {
         public static final String TABLE_NAME = "player";
         public static final String C_ID = "id";
@@ -175,20 +177,12 @@ public final class SchemaBD {
             PlayerTable.C_EMIE+" TEXT NOT NULL,"+
             PlayerTable.C_ID_GROUP+" TEXT NOT NULL,"+
             PlayerTable.C_ACTIVE+" INTEGER NOT NULL,"+
-            "PRIMARY KEY("+ PlayerTable.C_ID +")"+
+            "PRIMARY KEY("+ PlayerTable.C_ID +"),"+
+            " UNIQUE ( "+PlayerTable.C_CI+" ), "+
+            "FOREIGN KEY("+ PlayerTable.C_ID_GROUP +") REFERENCES "+AcademicGroupTable.TABLE_NAME+"( "+AcademicGroupTable.C_ID+" )"+
             ")";
-
-
     public static final String SQL_DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS "+PlayerTable.TABLE_NAME;
-
-
-
-
-
-
-
-
-
+/*
     public static class QuizzTable implements BaseColumns {
         public static final String TABLE_NAME = "quizz";
         public static final String C_ID = "id";

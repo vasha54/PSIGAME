@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import android.util.Log;
 
-import cu.innovat.psigplus.cim.AcademicGroup;
-import cu.innovat.psigplus.cim.GameLevel;
-import cu.innovat.psigplus.cim.LevelGame;
-import cu.innovat.psigplus.cim.Quizz;
+import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.Sentence;
@@ -25,6 +22,7 @@ import cu.innovat.psigplus.dao.SchemaBD.TrueOrFalseTable;
 import cu.innovat.psigplus.dao.SchemaBD.SentenceTable;
 import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseTable;
 import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseSentenceTable;
+import cu.innovat.psigplus.dao.SchemaBD.PlayerTable;
 
 import cu.innovat.psigplus.util.Util;
 
@@ -62,9 +60,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SchemaBD.SQL_CREATE_TRUE_OR_FALSE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_SENTENCE_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_PLAYER_TABLE);
     }
 
     private void onDropSchemeDataBase(SQLiteDatabase db){
+        db.execSQL(SchemaBD.SQL_DROP_PLAYER_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_ACADEMIC_GROUP_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_LEVEL_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_MULTIPLE_CHOISE_SENTENCE_TABLE);
@@ -407,6 +407,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String findIDAcademicGroupBySlug(String slug){
+        String id = null;
+        //TODO Falta;
+        return id;
+    }
+
     public boolean existSentence(String id){
         boolean exist = false;
         try {
@@ -563,7 +569,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 if(aomuntUse != Integer.MIN_VALUE){
                     aomuntUse++;
-                    db = this.getReadableDatabase();
+                    db = this.getWritableDatabase();
                     ContentValues update = new ContentValues();
                     update.put(QuestionTable.C_AMOUNT_USE, aomuntUse);
                     db.update(QuestionTable.TABLE_NAME, update, QuestionTable.C_ID+"=?", args);
@@ -579,6 +585,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
+        //TODO Falta
+    }
 
+    public boolean registerPlayer(Player player){
+        boolean register = false;
+        if( player!=null){
+            String idGroup = findIDAcademicGroupBySlug(player.getSlugGroup());
+            if(idGroup != null){
+                player.setIdGroup(idGroup);
+
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues values = new ContentValues();
+
+                values.put(PlayerTable.C_CI,player.getCi());
+                values.put(PlayerTable.C_ID,player.getIdUser());
+                values.put(PlayerTable.C_NAME,player.getName());
+                values.put(PlayerTable.C_SURNAME,player.getSurname());
+                values.put(PlayerTable.C_ID_GROUP,player.getIdGroup());
+                values.put(PlayerTable.C_EMIE,player.getIMEI());
+                values.put(PlayerTable.C_PHONE_NUMBER,player.getNumberPhone());
+                values.put(PlayerTable.C_ACTIVE,(player.isActivate()? 1 : 0));
+
+                long valueInsert = db.insert(PlayerTable.TABLE_NAME, null, values);
+
+                if(valueInsert!=-1) {
+                    db = this.getWritableDatabase();
+
+                    ContentValues updateDeactivate = new ContentValues();
+                    updateDeactivate.put(PlayerTable.C_ACTIVE, 0);
+                    db.update(PlayerTable.TABLE_NAME, updateDeactivate, null, null);
+
+                    ContentValues updatePlayer = new ContentValues();
+                    updatePlayer.put(PlayerTable.C_ACTIVE, (player.isActivate()? 1 : 0));
+                    String[] args = {player.getIdUser()};
+                    db.update(PlayerTable.TABLE_NAME, updatePlayer, PlayerTable.C_ID+"=?", args);
+
+
+                    register =true;
+                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó el jugador: " + player.toString());
+                } else {
+                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección del jugador: " + player.toString());
+                }
+                db.close();
+
+            }else{
+                Log.i(SchemaBD.TAG_DATABASE, "No existe un grupo con slug: "+player.getSlugGroup());
+            }
+        }
+
+        return register;
     }
 }

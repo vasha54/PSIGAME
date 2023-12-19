@@ -1,17 +1,16 @@
 package cu.innovat.psigplus.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.*;
 import cu.innovat.psigplus.R;
-import cu.innovat.psigplus.interfaces.IClickButtonRegisterCertificate;
-import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
-import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
+import cu.innovat.psigplus.cim.Player;
+import cu.innovat.psigplus.interfaces.*;
+import cu.innovat.psigplus.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +19,19 @@ import java.util.List;
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 12/10/23
  */
-public class CertificateRegisterFragment extends BaseFragment implements IClickButtonRegisterCertificate {
+public class CertificateRegisterFragment extends BaseFragment implements IClickButtonRegisterCertificate,
+        IRegisterPlayer {
 
-    private List<IObserverClickButtonRegisterCertificate> observers;
+    private List<IObserverClickButtonRegisterCertificate> observersCBRC;
+    private List<IObserverRegisterPlayer> observersRP;
+
     private EditText m_editTextIMEI;
     private EditText m_editTextPhoneNumber;
+    private EditText m_editTextName;
+    private EditText m_editTextSurname;
+    private EditText m_editTextCI;
     private Spinner spinnerGruop;
+
     private String IMEI;
     private String numberPhone;
 
@@ -33,7 +39,8 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
         super();
         this.IMEI = _IMEI;
         this.numberPhone = _numberPhone;
-        observers = new ArrayList<IObserverClickButtonRegisterCertificate>();
+        observersCBRC = new ArrayList<IObserverClickButtonRegisterCertificate>();
+        observersRP = new ArrayList<IObserverRegisterPlayer>();
     }
 
     @Override
@@ -54,7 +61,11 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
 
             m_editTextIMEI = (EditText) m_viewFragment.findViewById(R.id.edit_text_emi);
             m_editTextPhoneNumber = (EditText) m_viewFragment.findViewById(R.id.edit_text_phone_number);
+            m_editTextName = (EditText) m_viewFragment.findViewById(R.id.edit_text_name);
+            m_editTextSurname = (EditText) m_viewFragment.findViewById(R.id.edit_text_surname);
+            m_editTextCI = (EditText) m_viewFragment.findViewById(R.id.edit_text_ci);
             spinnerGruop = (Spinner) m_viewFragment.findViewById(R.id.spinner_gruop);
+
             Button button = (Button) m_viewFragment.findViewById(R.id.button_register_certificate);
 
             if(button != null) button.setOnClickListener(this);
@@ -71,13 +82,15 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
     }
 
     @Override
-    public void attach(IObserverClickButtonRegisterCertificate observer) {
-        observers.add(observer);
+    public void attachOCBRC(IObserverClickButtonRegisterCertificate observer) {
+        observersCBRC.add(observer);
     }
 
     @Override
-    public void detach(IObserverClickButtonRegisterCertificate observer) {
-        observers.remove(observer);
+    public void detachOCBRC(IObserverClickButtonRegisterCertificate observer) {
+
+        observersCBRC.remove(observer);
+
     }
 
     @Override
@@ -86,7 +99,7 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
             int ID = _view.getId();
             switch (ID){
                 case R.id.button_register_certificate:
-                    this.notifyClickButtonRegisterCertificate();
+                    if( this.registerUser() ) this.notifyClickButtonRegisterCertificate();
                     break;
                 default:break;
             }
@@ -95,8 +108,92 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
 
     @Override
     public void notifyClickButtonRegisterCertificate() {
-        for (IObserverClickButtonRegisterCertificate observer: observers) {
+        for (IObserverClickButtonRegisterCertificate observer: observersCBRC) {
             observer.clickedButtonRegisterCertificate();
         }
+    }
+
+    public boolean registerUser(){
+        boolean register = false;
+        if(m_editTextCI != null && m_editTextName != null && m_editTextSurname != null &&
+                m_editTextIMEI != null && m_editTextPhoneNumber != null && spinnerGruop != null){
+            String name = m_editTextName.getText().toString();
+            String surname = m_editTextSurname.getText().toString();
+            String ci = m_editTextCI.getText().toString();
+            String numberPhone  = m_editTextPhoneNumber.getText().toString();
+            String imei = m_editTextIMEI.getText().toString();
+            String group = spinnerGruop.getSelectedItem().toString();
+            String groupSlug = Util.toSlug(group);
+            String error = "";
+            String idPlayer = Util.generateUUID();
+
+            Log.i("TAG_DB_PSIGAME_PLUS","El grupo seleccionado es: "+group);
+
+            boolean isValidName = !Util.isEmptyString(name);
+            boolean isValidSurname = !Util.isEmptyString(surname);
+            boolean isValidCI = !Util.isEmptyString(surname) & Util.isValidCI(ci);
+            boolean isValidIMEI = !Util.isEmptyString(imei) & Util.isValidIMEI(imei);
+            boolean isValidNumberPhone = !Util.isEmptyString(numberPhone) &
+                    Util.isValidNumberPhone(numberPhone);
+            boolean isValidGroup = !Util.isEmptyString(groupSlug);
+
+            boolean isValidData = isValidName & isValidSurname & isValidCI & isValidIMEI &
+                    isValidNumberPhone & isValidGroup;
+
+            if(!isValidCI){
+                error+=getString(R.string.error_ci);
+            }
+
+            if(!isValidGroup){
+                error+=getString(R.string.error_group);
+            }
+
+            if(!isValidSurname){
+                error+=getString(R.string.error_surname);
+            }
+
+            if(!isValidIMEI){
+                error+=getString(R.string.error_imei);
+            }
+
+            if(!isValidName){
+                error+=getString(R.string.error_name);
+            }
+
+            if(!isValidNumberPhone){
+                error+=getString(R.string.error_number_phone);
+            }
+
+            if( isValidData ){
+                Player player = new Player(idPlayer,name,surname,ci,groupSlug,
+                        IMEI,numberPhone,true);
+                register = registerPlayer(player);
+            }else{
+                Toast toast= Toast.makeText(this.getContext(),
+                        error,
+                        Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+        return register;
+    }
+
+    @Override
+    public void attachORP(IObserverRegisterPlayer observer) {
+        observersRP.add(observer);
+    }
+
+    @Override
+    public void detachORP(IObserverRegisterPlayer observer) {
+        observersRP.remove(observer);
+    }
+
+    @Override
+    public boolean registerPlayer(Player player) {
+        boolean register = true;
+        for(IObserverRegisterPlayer obs : observersRP){
+            register = register & obs.registerPlayer(player);
+        }
+        return register;
     }
 }

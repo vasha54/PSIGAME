@@ -5,7 +5,7 @@ package cu.innovat.psigplus.interfaces;
  * @date 12/10/23
  */
 public interface IClickButtonRegisterCertificate {
-    void attach(IObserverClickButtonRegisterCertificate observer);
-    void detach(IObserverClickButtonRegisterCertificate observer);
+    void attachOCBRC(IObserverClickButtonRegisterCertificate observer);
+    void detachOCBRC(IObserverClickButtonRegisterCertificate observer);
     void notifyClickButtonRegisterCertificate();
 }
