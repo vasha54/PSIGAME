@@ -10,11 +10,30 @@ public class LevelGame {
     private String slug;
     private int cardinal;
 
+    private GameLevel level;
+
     public LevelGame(String uuid, String name, String slug, int cardinal) {
         this.uuid = uuid;
         this.name = name;
         this.slug = slug;
         this.cardinal = cardinal;
+        this.level = GameLevel.values()[cardinal];
+    }
+
+    public LevelGame(String uuid, String name, String slug, int cardinal, GameLevel level) {
+        this.uuid = uuid;
+        this.name = name;
+        this.slug = slug;
+        this.cardinal = cardinal;
+        this.level = level;
+    }
+
+    public LevelGame(String uuid, String name, String slug, GameLevel level) {
+        this.uuid = uuid;
+        this.name = name;
+        this.slug = slug;
+        this.level = level;
+        this.cardinal = level.ordinal();
     }
 
     public LevelGame() {
@@ -55,6 +74,10 @@ public class LevelGame {
     public void setCardinal(int cardinal) {
         this.cardinal = cardinal;
     }
+
+    public GameLevel getLevel() { return level; }
+
+    public void setLevel(GameLevel level) { this.level = level; }
 
     @Override
     public String toString() {

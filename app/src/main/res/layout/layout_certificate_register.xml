@@ -37,21 +37,30 @@
                           android:text="@string/title_name"/>
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/edit_text_name"/>
+                          android:id="@+id/edit_text_name"
+                          android:textColor="@color/black"
+                          android:background="@color/white"
+                          android:maxLines="1"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"
                           android:text="@string/title_surname"/>
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/edit_text_surname"/>
+                          android:id="@+id/edit_text_surname"
+                          android:textColor="@color/black"
+                          android:background="@color/white"
+                          android:maxLines="1"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"
                           android:text="@string/title_ci"/>
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/edit_text_ci"/>
+                          android:id="@+id/edit_text_ci"
+                          android:textColor="@color/black"
+                          android:background="@color/white"
+                          android:maxLines="1"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"
@@ -66,7 +75,10 @@
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:id="@+id/edit_text_phone_number"
-                          android:editable="false"/>
+                          android:editable="false"
+                          android:textColor="@color/black"
+                          android:background="@color/white"
+                          android:maxLines="1"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           style="@style/CustomTextPropertyFieldRegister"
@@ -74,7 +86,10 @@
                 <EditText android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:id="@+id/edit_text_emi"
-                          android:editable="false"/>
+                          android:editable="false"
+                          android:textColor="@color/black"
+                          android:background="@color/white"
+                          android:maxLines="1"/>
             </LinearLayout>
             <Space
                     android:layout_width="match_parent"

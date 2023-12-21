@@ -61,9 +61,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_SENTENCE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_PLAYER_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_PLAYER_LEVEL_TABLE);
     }
 
     private void onDropSchemeDataBase(SQLiteDatabase db){
+        db.execSQL(SchemaBD.SQL_DROP_PLAYER_LEVEL_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_PLAYER_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_ACADEMIC_GROUP_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_LEVEL_TABLE);
@@ -635,5 +637,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return register;
+    }
+
+    public List<LevelGame> getLevelAviableCurrentPlayer(){
+        List<LevelGame> levels = new ArrayList<LevelGame>();
+        String idCurrentPlayer = getIDCurrentPlayer();
+        if  (idCurrentPlayer != null){
+            List<String> idLevel = new ArrayList<String>();
+            //TODO Falta
+        }
+        return levels;
+    }
+
+    public String getIDCurrentPlayer(){
+        String id = null;
+        //TODO Falta
+        return id;
     }
 }

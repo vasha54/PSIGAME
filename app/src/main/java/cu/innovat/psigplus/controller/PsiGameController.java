@@ -145,4 +145,8 @@ public class PsiGameController {
     public boolean registerPlayer(Player player){
         return managerDB.registerPlayer(player);
     }
+
+    public List<LevelGame> getLevelAviableCurrentPlayer(){
+        return managerDB.getLevelAviableCurrentPlayer();
+    }
 }

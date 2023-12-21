@@ -115,4 +115,8 @@ public class DBManager {
     public boolean registerPlayer(Player player){
         return dbHelper.registerPlayer(player);
     }
+
+    public List<LevelGame> getLevelAviableCurrentPlayer(){
+        return dbHelper.getLevelAviableCurrentPlayer();
+    }
 }

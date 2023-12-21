@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.cim.LevelGame;
+import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IClickButtonGameLevel;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
@@ -45,9 +47,31 @@ public class CourseGeneralLevelFragment extends BaseFragment {
         ImageView iButtonCompetent = (ImageView) m_viewFragment.findViewById(R.id.button_competent_general);
         ImageView iButtonProfessional = (ImageView) m_viewFragment.findViewById(R.id.button_professional_general);
 
-        if( iButtonProfessional !=null) iButtonProfessional.setOnClickListener(this);
-        if( iButtonCompetent != null) iButtonCompetent.setOnClickListener(this);
+        if( iButtonProfessional !=null){
+            iButtonProfessional.setOnClickListener(this);
+            iButtonProfessional.setVisibility(View.INVISIBLE);
+        }
+        if( iButtonCompetent != null){
+            iButtonCompetent.setOnClickListener(this);
+            iButtonCompetent.setVisibility(View.INVISIBLE);
+        }
         if( iButtonRookie != null) iButtonRookie.setOnClickListener(this);
+
+        List<LevelGame> levels = PsiGameController.getInstance(getContext()).getLevelAviableCurrentPlayer();
+
+        for(LevelGame level : levels){
+            if(level.getLevel() == GameLevel.ROOKIE_GENERAL){
+                if (iButtonRookie!=null) iButtonRookie.setVisibility(View.VISIBLE);
+                if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
+            }
+            if(level.getLevel() == GameLevel.COMPETENT_GENERAL){
+                if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
+                if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
+            }
+            if(level.getLevel() == GameLevel.PROFESSIONAL_GENERAL){
+                if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override

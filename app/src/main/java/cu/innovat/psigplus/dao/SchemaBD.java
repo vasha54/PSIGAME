@@ -182,6 +182,22 @@ public final class SchemaBD {
             "FOREIGN KEY("+ PlayerTable.C_ID_GROUP +") REFERENCES "+AcademicGroupTable.TABLE_NAME+"( "+AcademicGroupTable.C_ID+" )"+
             ")";
     public static final String SQL_DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS "+PlayerTable.TABLE_NAME;
+
+
+
+    public static class PlayerLevelTable implements BaseColumns{
+        public static final String TABLE_NAME = "player_level";
+        public static final String C_ID_PLAYER = "id_player";
+        public static final String C_ID_LEVEL = "id_level";
+    }
+    public static final String SQL_CREATE_PLAYER_LEVEL_TABLE = "CREATE TABLE IF NOT EXISTS "+PlayerLevelTable.TABLE_NAME +" ( "+
+            PlayerLevelTable.C_ID_PLAYER+" TEXT NOT NULL,"+
+            PlayerLevelTable.C_ID_LEVEL+" TEXT NOT NULL,"+
+            "PRIMARY KEY("+ PlayerLevelTable.C_ID_PLAYER+" , "+PlayerLevelTable.C_ID_LEVEL+" ),"+
+            "FOREIGN KEY("+ PlayerLevelTable.C_ID_PLAYER +") REFERENCES "+PlayerTable.TABLE_NAME+"( "+PlayerTable.C_ID+" ),"+
+            "FOREIGN KEY("+ PlayerLevelTable.C_ID_LEVEL +") REFERENCES "+LevelTable.TABLE_NAME+"( "+LevelTable.C_ID+" )"+
+            ")";
+    public static final String SQL_DROP_PLAYER_LEVEL_TABLE = "DROP TABLE IF EXISTS "+PlayerLevelTable.TABLE_NAME;
 /*
     public static class QuizzTable implements BaseColumns {
         public static final String TABLE_NAME = "quizz";
