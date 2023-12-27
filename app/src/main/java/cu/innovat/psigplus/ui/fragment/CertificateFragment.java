@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.cim.Format;
 import cu.innovat.psigplus.cim.Player;
 import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGenerateCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
 import cu.innovat.psigplus.interfaces.IObserverRegisterPlayer;
+
+import java.util.List;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -57,11 +60,18 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
         m_fRegister.attachOCBRC(this);
         m_fRegister.attachORP(this);
         m_fGenerate.attach(this);
-
-        FragmentManager fragmentManager = getChildFragmentManager();
-        fragmentManager.beginTransaction().
+        String idPlayerActive = PsiGameController.getInstance(getContext()).getIDCurrentPlayer();
+        if(idPlayerActive == null){
+            FragmentManager fragmentManager = getChildFragmentManager();
+            fragmentManager.beginTransaction().
                 replace(R.id.containerFragmentCertificate,m_fPresentation).addToBackStack(m_fPresentation.toString()).
                 commit();
+        }else{
+            FragmentManager fragmentManager = getChildFragmentManager();
+            fragmentManager.beginTransaction().
+                    replace(R.id.containerFragmentCertificate,m_fGenerate).addToBackStack(m_fPresentation.toString()).
+                    commit();
+        }
 
     }
 
@@ -82,7 +92,7 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
     }
 
     @Override
-    public void clickedButtonGenerateCertificate() {
+    public void clickedButtonGenerateCertificate(List<Format> formats) {
 
     }
 

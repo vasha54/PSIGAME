@@ -39,6 +39,27 @@
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
                             android:layout_weight="1" />
+
+                    <TextView
+                            android:id="@+id/text_view_title_name"
+                            style="@style/CustomTextTitleLevelStatistics"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingLeft="10dp"
+                            android:text="@string/expired_certificate"
+                            android:textAlignment="textStart" />
+
+                    <TextView
+                            android:id="@+id/text_view_expired_certificate_name"
+                            style="@style/CustomTextValueLevelStatistics"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/expired_certificate"
+                            android:textAlignment="textStart" />
+
                     <View
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
@@ -50,7 +71,7 @@
                             android:layout_height="10dp"
                             android:layout_weight="1" />
                     <TextView
-                            android:id="@+id/text_view_name_level"
+                            android:id="@+id/text_view_formats"
                             style="@style/CustomTextTitleLevelStatistics"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -72,7 +93,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/format_pdf"
-                                    android:id="@+id/checkbox_f_pdf"/>
+                                    android:id="@+id/checkbox_f_pdf"
+                                    android:textColor="@color/black"/>
                             <Space
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
@@ -81,7 +103,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/format_png"
-                                    android:id="@+id/checkbox_f_png"/>
+                                    android:id="@+id/checkbox_f_png"
+                                    android:textColor="@color/black"/>
                             <Space
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
@@ -90,7 +113,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/format_jpg"
-                                    android:id="@+id/checkbox_f_jpg"/>
+                                    android:id="@+id/checkbox_f_jpg"
+                                    android:textColor="@color/black"/>
                             <Space
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"

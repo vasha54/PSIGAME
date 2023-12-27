@@ -28,6 +28,7 @@
     <string translatable="false" name="text_banner_one">Demuestra tu nivel</string>
     <string translatable="false" name="text_banner_two">en</string>
     <string translatable="false" name="text_banner_three">Psicología</string>
+    <string translatable="false" name="not_exist_questions">No se puede acceder a este nivel en esta versión.</string>
     <!-- Fin de los textos presentes en la vista Inicio -->
 
     <!-- Inicio de los textos presentes en la vista Acerca de ... -->
@@ -111,9 +112,11 @@
 
     <!-- Inicio de los textos presentes en la vista generar de Certificado -->
     <string name="formats">Formatos:</string>
+    <string name="expired_certificate">Expirar un certificado a nombre de:</string>
     <string name="format_pdf">.pdf</string>
     <string name="format_png">.png</string>
     <string name="format_jpg">.jpg</string>
+    <string name="error_not_select_format">Debe seleccionar al menos un formato para generar certificado.</string>
     <string name="title_button_generate_certificate">Generar certificado</string>
     <!-- Fin de los textos presentes en la vista generar de Certificado -->
 

@@ -56,18 +56,18 @@ public class CourseMedicalLevelFragment extends BaseFragment {
         }
         if( iButtonRookie != null) iButtonRookie.setOnClickListener(this);
 
-        List<LevelGame> levels = PsiGameController.getInstance(getContext()).getLevelAviableCurrentPlayer();
+        List<GameLevel> levels = PsiGameController.getInstance(getContext()).getLevelAviableCurrentPlayer();
 
-        for(LevelGame level : levels){
-            if(level.getLevel() == GameLevel.ROOKIE_MEDICAL){
+        for(GameLevel level : levels){
+            if(level == GameLevel.ROOKIE_MEDICAL){
                 if (iButtonRookie!=null) iButtonRookie.setVisibility(View.VISIBLE);
                 if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
             }
-            if(level.getLevel() == GameLevel.COMPETENT_MEDICAL){
+            if(level == GameLevel.COMPETENT_MEDICAL){
                 if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
                 if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
             }
-            if(level.getLevel() == GameLevel.PROFESSIONAL_MEDICAL){
+            if(level == GameLevel.PROFESSIONAL_MEDICAL){
                 if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
             }
         }

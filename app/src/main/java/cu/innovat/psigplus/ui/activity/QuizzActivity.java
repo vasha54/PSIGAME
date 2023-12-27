@@ -43,8 +43,8 @@ import java.util.List;
 
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
+ * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
+ * @date 10/12/23
  */
 public class QuizzActivity extends AppCompatActivity implements View.OnClickListener , OnPreparedListener,
         OnErrorListener, IObserverClickButtonStartQuizz, IObserverClickButtonResultQuizz {
@@ -156,7 +156,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if( fragment != null && fragment instanceof QuestionFragment){
             QuestionFragment questionF = (QuestionFragment) fragment;
             if(questionF != null){
-                int result = -1;
+                int result = 0;
                 if(questionF.checkQuestion() == 1){
                     notificationSound("correct.mp3");
                     result = 1;
@@ -164,9 +164,9 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
                     countLifes --;
                     if(tviewLife != null) tviewLife.setText(Util.convertTo00(countLifes));
                     notificationSound("wrong.mp3");
-                    result = 0;
+                    result = -1;
                 }
-                controller.registerAnswer(quizz.getIdUsser(),quizz.getIdQuizz(),questionF.getIdQuestion(),result);
+                controller.registerAnswer(quizz.getIdPlayer(),quizz.getIdQuizz(),questionF.getIdQuestion(),result);
                 controller.updateLastUseQuestion(questionF.getIdQuestion());
             }
         }
@@ -174,21 +174,27 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if(countLifes>0) {
             nextQuestion();
         }else{
-            //TODO falta logica de cuando termina el cuestionario por falta de vida
+            controller.registerResultQuizz(quizz.getIdPlayer(),quizz.getIdQuizz(),-1);
            gameOver();
         }
     }
 
     private void checkAnswerTimeOut(){
-        //TODO Falta logica de cuando se le agoto el tiempo para responder la
-        // pregunta registar en BD
+        Fragment fragment = null;
+        if(indexFragments < fragments.size()) {
+            fragment = getSupportFragmentManager().findFragmentByTag(fragments.get(indexFragments).getUuid());
+        }
+        if( fragment != null && fragment instanceof QuestionFragment) {
+            QuestionFragment questionF = (QuestionFragment) fragment;
+            controller.registerAnswer(quizz.getIdPlayer(), quizz.getIdQuizz(), questionF.getIdQuestion(), -1);
+        }
         countLifes--;
         if(tviewLife != null) tviewLife.setText(Util.convertTo00(countLifes));
         notificationSound("wrong.mp3");
         if(countLifes>0){
             nextQuestion();
         }else{
-            //TODO falta logica de cuando termina el cuestionario por falta de vida
+            controller.registerResultQuizz(quizz.getIdPlayer(),quizz.getIdQuizz(),-1);
             gameOver();
         }
     }
@@ -198,6 +204,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if(indexFragments < fragments.size()){
             loadNextQuestion();
         }else{
+            controller.registerResultQuizz(quizz.getIdPlayer(),quizz.getIdQuizz(),1);
             winGame();
         }
     }
@@ -325,7 +332,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
         Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
         Bundle b = new Bundle();
-        //TODO falta registrar si inicio el cuestionario como intento
+        controller.registerResultQuizz(quizz.getIdPlayer(),quizz.getIdQuizz(),-1);
         startActivity(intent);
         finish();
     }
@@ -373,7 +380,6 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
         if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
         Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
         Bundle b = new Bundle();
-        //TODO falta registrar si inicio el cuestionario como intento
         startActivity(intent);
         finish();
     }

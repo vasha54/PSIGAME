@@ -13,6 +13,7 @@ import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.cim.GameMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cu.innovat.psigplus.controller.PsiGameController;
 
 
 import java.util.*;
@@ -47,6 +48,8 @@ public class StatisticsCourseLevelsFragment extends BaseFragment{
             levels.add(new Statistics(m_modeGame,GameLevel.COMPETENT_MEDICAL,getString(R.string.title_level_competent)));
             levels.add(new Statistics(m_modeGame,GameLevel.PROFESSIONAL_MEDICAL,getString(R.string.title_level_professional)));
         }
+
+        PsiGameController.getInstance(getContext()).updateStatistics(levels);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         RecyclerView recyclerView = m_viewFragment.findViewById(R.id.list_level);

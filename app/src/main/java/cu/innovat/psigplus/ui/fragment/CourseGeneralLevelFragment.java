@@ -57,18 +57,18 @@ public class CourseGeneralLevelFragment extends BaseFragment {
         }
         if( iButtonRookie != null) iButtonRookie.setOnClickListener(this);
 
-        List<LevelGame> levels = PsiGameController.getInstance(getContext()).getLevelAviableCurrentPlayer();
+        List<GameLevel> levels = PsiGameController.getInstance(getContext()).getLevelAviableCurrentPlayer();
 
-        for(LevelGame level : levels){
-            if(level.getLevel() == GameLevel.ROOKIE_GENERAL){
+        for(GameLevel level : levels){
+            if(level == GameLevel.ROOKIE_GENERAL){
                 if (iButtonRookie!=null) iButtonRookie.setVisibility(View.VISIBLE);
                 if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
             }
-            if(level.getLevel() == GameLevel.COMPETENT_GENERAL){
+            if(level == GameLevel.COMPETENT_GENERAL){
                 if (iButtonCompetent!=null) iButtonCompetent.setVisibility(View.VISIBLE);
                 if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
             }
-            if(level.getLevel() == GameLevel.PROFESSIONAL_GENERAL){
+            if(level == GameLevel.PROFESSIONAL_GENERAL){
                 if (iButtonProfessional!=null) iButtonProfessional.setVisibility(View.VISIBLE);
             }
         }

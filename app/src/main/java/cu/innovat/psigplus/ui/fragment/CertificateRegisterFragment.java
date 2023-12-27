@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.core.content.ContextCompat;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Player;
 import cu.innovat.psigplus.interfaces.*;
@@ -73,10 +74,10 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
             if(m_editTextPhoneNumber != null) m_editTextPhoneNumber.setText(this.numberPhone);
             if(spinnerGruop != null){
                 ArrayAdapter<CharSequence> adapterGroups = ArrayAdapter.createFromResource(
-                        getContext(), R.array.list_names_group_student, android.R.layout.simple_spinner_dropdown_item);
-                adapterGroups.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        getContext(), R.array.list_names_group_student, R.layout.custom_spinner_item);
+                adapterGroups.setDropDownViewResource(R.layout.custom_spinner_item_list);
                 spinnerGruop.setAdapter(adapterGroups);
-                spinnerGruop.setSelection(0);
+                spinnerGruop.setSelected(true);
             }
         }
     }
@@ -132,9 +133,9 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
             boolean isValidName = !Util.isEmptyString(name);
             boolean isValidSurname = !Util.isEmptyString(surname);
             boolean isValidCI = !Util.isEmptyString(surname) & Util.isValidCI(ci);
-            boolean isValidIMEI = !Util.isEmptyString(imei) & Util.isValidIMEI(imei);
-            boolean isValidNumberPhone = !Util.isEmptyString(numberPhone) &
-                    Util.isValidNumberPhone(numberPhone);
+            boolean isValidIMEI = true;//!Util.isEmptyString(imei) & Util.isValidIMEI(imei);
+            boolean isValidNumberPhone = true; // !Util.isEmptyString(numberPhone) &
+//                    Util.isValidNumberPhone(numberPhone);
             boolean isValidGroup = !Util.isEmptyString(groupSlug);
 
             boolean isValidData = isValidName & isValidSurname & isValidCI & isValidIMEI &
@@ -142,27 +143,33 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
 
             if(!isValidCI){
                 error+=getString(R.string.error_ci);
+                m_editTextCI.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
             }
 
             if(!isValidGroup){
                 error+=getString(R.string.error_group);
+                spinnerGruop.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
             }
 
             if(!isValidSurname){
                 error+=getString(R.string.error_surname);
-            }
-
-            if(!isValidIMEI){
-                error+=getString(R.string.error_imei);
+                m_editTextSurname.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
             }
 
             if(!isValidName){
                 error+=getString(R.string.error_name);
+                m_editTextName.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
             }
 
-            if(!isValidNumberPhone){
-                error+=getString(R.string.error_number_phone);
-            }
+//            if(!isValidIMEI){
+//                error+=getString(R.string.error_imei);
+//                m_editTextIMEI.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
+//            }
+
+//            if(!isValidNumberPhone){
+//                error+=getString(R.string.error_number_phone);
+//                m_editTextPhoneNumber.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.border_round_red_8dip));
+//            }
 
             if( isValidData ){
                 Player player = new Player(idPlayer,name,surname,ci,groupSlug,

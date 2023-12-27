@@ -16,17 +16,18 @@ public class Quizz {
     private List<Question> questions;
     private GameLevel level;
     private String idLevel;
-    private String idUsser;
+    private String idPlayer;
     private String idQuizz;
     private long date;
     private int durationQuestion;
     private int lifes;
 
-    public Quizz(String idQuizz, List<Question> questions, GameLevel level, String idLevel, String idUsser, long date) {
+    public Quizz(String idQuizz, List<Question> questions, GameLevel level, String idLevel, String idPlayer,
+                 long date) {
         this.questions = questions;
         this.level = level;
         this.idLevel = idLevel;
-        this.idUsser = idUsser;
+        this.idPlayer = idPlayer;
         this.date = date;
         this.idQuizz = idQuizz;
         this.durationQuestion =10;
@@ -37,7 +38,7 @@ public class Quizz {
         this.questions = new ArrayList<Question>();
         this.level = GameLevel.UNDEFINED;
         this.idLevel = null;
-        this.idUsser = null;
+        this.idPlayer = null;
         this.idQuizz = null;
         this.date = -1;
         this.durationQuestion = 10;
@@ -59,12 +60,12 @@ public class Quizz {
         this.idLevel = idLevel;
     }
 
-    public String getIdUsser() {
-        return idUsser;
+    public String getIdPlayer() {
+        return idPlayer;
     }
 
-    public void setIdUsser(String idUsser) {
-        this.idUsser = idUsser;
+    public void setIdPlayer(String idPlayer) {
+        this.idPlayer = idPlayer;
     }
 
     public long getDate() {
@@ -101,5 +102,19 @@ public class Quizz {
                 "responder de forma aceptada al menos %d preguntas. Cuando estes " +
                 "listo para comenzar puede presionar el botón <b>Comenzar</b>. <i>Suerte " +
                 "y exitos!!!!</i>",questions.size(),questions.size()-lifes);
+    }
+
+    @Override
+    public String toString() {
+        return "Quizz{" +
+                "questions=" + questions +
+                ", level=" + level +
+                ", idLevel='" + idLevel + '\'' +
+                ", idPlayer='" + idPlayer + '\'' +
+                ", idQuizz='" + idQuizz + '\'' +
+                ", date=" + date +
+                ", durationQuestion=" + durationQuestion +
+                ", lifes=" + lifes +
+                '}';
     }
 }

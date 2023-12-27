@@ -112,11 +112,31 @@ public class DBManager {
         dbHelper.registerAnswer(idUser, idQuizz, idQuestion, result);
     }
 
+    public void registerResultQuizz(String idPlayer, String idQuizz,int result){
+        dbHelper.registerResultQuizz(idPlayer,idQuizz,result);
+    }
+
     public boolean registerPlayer(Player player){
         return dbHelper.registerPlayer(player);
     }
 
-    public List<LevelGame> getLevelAviableCurrentPlayer(){
+    public List<GameLevel> getLevelAviableCurrentPlayer(){
         return dbHelper.getLevelAviableCurrentPlayer();
+    }
+
+    public String getIDCurrentPlayer(){
+        return dbHelper.getIDCurrentPlayer();
+    }
+
+    public Player getCurrentPlayer(){
+        return dbHelper.getCurrentPlayer();
+    }
+
+    public boolean canCreateQuizzThisLevel(GameLevel level){
+        return dbHelper.canCreateQuizzThisLevel(level);
+    }
+
+    public void updateStatistic(Statistics stat){
+        dbHelper.updateStatistic(stat);
     }
 }

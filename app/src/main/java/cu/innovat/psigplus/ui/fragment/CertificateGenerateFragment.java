@@ -5,7 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.cim.Format;
+import cu.innovat.psigplus.cim.Player;
+import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IClickButtonGenerateCertificate;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGenerateCertificate;
 
@@ -19,11 +25,16 @@ import java.util.List;
 public class CertificateGenerateFragment extends BaseFragment implements IClickButtonGenerateCertificate {
 
     private List<IObserverClickButtonGenerateCertificate> observers;
-    public CertificateGenerateFragment(){
 
+    private CheckBox checkBoxPDF;
+    private CheckBox checkBoxJPG;
+    private CheckBox checkBoxPNG;
+
+    private TextView tviewExpiredCertificateName;
+
+    public CertificateGenerateFragment(){
         super();
         observers =new ArrayList<IObserverClickButtonGenerateCertificate>();
-
     }
 
     @Override
@@ -46,6 +57,15 @@ public class CertificateGenerateFragment extends BaseFragment implements IClickB
             Button button = (Button) m_viewFragment.findViewById(R.id.button_generate_certificate);
             if(button!=null)
                 button.setOnClickListener(this);
+            checkBoxPDF = (CheckBox) m_viewFragment.findViewById(R.id.checkbox_f_pdf);
+            checkBoxJPG = (CheckBox) m_viewFragment.findViewById(R.id.checkbox_f_jpg);
+            checkBoxPNG = (CheckBox) m_viewFragment.findViewById(R.id.checkbox_f_png);
+            tviewExpiredCertificateName =
+                    (TextView) m_viewFragment.findViewById(R.id.text_view_expired_certificate_name);
+            Player playerActivate = PsiGameController.getInstance(getContext()).getCurrentPlayer();
+            if(playerActivate!=null && tviewExpiredCertificateName!= null){
+                tviewExpiredCertificateName.setText(playerActivate.getName()+" "+playerActivate.getSurname());
+            }
         }
     }
 
@@ -74,8 +94,20 @@ public class CertificateGenerateFragment extends BaseFragment implements IClickB
 
     @Override
     public void notifyClickButtonGenerateCertificate() {
-        for (IObserverClickButtonGenerateCertificate observer: observers) {
-            observer.clickedButtonGenerateCertificate();
+        List<Format> formats = new ArrayList<>();
+        if(checkBoxPNG != null && checkBoxPNG.isChecked()) formats.add(Format.PNG);
+        if(checkBoxJPG != null && checkBoxJPG.isChecked()) formats.add(Format.JPG);
+        if(checkBoxPDF != null && checkBoxPDF.isChecked()) formats.add(Format.PDF);
+
+        if(!formats.isEmpty()){
+            for (IObserverClickButtonGenerateCertificate observer: observers) {
+                observer.clickedButtonGenerateCertificate(formats);
+            }
+        }else{
+            Toast toast= Toast.makeText(this.getContext(),
+                    getString(R.string.error_not_select_format),
+                    Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 }

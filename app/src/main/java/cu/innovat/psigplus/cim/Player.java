@@ -27,6 +27,18 @@ public class Player {
         this.activate = activate;
     }
 
+    public Player(){
+        this.idUser = null;
+        this.name = null;
+        this.surname = null;
+        this.ci = null;
+        this.slugGroup = null;
+        this.IMEI = null;
+        this.numberPhone = null;
+        this.idGroup = null;
+        this.activate = false;
+    }
+
     public String getIdUser() {
         return idUser;
     }

@@ -46,7 +46,8 @@
                               android:layout_weight="0.45"
                               android:layout_gravity="center"
                               android:gravity="center|start"
-                              android:textAlignment="textStart"/>
+                              android:textAlignment="textStart"
+                              android:textColor="@color/black"/>
 
                     <ImageButton
                             android:layout_width="40dp"
@@ -75,7 +76,8 @@
                               android:layout_weight="0.45"
                               android:layout_gravity="center"
                               android:gravity="center|start"
-                              android:textAlignment="textStart"/>
+                              android:textAlignment="textStart"
+                              android:textColor="@color/black"/>
 
                     <ImageButton
                             android:layout_width="40dp"

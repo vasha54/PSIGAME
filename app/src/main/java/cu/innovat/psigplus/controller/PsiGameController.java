@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import cu.innovat.psigplus.cim.*;
+import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 import cu.innovat.psigplus.cim.questions.QuestionComparator;
@@ -113,7 +114,9 @@ public class PsiGameController {
             lifes = Math.max(1,lifes);
             quizz.setLifes(lifes);
 
-            //TODO Falta asociar el usuario activo
+            String idPlayerActive = managerDB.getIDCurrentPlayer();
+            quizz.setIdPlayer(idPlayerActive);
+
             managerDB.addQuizz(quizz);
         }
         return quizz;
@@ -128,8 +131,30 @@ public class PsiGameController {
 
         List<Question> selects = new ArrayList<Question>();
 
-        for(int i=0;i<select;i++)
-            selects.add(questions.get(i));
+        int ctof = select/2;
+        int cmch = select - ctof;
+
+        int index = 0;
+        while(index < questions.size()){
+            Question q = questions.get(index);
+            if(q instanceof TrueOrFalse && ctof > 0){
+                selects.add(q);
+                ctof--;
+                questions.remove(index);
+            }else if(q instanceof MultipleChoise && cmch > 0){
+                selects.add(q);
+                cmch--;
+                questions.remove(index);
+            }else{
+                index++;
+            }
+        }
+
+        while(cmch+ctof>0 && questions.isEmpty()==false){
+            Question q = questions.remove(0);
+            selects.add(q);
+            ctof--;
+        }
 
         return selects;
     }
@@ -142,11 +167,33 @@ public class PsiGameController {
         managerDB.registerAnswer(idUser,idQuizz,idQuestion,result);
     }
 
+    public void registerResultQuizz(String idPlayer, String idQuizz,int result){
+        managerDB.registerResultQuizz(idPlayer,idQuizz,result);
+    }
+
     public boolean registerPlayer(Player player){
         return managerDB.registerPlayer(player);
     }
 
-    public List<LevelGame> getLevelAviableCurrentPlayer(){
+    public List<GameLevel> getLevelAviableCurrentPlayer(){
         return managerDB.getLevelAviableCurrentPlayer();
+    }
+
+    public String getIDCurrentPlayer(){
+        return managerDB.getIDCurrentPlayer();
+    }
+
+    public Player getCurrentPlayer(){
+        return managerDB.getCurrentPlayer();
+    }
+
+    public boolean canCreateQuizzThisLevel(GameLevel level){
+        return managerDB.canCreateQuizzThisLevel(level);
+    }
+
+    public void updateStatistics(List<Statistics> statistics){
+        for(Statistics stat : statistics){
+            this.managerDB.updateStatistic(stat);
+        }
     }
 }

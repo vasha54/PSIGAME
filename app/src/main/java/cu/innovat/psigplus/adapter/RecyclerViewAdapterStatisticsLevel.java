@@ -32,6 +32,9 @@ public class RecyclerViewAdapterStatisticsLevel extends RecyclerView.Adapter<Vie
     public void onBindViewHolder(ViewHolderStatisticsLevel holder, int position) {
         Statistics item = myList.get(position);
         holder.setTitle(item.getTitleStatistics());
+        if(item.getCountGames() > 0) holder.setCountGame(item.getCountGames());
+        if(item.getTimeStampFGame() != Long.MIN_VALUE) holder.setFirstGame(item.getTimeStampFGame());
+        if(item.getTimeStampLGame() != Long.MIN_VALUE) holder.setLastGame(item.getTimeStampLGame());
 //        holder.myImageView.setImageResource(item.getImageId());
 //        holder.myTextView.setText(item.getName());
     }

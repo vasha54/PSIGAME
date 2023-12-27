@@ -55,6 +55,8 @@ public final class SchemaBD {
             ")";
     public static final String SQL_EXIST_ACADEMIC_GROUP_WITH_SLUG = "SELECT EXISTS (SELECT * FROM "+AcademicGroupTable.TABLE_NAME+
             " WHERE "+AcademicGroupTable.C_SLUG+"=? LIMIT 1)";
+    public static final String SQL_FIND_ID_ACADEMIC_GROUP_WITH_SLUG = "SELECT "+AcademicGroupTable.C_ID+" FROM "+
+            AcademicGroupTable.TABLE_NAME+" WHERE "+AcademicGroupTable.C_SLUG+"=? LIMIT 1";
     public static final String SQL_DROP_ACADEMIC_GROUP_TABLE = "DROP TABLE IF EXISTS "+AcademicGroupTable.TABLE_NAME;
 
 
@@ -80,6 +82,8 @@ public final class SchemaBD {
             " WHERE "+QuestionTable.C_ID+"=? LIMIT 1)";
     public static final String SQL_SELECT_AMOUNT_USE_QUESTION_WITH_ID = "SELECT "+QuestionTable.C_AMOUNT_USE+" FROM "+
             QuestionTable.TABLE_NAME+" WHERE "+QuestionTable.C_ID+"=?";
+    public static final String SQL_COUNT_QUESTION_THIS_LEVEL = "SELECT COUNT(*) FROM "+QuestionTable.TABLE_NAME+
+            " WHERE "+QuestionTable.C_LEVEL+"=?";
     public static final String SQL_DROP_QUESTION_TABLE = "DROP TABLE IF EXISTS "+QuestionTable.TABLE_NAME;
 
 
@@ -173,59 +177,85 @@ public final class SchemaBD {
             PlayerTable.C_NAME+" TEXT NOT NULL,"+
             PlayerTable.C_SURNAME+" TEXT NOT NULL,"+
             PlayerTable.C_CI+" TEXT NOT NULL,"+
-            PlayerTable.C_PHONE_NUMBER+" INTEGER NOT NULL,"+
-            PlayerTable.C_EMIE+" TEXT NOT NULL,"+
+            PlayerTable.C_PHONE_NUMBER+" TEXT NULL,"+
+            PlayerTable.C_EMIE+" TEXT NULL,"+
             PlayerTable.C_ID_GROUP+" TEXT NOT NULL,"+
             PlayerTable.C_ACTIVE+" INTEGER NOT NULL,"+
             "PRIMARY KEY("+ PlayerTable.C_ID +"),"+
             " UNIQUE ( "+PlayerTable.C_CI+" ), "+
             "FOREIGN KEY("+ PlayerTable.C_ID_GROUP +") REFERENCES "+AcademicGroupTable.TABLE_NAME+"( "+AcademicGroupTable.C_ID+" )"+
             ")";
+    public static final String SQL_EXIST_PLAYER_WITH_CI ="SELECT EXISTS (SELECT * FROM "+PlayerTable.TABLE_NAME+
+            " WHERE "+PlayerTable.C_CI+"=? LIMIT 1)";
+    public static final String SQL_GET_ID_CURRENT_PLAYER = "SELECT "+PlayerTable.C_ID+" FROM "+PlayerTable.TABLE_NAME+
+                    " WHERE "+PlayerTable.C_ACTIVE+"=1 LIMIT 1";
+    public static final String SQL_GET_CURRENT_PLAYER = "SELECT * FROM "+PlayerTable.TABLE_NAME+
+            " WHERE "+PlayerTable.C_ACTIVE+"=1 LIMIT 1";
     public static final String SQL_DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS "+PlayerTable.TABLE_NAME;
 
 
 
-    public static class PlayerLevelTable implements BaseColumns{
-        public static final String TABLE_NAME = "player_level";
-        public static final String C_ID_PLAYER = "id_player";
-        public static final String C_ID_LEVEL = "id_level";
-    }
-    public static final String SQL_CREATE_PLAYER_LEVEL_TABLE = "CREATE TABLE IF NOT EXISTS "+PlayerLevelTable.TABLE_NAME +" ( "+
-            PlayerLevelTable.C_ID_PLAYER+" TEXT NOT NULL,"+
-            PlayerLevelTable.C_ID_LEVEL+" TEXT NOT NULL,"+
-            "PRIMARY KEY("+ PlayerLevelTable.C_ID_PLAYER+" , "+PlayerLevelTable.C_ID_LEVEL+" ),"+
-            "FOREIGN KEY("+ PlayerLevelTable.C_ID_PLAYER +") REFERENCES "+PlayerTable.TABLE_NAME+"( "+PlayerTable.C_ID+" ),"+
-            "FOREIGN KEY("+ PlayerLevelTable.C_ID_LEVEL +") REFERENCES "+LevelTable.TABLE_NAME+"( "+LevelTable.C_ID+" )"+
-            ")";
-    public static final String SQL_DROP_PLAYER_LEVEL_TABLE = "DROP TABLE IF EXISTS "+PlayerLevelTable.TABLE_NAME;
-/*
     public static class QuizzTable implements BaseColumns {
         public static final String TABLE_NAME = "quizz";
         public static final String C_ID = "id";
         public static final String C_ID_PLAYER = "id_player";
         public static final String C_ID_LEVEL = "id_level";
-        public static final String C_COUNT_ANSWER = "count_answer";
         public static final String C_DATE = "date";
+        public static final String C_RESULT = "result";
     }
-
-    public static final String SQL_CREATE_QUIZZ_TABLE = "";
+    public static final String SQL_CREATE_QUIZZ_TABLE = "CREATE TABLE IF NOT EXISTS "+QuizzTable.TABLE_NAME +" ( "+
+            QuizzTable.C_ID+" TEXT NOT NULL,"+
+            QuizzTable.C_ID_PLAYER+" TEXT NOT NULL,"+
+            QuizzTable.C_ID_LEVEL+" TEXT NOT NULL,"+
+            QuizzTable.C_RESULT+" INTEGER NOT NULL,"+
+            QuizzTable.C_DATE+" INTEGER NOT NULL,"+
+            "PRIMARY KEY("+ QuizzTable.C_ID+"),"+
+            "FOREIGN KEY("+ QuizzTable.C_ID_PLAYER +") REFERENCES "+PlayerTable.TABLE_NAME+"( "+PlayerTable.C_ID+" ),"+
+            "FOREIGN KEY("+ QuizzTable.C_ID_LEVEL +") REFERENCES "+LevelTable.TABLE_NAME+"( "+LevelTable.C_ID+" )"+
+            ")";
+    public static final String SQL_GET_LEVEL_WIN_THIS_PLAYER = "SELECT " +
+            QuizzTable.C_ID_LEVEL+" FROM "+QuizzTable.TABLE_NAME+" WHERE "+QuizzTable.C_RESULT+"=1 AND "+
+            QuizzTable.C_ID_PLAYER+"=? GROUP BY "+QuizzTable.C_ID_LEVEL;
+    public static final String SQL_COUNT_GAME_THIS_PLAYER_IN_LEVEL="SELECT COUNT(*) FROM "+QuizzTable.TABLE_NAME+" " +
+            "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=?";
+    public static final String SQL_FIRST_GAME_THIS_PLAYER_IN_LEVEL=
+            "SELECT "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
+            "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? ORDER BY "+QuizzTable.C_DATE+
+                    " ASC LIMIT 1";
+    public static final String SQL_LAST_GAME_THIS_PLAYER_IN_LEVEL=
+            "SELECT "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
+                    "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? ORDER BY "+QuizzTable.C_DATE+
+                    " DESC LIMIT 1";
     public static final String SQL_DROP_QUIZZ_TABLE = "DROP TABLE IF EXISTS "+QuizzTable.TABLE_NAME;
 
 
 
-
-
-
-
-
-
-    public static class QuizzQuestionTable implements BaseColumns {
+    public static class QuizzQuestionTable implements BaseColumns{
         public static final String TABLE_NAME = "quizz_question";
+        public static final String C_ID_QUIZZ = "id_quizz";
+        public static final String C_ID_QUESTION = "id_question";
+        public static final String C_RESULT = "result";
     }
-
-    public static final String SQL_CREATE_QUIZZ_QUESTION_TABLE = "";
+    public static final String SQL_CREATE_QUIZZ_QUESTION_TABLE =
+            "CREATE TABLE IF NOT EXISTS "+QuizzQuestionTable.TABLE_NAME +" ( "+
+            QuizzQuestionTable.C_ID_QUIZZ+" TEXT NOT NULL,"+
+            QuizzQuestionTable.C_ID_QUESTION+" TEXT NOT NULL,"+
+            QuizzQuestionTable.C_RESULT+" INTEGER NOT NULL,"+
+            "PRIMARY KEY("+ QuizzQuestionTable.C_ID_QUIZZ+","+QuizzQuestionTable.C_ID_QUESTION+"),"+
+            "FOREIGN KEY("+ QuizzQuestionTable.C_ID_QUIZZ +") REFERENCES "+QuestionTable.TABLE_NAME+"( "+QuestionTable.C_ID+" " +
+            "),"+
+            "FOREIGN KEY("+ QuizzQuestionTable.C_ID_QUIZZ +") REFERENCES "+QuizzTable.TABLE_NAME+"( "+QuizzTable.C_ID+" )"+
+            ")";
     public static final String SQL_DROP_QUIZZ_QUESTION_TABLE = "DROP TABLE IF EXISTS "+QuizzQuestionTable.TABLE_NAME;
 
+
+
+
+
+
+
+
+/*
     public static class SingleChoiseTable implements BaseColumns {
         public static final String TABLE_NAME = "single_choise_question";
         public static final String C_ID = "id_question";
@@ -274,5 +304,7 @@ public final class SchemaBD {
     }
 
     public static final String SQL_CREATE_COMPLETE_WORD_WORD_TABLE = "";
-    public static final String SQL_DROP_COMPLETE_WORD_WORD_TABLE = "DROP TABLE IF EXISTS "+CompleteWordWordTable.TABLE_NAME;*/
+    public static final String SQL_DROP_COMPLETE_WORD_WORD_TABLE = "DROP TABLE IF EXISTS "+CompleteWordWordTable
+    .TABLE_NAME;*/
+
 }

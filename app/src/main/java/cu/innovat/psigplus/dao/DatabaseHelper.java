@@ -6,13 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import android.util.Log;
-
 import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.Sentence;
 import cu.innovat.psigplus.cim.questions.TrueOrFalse;
+import cu.innovat.psigplus.util.LOG;
 
 import cu.innovat.psigplus.dao.SchemaBD;
 import cu.innovat.psigplus.dao.SchemaBD.AcademicGroupTable;
@@ -23,6 +22,8 @@ import cu.innovat.psigplus.dao.SchemaBD.SentenceTable;
 import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseTable;
 import cu.innovat.psigplus.dao.SchemaBD.MultipleChoiseSentenceTable;
 import cu.innovat.psigplus.dao.SchemaBD.PlayerTable;
+import cu.innovat.psigplus.dao.SchemaBD.QuizzTable;
+import cu.innovat.psigplus.dao.SchemaBD.QuizzQuestionTable;
 
 import cu.innovat.psigplus.util.Util;
 
@@ -35,6 +36,8 @@ import java.util.List;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private Context m_coContext;
+
     public DatabaseHelper(Context context) {
         super(context, SchemaBD.DATABASE_NAME, null, SchemaBD.DATABASE_VERSION);
     }
@@ -42,12 +45,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         onCreateSchemeDataBase(db);
-        Log.i("TAG","onCreateDB");
+        LOG.i("TAG","onCreateDB");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.i("TAG","onUpgradeDB");
+        LOG.i("TAG","onUpgradeDB");
         onDropSchemeDataBase(db);
         onCreateSchemeDataBase(db);
     }
@@ -61,11 +64,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_MULTIPLE_CHOISE_SENTENCE_TABLE);
         db.execSQL(SchemaBD.SQL_CREATE_PLAYER_TABLE);
-        db.execSQL(SchemaBD.SQL_CREATE_PLAYER_LEVEL_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_QUIZZ_TABLE);
+        db.execSQL(SchemaBD.SQL_CREATE_QUIZZ_QUESTION_TABLE);
     }
 
     private void onDropSchemeDataBase(SQLiteDatabase db){
-        db.execSQL(SchemaBD.SQL_DROP_PLAYER_LEVEL_TABLE);
+        db.execSQL(SchemaBD.SQL_DROP_QUIZZ_QUESTION_TABLE);
+        db.execSQL(SchemaBD.SQL_DROP_QUIZZ_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_PLAYER_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_ACADEMIC_GROUP_TABLE);
         db.execSQL(SchemaBD.SQL_DROP_LEVEL_TABLE);
@@ -91,11 +96,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
 
                 if(valueInsert!=-1)
-                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó el Nivel de juego: "+l.toString());
+                    LOG.d(SchemaBD.TAG_DATABASE, "Se insertó el Nivel de juego: "+l.toString());
                 else
-                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de Nivel de juego: "+l.toString());
+                    LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de Nivel de juego: "+l.toString());
             }catch (Exception e){
-                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
             }
         }
     }
@@ -114,21 +119,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
 
                 if(valueInsert!=-1)
-                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó el Grupo Académico: "+g.toString());
+                    LOG.d(SchemaBD.TAG_DATABASE, "Se insertó el Grupo Académico: "+g.toString());
                 else
-                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de Grupo Academico: "+g.toString());
+                    LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de Grupo Academico: "+g.toString());
 
 
             }catch (Exception e){
-                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
             }
         }
     }
 
     public void addQuizz(Quizz quizz){
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"addQuizz");
-        if(quizz!=null && quizz.getIdUsser()!=null){
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"addQuizz");
+        long insertQuizz = -1 ;
+        if(quizz!=null && quizz.getIdPlayer()!=null){
+            try{
+                SQLiteDatabase db = this.getWritableDatabase();
+                ContentValues values = new ContentValues();
 
+                values.put(QuizzTable.C_ID, quizz.getIdQuizz());
+                values.put(QuizzTable.C_DATE, quizz.getDate());
+                values.put(QuizzTable.C_ID_LEVEL,quizz.getIdLevel());
+                values.put(QuizzTable.C_ID_PLAYER,quizz.getIdPlayer());
+                values.put(QuizzTable.C_RESULT,0);
+
+                insertQuizz = db.insert(QuizzTable.TABLE_NAME, null, values);
+
+                if(insertQuizz!=-1)
+                    LOG.d(SchemaBD.TAG_DATABASE, "Se insertó el cuestionario: "+quizz.toString());
+                else
+                    LOG.d(SchemaBD.TAG_DATABASE,
+                            "Ocurrío un error en la insersección del cuestionario: "+quizz.toString());
+
+                db.close();
+            }catch (Exception e){
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }
+        }
+        if(insertQuizz!=-1) this.addQuestionQuizz(quizz);
+    }
+
+    private void addQuestionQuizz( Quizz quizz){
+        if( quizz != null){
+            List<Question> questions = quizz.getQuestions();
+            for(Question q : questions){
+                if(existQuestion(q.getUuid())){
+                    try{
+                        SQLiteDatabase db = this.getWritableDatabase();
+                        ContentValues values = new ContentValues();
+
+                        values.put(QuizzQuestionTable.C_ID_QUIZZ,quizz.getIdQuizz());
+                        values.put(QuizzQuestionTable.C_ID_QUESTION,q.getUuid());
+                        values.put(QuizzQuestionTable.C_RESULT,0);
+
+                        long valueInsert = db.insert(QuizzQuestionTable.TABLE_NAME, null, values);
+
+                        if(valueInsert!=-1)
+                            LOG.d(SchemaBD.TAG_DATABASE, "Se asocio la pregunta con id: "+q.getUuid()+ " al " +
+                                    "cuestionario con id:"+quizz.getIdQuizz());
+                        else
+                            LOG.d(SchemaBD.TAG_DATABASE,
+                                    "Ocurrío un error en la asocación entre la pregunta con id:"+q.getUuid() +" y el " +
+                                            "cuestionario con id:"+quizz.getIdQuizz());
+                        db.close();
+                    }catch (Exception e){
+                        LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                    }
+                }
+            }
         }
     }
 
@@ -161,23 +220,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     }
                     db.close();
 
-
-
                     if(valueInsert!=-1)
-                        Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+q.toString());
+                        LOG.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+q.toString());
                     else
-                        Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+q.toString());
+                        LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+q.toString());
                 }catch (Exception e){
-                    Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                    LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
                 }
             }else{
-                Log.e(SchemaBD.TAG_DATABASE, "Existe una pregunta con ID: "+q.getUuid());
+                LOG.e(SchemaBD.TAG_DATABASE, "Existe una pregunta con ID: "+q.getUuid());
             }
         }
     }
 
     public void addSentences(List<Sentence> senteneces){
-        Log.d(SchemaBD.TAG_DATABASE,"Cantidad de sentencias a insertar es:"+String.valueOf(senteneces.size()));
+        LOG.d(SchemaBD.TAG_DATABASE,"Cantidad de sentencias a insertar es:"+String.valueOf(senteneces.size()));
         for (Sentence s: senteneces) {
             addSentence(s);
         }
@@ -195,12 +252,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long valueInsert = db.insert(SentenceTable.TABLE_NAME, null, values);
 
             if(valueInsert!=-1)
-                Log.d(SchemaBD.TAG_DATABASE, "Se insertó la sentencia: "+s.toString());
+                LOG.d(SchemaBD.TAG_DATABASE, "Se insertó la sentencia: "+s.toString());
             else
-                Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la sentencia: "+s.toString());
+                LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la sentencia: "+s.toString());
             db.close();
         }else{
-            Log.e(SchemaBD.TAG_DATABASE, "Existe una sentencia con ID: "+s.getId());
+            LOG.e(SchemaBD.TAG_DATABASE, "Existe una sentencia con ID: "+s.getId());
         }
     }
 
@@ -219,15 +276,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                     long valueInsert = db.insert(MultipleChoiseSentenceTable.TABLE_NAME, null, values);
                     if(valueInsert!=-1)
-                        Log.d(SchemaBD.TAG_DATABASE, "Se insertó la asociacion entre la sentencia: "+s.toString()+
+                        LOG.d(SchemaBD.TAG_DATABASE, "Se insertó la asociacion entre la sentencia: "+s.toString()+
                             " y la pregunta:"+mch.toString());
                     else
-                        Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la asociacion entre la sentencia: "+
+                        LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la asociacion entre la sentencia: "+
                             s.toString()+ " y la pregunta:"+mch.toString());
 
                     db.close();
                 }else{
-                    Log.e(SchemaBD.TAG_DATABASE, "Existe una asociacion entre la sentencia con ID :"+s.getId()+
+                    LOG.e(SchemaBD.TAG_DATABASE, "Existe una asociacion entre la sentencia con ID :"+s.getId()+
                             " y la pregunta con ID:"+idMCH);
                 }
             }
@@ -243,9 +300,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long valueInsert = db.insert(MultipleChoiseTable.TABLE_NAME, null, values);
 
         if(valueInsert!=-1)
-            Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+mch.toString());
+            LOG.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+mch.toString());
         else
-            Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+mch.toString());
+            LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+mch.toString());
     }
 
     public void addQTrueOrFalse(TrueOrFalse tof,SQLiteDatabase db){
@@ -257,32 +314,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long valueInsert = db.insert(TrueOrFalseTable.TABLE_NAME, null, values);
 
         if(valueInsert!=-1)
-            Log.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+tof.toString());
+            LOG.d(SchemaBD.TAG_DATABASE, "Se insertó la pregunta: "+tof.toString());
         else
-            Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+tof.toString());
+            LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección de la pregunta: "+tof.toString());
     }
 
     public List<Question> getAllQuestionsThisLevel(String idLevel){
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel");
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel");
         List<Question> questions = new ArrayList<Question>();
         List<Question> qTOF = getAllQuestionsTOFThisLevel(idLevel);
         List<MultipleChoise> qMCH = getAllQuestionsMCHThisLevel(idLevel);
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
         questions.addAll(questions.size(),qTOF);
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
         questions.addAll(questions.size(),qMCH);
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsThisLevel size:"+questions.size());
 
         return questions;
     }
 
     private List<Sentence> findChoiseSentences(String idQMultipleChoise){
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
         List<Sentence> sentences = new ArrayList<Sentence>();
         try{
             SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idQMultipleChoise};
-            Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
+            LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"findChoiseSentences para id:"+idQMultipleChoise);
             Cursor cursor = db.query(
                     MultipleChoiseSentenceTable.TABLE_NAME + " , " + SentenceTable.TABLE_NAME,
                     new String[] {SentenceTable.C_ID,SentenceTable.C_SENTENCE,SentenceTable.C_SLUG,
@@ -290,7 +347,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     MultipleChoiseSentenceTable.C_ID_SENTENCE + " = " + SentenceTable.C_ID + " AND " +
                             MultipleChoiseSentenceTable.C_ID_QUESTION + " = '" +  idQMultipleChoise+
                             "'", null, null, null, null);
-            Log.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
+            LOG.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
             if(cursor.moveToFirst()){
                 do{
                     String ID = cursor.getString(0);
@@ -304,7 +361,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally {
             return sentences;
         }
@@ -312,19 +369,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private List<MultipleChoise> getAllQuestionsMCHThisLevel(String idLevel){
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel");
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel");
         List<MultipleChoise> questions = new ArrayList<MultipleChoise>();
         try{
             SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idLevel};
-            Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel"+idLevel);
+            LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsMCHThisLevel"+idLevel);
             Cursor cursor = db.query(
                     QuestionTable.TABLE_NAME + " , " + MultipleChoiseTable.TABLE_NAME,
                     new String[] {QuestionTable.C_ID,QuestionTable.C_LEVEL,QuestionTable.C_STATEMENT,
                             QuestionTable.C_AMOUNT_USE,QuestionTable.C_LAST_USE},
                     QuestionTable.C_ID + " = " + MultipleChoiseTable.C_ID + " AND " + QuestionTable.C_LEVEL + " = '" +  idLevel+"'",
                     null, null, null, null);
-            Log.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
+            LOG.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
             if(cursor.moveToFirst()){
                 do{
                     String ID = cursor.getString(0);
@@ -343,26 +400,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 q.setSentences(sentences);
             }
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally {
             return questions;
         }
     }
 
     private List<Question> getAllQuestionsTOFThisLevel(String idLevel){
-        Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel");
+        LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel");
         List<Question> questions = new ArrayList<Question>();
         try{
             SQLiteDatabase db = this.getReadableDatabase();
             String[] args = {idLevel};
-            Log.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel"+idLevel);
+            LOG.i("TAG_DB_PSIGAME_PLUS",DatabaseHelper.class.getName()+"getAllQuestionsTOFThisLevel"+idLevel);
             Cursor cursor = db.query(
                     QuestionTable.TABLE_NAME + " , " + TrueOrFalseTable.TABLE_NAME,
                     new String[] {QuestionTable.C_ID,QuestionTable.C_LEVEL,QuestionTable.C_STATEMENT,
                             QuestionTable.C_AMOUNT_USE,QuestionTable.C_LAST_USE,TrueOrFalseTable.C_RESULT},
                     QuestionTable.C_ID + " = " + TrueOrFalseTable.C_ID + " AND " + QuestionTable.C_LEVEL + " = '" +  idLevel+"'",
                     null, null, null, null);
-                Log.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
+            LOG.i(SchemaBD.TAG_DATABASE, "Tuplas:"+cursor.moveToFirst());
 
             if(cursor.moveToFirst()){
                 do{
@@ -380,7 +437,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally{
             return questions;
         }
@@ -396,14 +453,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(SchemaBD.SQL_SELECT_ID_WITH_SLUG,args);
             if(cursor.moveToFirst()){
                 id = cursor.getString(0);
-                Log.i(SchemaBD.TAG_DATABASE, "Existe un level con id: "+id);
+                LOG.i(SchemaBD.TAG_DATABASE, "Existe un level con id: "+id);
             }else{
-                Log.i(SchemaBD.TAG_DATABASE, "No existe un level con ID: "+id);
+                LOG.i(SchemaBD.TAG_DATABASE, "No existe un level con ID: "+id);
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally{
             return id;
         }
@@ -411,8 +468,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String findIDAcademicGroupBySlug(String slug){
         String id = null;
-        //TODO Falta;
-        return id;
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            String[] args = {slug};
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_FIND_ID_ACADEMIC_GROUP_WITH_SLUG,args);
+            if(cursor.moveToFirst()){
+                id = cursor.getString(0);
+                LOG.i(SchemaBD.TAG_DATABASE, "Existe un grupo academico con slug: "+slug);
+
+            }else{
+                LOG.i(SchemaBD.TAG_DATABASE, "No existe un grupo academico con slug: "+slug);
+            }
+            cursor.close();
+            db.close();
+        } catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia un grupo academico: "+e.getMessage());
+        } finally {
+            return id;
+        }
     }
 
     public boolean existSentence(String id){
@@ -424,16 +497,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE, "Existe una sentencia con id: "+id);
+                    LOG.i(SchemaBD.TAG_DATABASE, "Existe una sentencia con id: "+id);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE, "No existe una sentencia con ID: "+id);
+                    LOG.i(SchemaBD.TAG_DATABASE, "No existe una sentencia con ID: "+id);
                 }
             }
             cursor.close();
             db.close();
         } catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una sentencia: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una sentencia: "+e.getMessage());
         } finally {
             return exist;
         }
@@ -449,16 +522,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
+                    LOG.i(SchemaBD.TAG_DATABASE, "Existe una pregunta con id: "+id);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
+                    LOG.i(SchemaBD.TAG_DATABASE, "No existe una pregunta con ID: "+id);
                 }
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una pregunta: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error consultado si existia una pregunta: "+e.getMessage());
         }finally{
             return exist;
         }
@@ -473,16 +546,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE, "Existe un grupo academico con slug: "+slug);
+                    LOG.i(SchemaBD.TAG_DATABASE, "Existe un grupo academico con slug: "+slug);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE, "No existe un grupo academico con slug: "+slug);
+                    LOG.i(SchemaBD.TAG_DATABASE, "No existe un grupo academico con slug: "+slug);
                 }
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally{
             return exist;
         }
@@ -497,16 +570,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE, "Existe un nivel de juego con slug: "+slug);
+                    LOG.i(SchemaBD.TAG_DATABASE, "Existe un nivel de juego con slug: "+slug);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE, "No existe un nivel de juego con slug: "+slug);
+                    LOG.i(SchemaBD.TAG_DATABASE, "No existe un nivel de juego con slug: "+slug);
                 }
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally{
             return exist;
         }
@@ -521,18 +594,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()){
                 if (cursor.getInt(0) == 1){
                     exist = true;
-                    Log.i(SchemaBD.TAG_DATABASE,
+                    LOG.i(SchemaBD.TAG_DATABASE,
                             "Existe una relación entre la pregunta con id: "+idMCH+" y la sentencia con id: "+idSentence);
                 }else{
                     exist = false;
-                    Log.i(SchemaBD.TAG_DATABASE,
+                    LOG.i(SchemaBD.TAG_DATABASE,
                             "No existe una relación entre la pregunta con id: "+idMCH+" y la sentencia con id: "+idSentence);
                 }
             }
             cursor.close();
             db.close();
         }catch (Exception e){
-            Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
         }finally {
             return exist;
         }
@@ -549,7 +622,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.update(QuestionTable.TABLE_NAME, update, QuestionTable.C_ID+"=?", args);
                 db.close();
             }catch (Exception e){
-                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
             }finally {
 
             }
@@ -579,7 +652,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
 
             }catch (Exception e){
-                Log.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
             }finally {
 
             }
@@ -587,7 +660,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void registerAnswer(String idUser, String idQuizz, String idQuestion, int result){
-        //TODO Falta
+        if(idUser != null && idQuizz !=null && idQuestion !=null){
+            this.updateAnswerQuizzQuestion(idQuizz,idQuestion,result);
+        }
+    }
+
+    private void updateAnswerQuizzQuestion(String idQuizz, String idQuestion, int result){
+        try {
+            SQLiteDatabase  db = this.getWritableDatabase();
+            String [] args = {idQuestion,idQuizz};
+            ContentValues update = new ContentValues();
+            update.put(QuizzQuestionTable.C_RESULT, result);
+            db.update(QuizzQuestionTable.TABLE_NAME, update,
+                    QuizzQuestionTable.C_ID_QUESTION+"=? AND "+QuizzQuestionTable.C_ID_QUIZZ+"=?", args);
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }
     }
 
     public boolean registerPlayer(Player player){
@@ -595,63 +684,269 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if( player!=null){
             String idGroup = findIDAcademicGroupBySlug(player.getSlugGroup());
             if(idGroup != null){
-                player.setIdGroup(idGroup);
+                String ci = player.getCi();
+                if(!existPlayerWithCI(ci)){
+                    player.setIdGroup(idGroup);
 
-                SQLiteDatabase db = this.getWritableDatabase();
-                ContentValues values = new ContentValues();
+                    SQLiteDatabase db = this.getWritableDatabase();
+                    ContentValues values = new ContentValues();
 
-                values.put(PlayerTable.C_CI,player.getCi());
-                values.put(PlayerTable.C_ID,player.getIdUser());
-                values.put(PlayerTable.C_NAME,player.getName());
-                values.put(PlayerTable.C_SURNAME,player.getSurname());
-                values.put(PlayerTable.C_ID_GROUP,player.getIdGroup());
-                values.put(PlayerTable.C_EMIE,player.getIMEI());
-                values.put(PlayerTable.C_PHONE_NUMBER,player.getNumberPhone());
-                values.put(PlayerTable.C_ACTIVE,(player.isActivate()? 1 : 0));
+                    values.put(PlayerTable.C_CI,player.getCi());
+                    values.put(PlayerTable.C_ID,player.getIdUser());
+                    values.put(PlayerTable.C_NAME,player.getName());
+                    values.put(PlayerTable.C_SURNAME,player.getSurname());
+                    values.put(PlayerTable.C_ID_GROUP,player.getIdGroup());
+                    values.put(PlayerTable.C_EMIE,player.getIMEI());
+                    values.put(PlayerTable.C_PHONE_NUMBER,player.getNumberPhone());
+                    values.put(PlayerTable.C_ACTIVE,(player.isActivate()? 1 : 0));
 
-                long valueInsert = db.insert(PlayerTable.TABLE_NAME, null, values);
+                    long valueInsert = db.insert(PlayerTable.TABLE_NAME, null, values);
 
-                if(valueInsert!=-1) {
-                    db = this.getWritableDatabase();
+                    if(valueInsert!=-1) {
+                        db = this.getWritableDatabase();
 
-                    ContentValues updateDeactivate = new ContentValues();
-                    updateDeactivate.put(PlayerTable.C_ACTIVE, 0);
-                    db.update(PlayerTable.TABLE_NAME, updateDeactivate, null, null);
+                        ContentValues updateDeactivate = new ContentValues();
+                        updateDeactivate.put(PlayerTable.C_ACTIVE, 0);
+                        db.update(PlayerTable.TABLE_NAME, updateDeactivate, null, null);
 
-                    ContentValues updatePlayer = new ContentValues();
-                    updatePlayer.put(PlayerTable.C_ACTIVE, (player.isActivate()? 1 : 0));
-                    String[] args = {player.getIdUser()};
-                    db.update(PlayerTable.TABLE_NAME, updatePlayer, PlayerTable.C_ID+"=?", args);
-
-
-                    register =true;
-                    Log.d(SchemaBD.TAG_DATABASE, "Se insertó el jugador: " + player.toString());
-                } else {
-                    Log.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección del jugador: " + player.toString());
+                        ContentValues updatePlayer = new ContentValues();
+                        updatePlayer.put(PlayerTable.C_ACTIVE, (player.isActivate()? 1 : 0));
+                        String[] args = {player.getIdUser()};
+                        db.update(PlayerTable.TABLE_NAME, updatePlayer, PlayerTable.C_ID+"=?", args);
+                        register =true;
+                        LOG.d(SchemaBD.TAG_DATABASE, "Se insertó el jugador: " + player.toString());
+                    } else {
+                        LOG.d(SchemaBD.TAG_DATABASE, "Ocurrío un error en la insersección del jugador: " + player.toString());
+                    }
+                    db.close();
+                }else{
+                    LOG.i(SchemaBD.TAG_DATABASE, "Existe player registrado con similar ci: "+ci);
                 }
-                db.close();
 
             }else{
-                Log.i(SchemaBD.TAG_DATABASE, "No existe un grupo con slug: "+player.getSlugGroup());
+                LOG.i(SchemaBD.TAG_DATABASE, "No existe un grupo con slug: "+player.getSlugGroup());
             }
         }
 
         return register;
     }
 
-    public List<LevelGame> getLevelAviableCurrentPlayer(){
-        List<LevelGame> levels = new ArrayList<LevelGame>();
+    public List<GameLevel> getLevelAviableCurrentPlayer(){
+        List<GameLevel> levels = new ArrayList<GameLevel>();
         String idCurrentPlayer = getIDCurrentPlayer();
         if  (idCurrentPlayer != null){
-            List<String> idLevel = new ArrayList<String>();
-            //TODO Falta
+            List<String> idLevels = new ArrayList<String>();
+            String [] args = {idCurrentPlayer};
+            try{
+                SQLiteDatabase  db = this.getReadableDatabase();
+                Cursor cursor = db.rawQuery(SchemaBD.SQL_GET_LEVEL_WIN_THIS_PLAYER,args);
+                if(cursor.moveToFirst()){
+                    do{
+                       String idLevel = cursor.getString(0);
+                       idLevels.add(idLevel);
+                    }while(cursor.moveToNext());
+                }
+                cursor.close();
+                db.close();
+
+                for(GameLevel level : GameLevel.values()){
+                    String id = findIdLevel(level);
+                    if(idLevels.contains(id)) levels.add(level);
+                }
+
+            }catch (Exception e){
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }
         }
         return levels;
     }
 
     public String getIDCurrentPlayer(){
         String id = null;
-        //TODO Falta
-        return id;
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_GET_ID_CURRENT_PLAYER,null);
+            if(cursor.moveToFirst()){
+                id = cursor.getString(0);
+                LOG.i(SchemaBD.TAG_DATABASE,"Existe un player activo con id: "+id);
+            }else{
+                LOG.i(SchemaBD.TAG_DATABASE,"No existe un player activo");
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return id;
+        }
     }
+
+    public boolean existPlayerWithCI(String ci){
+        boolean exist =false;
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            String[] args = {ci};
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_EXIST_PLAYER_WITH_CI,args);
+            if(cursor.moveToFirst()){
+                if (cursor.getInt(0) == 1){
+                    exist = true;
+                    LOG.i(SchemaBD.TAG_DATABASE,
+                            "Existe un player registrado con ci: "+ci);
+                }else{
+                    exist = false;
+                    LOG.i(SchemaBD.TAG_DATABASE, "No existe un player registrado con ci: "+ci);
+                }
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return exist;
+        }
+    }
+
+    public Player getCurrentPlayer(){
+        Player player = null;
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_GET_CURRENT_PLAYER,null);
+            if(cursor.moveToFirst()){
+                String id = cursor.getString(cursor.getColumnIndex(PlayerTable.C_ID));
+                String name = cursor.getString(cursor.getColumnIndex(PlayerTable.C_NAME));
+                String surname = cursor.getString(cursor.getColumnIndex(PlayerTable.C_SURNAME));
+                String ci = cursor.getString(cursor.getColumnIndex(PlayerTable.C_CI));
+                boolean activate = (cursor.getInt(cursor.getColumnIndex(PlayerTable.C_ACTIVE)) == 1 ? true : false);
+                String emie = cursor.getString(cursor.getColumnIndex(PlayerTable.C_EMIE));
+                String phoneNumber = cursor.getString(cursor.getColumnIndex(PlayerTable.C_PHONE_NUMBER));
+                String idAcademicGroup = cursor.getString(cursor.getColumnIndex(PlayerTable.C_ID_GROUP));
+                player = new Player();
+                player.setActivate(activate);
+                player.setCi(ci);
+                player.setIdGroup(idAcademicGroup);
+                player.setIdUser(id);
+                player.setIMEI(emie);
+                player.setName(name);
+                player.setNumberPhone(phoneNumber);
+                player.setSurname(surname);
+            }else{
+                LOG.i(SchemaBD.TAG_DATABASE, "No existe un player activo");
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return player;
+        }
+    }
+
+    public void registerResultQuizz(String idPlayer, String idQuizz,int result){
+        try{
+            SQLiteDatabase  db = this.getWritableDatabase();
+            String [] args = {idPlayer,idQuizz};
+            ContentValues update = new ContentValues();
+            update.put(QuizzTable.C_RESULT, result);
+            db.update(QuizzTable.TABLE_NAME, update,
+                    QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID+"=?", args);
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }
+    }
+
+    public boolean canCreateQuizzThisLevel(GameLevel level){
+        boolean can = false;
+        int count = 0;
+        String idLevel = findIdLevel(level);
+        if(idLevel != null){
+            try {
+                String [] args = {idLevel};
+                SQLiteDatabase db = this.getReadableDatabase();
+                Cursor cursor = db.rawQuery(SchemaBD.SQL_COUNT_QUESTION_THIS_LEVEL,args);
+                if(cursor.moveToFirst()){
+                    count = cursor.getInt(0);
+                }
+                cursor.close();
+                db.close();
+            }catch (Exception e){
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }finally {
+                can = (count > 0);
+            }
+        }
+        return can;
+    }
+
+    public void updateStatistic(Statistics stat){
+        GameLevel level = stat.getLevelGame();
+        String idPlayer = getIDCurrentPlayer();
+        String idLevel = findIdLevel(level);
+        if(idPlayer !=null && idLevel != null){
+            int countGame = this.countGame(idPlayer,idLevel);
+            long tsFirstGame = this.firstGame(idPlayer,idLevel);
+            long tsLastGame = this.lastGame(idPlayer,idLevel);
+
+            stat.setCountGames(countGame);
+            stat.setTimeStampFGame(tsFirstGame);
+            stat.setTimeStampLGame(tsLastGame);
+        }
+    }
+
+    public int countGame(String idPlayer, String idLevel){
+        int cGames=0;
+        try{
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_COUNT_GAME_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                cGames = cursor.getInt(0);
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }
+        finally {
+            return cGames;
+        }
+    }
+
+    public long firstGame(String idPlayer, String idLevel){
+        long timeStamp = Long.MIN_VALUE;
+        try {
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_FIRST_GAME_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                timeStamp = cursor.getLong(0);
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return timeStamp;
+        }
+    }
+
+    public long lastGame(String idPlayer, String idLevel){
+        long timeStamp = Long.MIN_VALUE;
+        try {
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_LAST_GAME_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                timeStamp = cursor.getLong(0);
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return timeStamp;
+        }
+    }
+
+
 }
