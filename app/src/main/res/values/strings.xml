@@ -1,6 +1,8 @@
 <resources>
     <!-- Inicio de textos generales -->
     <string translatable="false" name="app_name">PSIGAME+</string>
+    <string name="app_folder">PSIGAME_PLUS</string>
+    <string name="certificate">certificates</string>
     <string translatable="false" name="version">Versión: 1.0.0</string>
     <string translatable="false" name="exit">Pulse de nuevo para salir</string>
     <!-- Fin de textos generales -->
@@ -118,11 +120,20 @@
     <string name="format_jpg">.jpg</string>
     <string name="error_not_select_format">Debe seleccionar al menos un formato para generar certificado.</string>
     <string name="title_button_generate_certificate">Generar certificado</string>
+    <string name="not_player_active_for_certificate">No existe jugador registrado para generar certificado</string>
+    <string name="version_android_not_support_certificate_pdf">Lo sentimos su versión de Android no soporta la
+        generación de documento PDF.</string>
     <!-- Fin de los textos presentes en la vista generar de Certificado -->
 
     <!-- Inicio de los textos presentes en la vista de configuración -->
     <string name="title_reset_stadistics">Reiniciar estadísticas</string>
     <string name="title_reset_register">Reiniciar datos de registro</string>
+    <string name="title_reset_confirmation">Advertencia !!!</string>
+    <string name="title_reset_button">Reniciar</string>
+    <string name="title_cancel_button">Cancelar</string>
+    <string name="text_advert_reset_register">Está seguro que desea reniciar los datos del registro. Si
+        renicia dichos datos se perderá su progreso en el juego y no podrá obtener el certificado que emite el
+    juego una vez vencido los niveles.</string>
     <!-- Fin de los textos presentes en la vista de configuración -->
 
     <!-- Inicio de los textos presentes en la vista cuestionario -->
@@ -180,6 +191,22 @@
         <item>M-39</item>
     </string-array>
     <!-- Fin de nombres posibles grupos académicos -->
+
+    <!-- Inicio de texto del cerfiticado -->
+    <string name="psigame_give">PSIGAME+ otorga en el presente</string>
+    <string name="expired">Ortogado</string>
+    <string name="teacher" translatable="false">Profesor: M. Sc. Cristóbal Eutasio Mesa Simpson</string>
+    <string name="certicate">certificado a:</string>
+    <string name="motivo">por haber alcanzado el nivel de :</string>
+    <string name="example_grade">Competente en Sicologia General</string>
+    <string name="title_level_rookie_mode_general">Novato en Psicología General</string>
+    <string name="title_level_competent_mode_general">Competente en Psicología General</string>
+    <string name="title_level_professional_mode_general">Profesional en Psicología General</string>
+    <string name="title_level_rookie_mode_medica">Novato en Psicología Médica</string>
+    <string name="title_level_competent_mode_medica">Competente en Psicología Médica</string>
+    <string name="title_level_professional_mode_medica">Profesional en Psicología Médica</string>
+    <string name="locationdownloadDoc">El certificado ha sido salvado en: </string>
+    <!-- Fin de texto del cerfiticado -->
 
     <!--Texto que se quitaran en algún momento-->
     <string name="title_activity_quizz">QuizzActivity</string>

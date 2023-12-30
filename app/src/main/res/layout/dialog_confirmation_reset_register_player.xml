@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:background="@drawable/border_round_8dip"
+                  android:padding="10dp">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/title_reset_confirmation"
+                  android:gravity="center"
+                  style="@style/TitleInformationFragmentQuizz"/>
+        <View   android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="#c0c0c0"/>
+        <Space  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/text_view_information_reset"
+                  android:layout_marginTop="15dp"
+                  android:layout_marginBottom="15dp"
+                  android:text="@string/text_advert_reset_register"
+                  android:textColor="@color/black"/>
+        <Space  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+            <Button android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/title_reset_button"
+                    android:id="@+id/button_confirm_reset_register_player"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/button_information"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/tt_interfaces_bold"/>
+            <Button android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:text="@string/title_cancel_button"
+                    android:id="@+id/button_cancel_reset_register_player"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_information"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/tt_interfaces_bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

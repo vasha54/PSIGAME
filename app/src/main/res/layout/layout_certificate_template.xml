@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/template_certicate">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/text_name_developer"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:id="@+id/text_view_name_certificate"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/certicate"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:id="@+id/text_view_label_certicate"
+                android:layout_above="@+id/text_view_name_certificate"/>
+        <TextView
+                android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="@string/motivo"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_below="@+id/text_view_name_certificate"
+                        android:id="@+id/text_view_label_motivo"/>
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/example_grade"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_below="@+id/text_view_label_motivo"
+                android:id="@+id/text_view_level"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/psigame_give"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:id="@+id/text_view_psgame_plus_give"
+                android:layout_above="@+id/text_view_label_certicate"/>
+
+
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginLeft="-2dp"
+                android:layout_marginRight="-2dp"
+                android:id="@+id/layout_footer"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/background_activity_main_bottom_v2"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_above="@id/layout_footer">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:text="@string/value_empty_date"
+                            android:textColor="@color/black"
+                            android:id="@+id/text_view_date_expired"
+                            android:gravity="center"/>
+                    <View   android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#000000"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/expired"
+                            android:textColor="@color/black"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:id="@+id/sign_teacher"/>
+                    <View   android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#000000"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/teacher"
+                            android:textColor="@color/black"
+                            android:gravity="center"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+    </RelativeLayout>
+<!--    <RelativeLayout -->
+<!--            android:layout_width="match_parent" -->
+<!--            android:layout_height="match_parent">-->
+
+<!--    </RelativeLayout>-->
+<!--    -->
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
