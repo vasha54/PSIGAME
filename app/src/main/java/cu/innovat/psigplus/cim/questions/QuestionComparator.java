@@ -7,9 +7,17 @@ import java.util.Comparator;
  * @date 15/11/23
  */
 public class QuestionComparator implements Comparator<Question> {
-
+    /**
+     *
+     */
     public QuestionComparator(){}
 
+    /**
+     *
+     * @param o1
+     * @param o2
+     * @return
+     */
     @Override
     public int compare(Question o1, Question o2) {
 
