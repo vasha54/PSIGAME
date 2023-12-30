@@ -1,7 +1,7 @@
 package cu.innovat.psigplus.controller;
 
 import android.content.Context;
-import android.util.Log;
+
 
 import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
@@ -10,6 +10,7 @@ import cu.innovat.psigplus.cim.questions.TrueOrFalse;
 import cu.innovat.psigplus.cim.questions.QuestionComparator;
 import cu.innovat.psigplus.dao.DBManager;
 import cu.innovat.psigplus.R;
+import cu.innovat.psigplus.util.LOG;
 import cu.innovat.psigplus.util.ReadJson;
 import cu.innovat.psigplus.util.Util;
 
@@ -45,14 +46,14 @@ public class PsiGameController {
     }
 
     private void insertDataDefault(){
-        Log.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
-        Log.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
+        LOG.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
+        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
         insertAcademicGroup();
-        Log.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
+        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
         insertLevelGame();
-        Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
+        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
         insertQuestions();
-        Log.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
+        LOG.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
     }
 
     private void insertAcademicGroup(){
@@ -90,16 +91,16 @@ public class PsiGameController {
             questions.addAll(questions.size(),questionsTOF);
             questions.addAll(questions.size(),questionsMCH);
 
-            Log.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
+            LOG.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
             this.managerDB.addQuestions(questions);
         } catch (Exception e){
-            Log.i("TAG_DB_PSIGAME_PLUS","Ocurrio el siguiente error"+e.getMessage());
+            LOG.i("TAG_DB_PSIGAME_PLUS","Ocurrio el siguiente error"+e.getMessage());
         }
     }
 
     public Quizz generateQuizz(GameLevel level){
         Quizz quizz = null;
-        Log.i("TAG_DB_PSIGAME_PLUS","generateQuizz(GameLevel level)");
+        LOG.i("TAG_DB_PSIGAME_PLUS","generateQuizz(GameLevel level)");
         String idLevel = managerDB.findIdLevel(level);
         if(idLevel != null){
             quizz =new Quizz();
@@ -113,24 +114,26 @@ public class PsiGameController {
             int lifes = nquestions-(int)Math.ceil((nquestions*90)/100);
             lifes = Math.max(1,lifes);
             quizz.setLifes(lifes);
-
             String idPlayerActive = managerDB.getIDCurrentPlayer();
             quizz.setIdPlayer(idPlayerActive);
-
-            managerDB.addQuizz(quizz);
         }
         return quizz;
     }
 
+    public void addQuizz(Quizz quizz){
+        this.managerDB.addQuizz(quizz);
+    }
+
     //TODO Aqui es el metodo que debemos trabajar para lograr la verdadera aleotoriedad de las preguntas
     List<Question> generateQuestions(String idLevel,GameLevel level){
-        Log.i("TAG_DB_PSIGAME_PLUS",PsiGameController.class.getName()+"generateQuestions");
+        LOG.i("TAG_DB_PSIGAME_PLUS",PsiGameController.class.getName()+"generateQuestions");
         List<Question> questions = managerDB.getAllQuestionsThisLevel(idLevel);
         questions.sort(new QuestionComparator());
         int select = (int)Math.ceil(questions.size()/3);
 
         List<Question> selects = new ArrayList<Question>();
 
+        // Trato de coger la misma cantidad de tipologias de preguntas
         int ctof = select/2;
         int cmch = select - ctof;
 
@@ -150,10 +153,30 @@ public class PsiGameController {
             }
         }
 
+        //Completo con cualquier tipologia de preguntas en caso de que me falte
+        // para el cuestionario
         while(cmch+ctof>0 && questions.isEmpty()==false){
             Question q = questions.remove(0);
             selects.add(q);
             ctof--;
+        }
+
+        //Alterno tipologias de preguntas
+        for(int i=0;i<selects.size();i++){
+            if(i%2==0 && selects.get(i) instanceof MultipleChoise){
+                int j=i;
+                do{ j++; }while (j<selects.size() && selects.get(j) instanceof  MultipleChoise);
+                if(j<selects.size()){
+                    Collections.swap(selects,i,j);
+                }
+            }
+            if(i%2==1 && selects.get(i) instanceof TrueOrFalse){
+                int j=i;
+                do{ j++; }while (j<selects.size() && selects.get(j) instanceof  TrueOrFalse);
+                if(j<selects.size()){
+                    Collections.swap(selects,i,j);
+                }
+            }
         }
 
         return selects;
@@ -195,5 +218,9 @@ public class PsiGameController {
         for(Statistics stat : statistics){
             this.managerDB.updateStatistic(stat);
         }
+    }
+
+    public void resetRegisterPlayer(){
+        this.managerDB.resetRegisterPlayer();
     }
 }
