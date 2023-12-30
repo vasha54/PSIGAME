@@ -1,7 +1,6 @@
 package cu.innovat.psigplus.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Player;
 import cu.innovat.psigplus.interfaces.*;
+import cu.innovat.psigplus.util.LOG;
 import cu.innovat.psigplus.util.Util;
 
 import java.util.ArrayList;
@@ -128,11 +128,12 @@ public class CertificateRegisterFragment extends BaseFragment implements IClickB
             String error = "";
             String idPlayer = Util.generateUUID();
 
-            Log.i("TAG_DB_PSIGAME_PLUS","El grupo seleccionado es: "+group);
+            LOG.i("TAG_DB_PSIGAME_PLUS","El grupo seleccionado es: "+group);
 
             boolean isValidName = !Util.isEmptyString(name);
             boolean isValidSurname = !Util.isEmptyString(surname);
-            boolean isValidCI = !Util.isEmptyString(surname) & Util.isValidCI(ci);
+            LOG.i("TAG_DB_PSIGAME_PLUS","El numero de carnet es :"+ci+".");
+            boolean isValidCI = !Util.isEmptyString(ci) & Util.isValidCI(ci);
             boolean isValidIMEI = true;//!Util.isEmptyString(imei) & Util.isValidIMEI(imei);
             boolean isValidNumberPhone = true; // !Util.isEmptyString(numberPhone) &
 //                    Util.isValidNumberPhone(numberPhone);

@@ -1,7 +1,6 @@
 package cu.innovat.psigplus.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
 import cu.innovat.psigplus.R;
 import android.view.LayoutInflater;

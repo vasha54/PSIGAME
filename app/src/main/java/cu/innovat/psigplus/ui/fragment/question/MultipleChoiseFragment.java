@@ -1,7 +1,6 @@
 package cu.innovat.psigplus.ui.fragment.question;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.Sentence;
 import cu.innovat.psigplus.adapter.MultipleChoiseAdapter;
+import cu.innovat.psigplus.util.LOG;
+import cu.innovat.psigplus.util.Util;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,13 +56,17 @@ public class MultipleChoiseFragment extends QuestionFragment{
                 if(mch != null){
                     if(tv_sentence != null) tv_sentence.setText(mch.getSentence());
                     if(rv_listChoise != null){
-                        Log.i("TAG_DB_PSIGAME_PLUS",
+                        LOG.i("TAG_DB_PSIGAME_PLUS",
                                 "Cantidad de opciones de la pregunta:"+String.valueOf(mch.getSentences().size()));
-                        adapterChoise = new MultipleChoiseAdapter(getContext(),mch.getSentences());
+                        List<Sentence> sentences = mch.getSentences();
+                        int [] permutations = Util.generatePermutation(sentences.size()-1);
+                        for(int i=0;i<permutations.length;i++){
+                            Collections.swap(sentences,i,permutations[i]);
+                        }
+                        adapterChoise = new MultipleChoiseAdapter(getContext(),sentences);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                         rv_listChoise.setLayoutManager(layoutManager);
                         rv_listChoise.setItemAnimator(new DefaultItemAnimator());
-                        rv_listChoise.addItemDecoration(new DividerItemDecoration(getActivity(),LinearLayoutManager.VERTICAL));
                         rv_listChoise.setAdapter(adapterChoise);
                     }
                 }

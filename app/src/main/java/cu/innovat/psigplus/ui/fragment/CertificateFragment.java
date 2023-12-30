@@ -9,11 +9,9 @@ import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Format;
 import cu.innovat.psigplus.cim.Player;
 import cu.innovat.psigplus.controller.PsiGameController;
-import cu.innovat.psigplus.interfaces.IObserverClickButtonBeginRegisterCertificate;
-import cu.innovat.psigplus.interfaces.IObserverClickButtonGenerateCertificate;
-import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
-import cu.innovat.psigplus.interfaces.IObserverRegisterPlayer;
+import cu.innovat.psigplus.interfaces.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,13 +20,15 @@ import java.util.List;
  */
 public class CertificateFragment extends BaseFragment implements IObserverClickButtonBeginRegisterCertificate,
         IObserverClickButtonRegisterCertificate, IObserverClickButtonGenerateCertificate,
-        IObserverRegisterPlayer {
+        IObserverRegisterPlayer, IClickButtonGenerateCertificate {
 
     private CertificatePresentationFragment m_fPresentation;
     private CertificateRegisterFragment m_fRegister;
     private CertificateGenerateFragment m_fGenerate;
     private String IMEI;
     private String numberPhone;
+
+    private List<IObserverClickButtonGenerateCertificate> observers;
 
     public CertificateFragment(String _IMEI, String _numberPhone){
         super();
@@ -37,6 +37,8 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
         m_fGenerate = new CertificateGenerateFragment();
         m_fPresentation = new CertificatePresentationFragment();
         m_fRegister = new CertificateRegisterFragment(this.IMEI,this.numberPhone);
+
+        observers = new ArrayList<IObserverClickButtonGenerateCertificate>();
     }
 
     @Override
@@ -93,11 +95,28 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
 
     @Override
     public void clickedButtonGenerateCertificate(List<Format> formats) {
-
+        for(IObserverClickButtonGenerateCertificate obj :observers)
+            obj.clickedButtonGenerateCertificate(formats);
     }
+
 
     @Override
     public boolean registerPlayer(Player player) {
         return PsiGameController.getInstance(getContext()).registerPlayer(player);
+    }
+
+    @Override
+    public void attach(IObserverClickButtonGenerateCertificate observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(IObserverClickButtonGenerateCertificate observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyClickButtonGenerateCertificate() {
+
     }
 }
