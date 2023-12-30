@@ -222,6 +222,13 @@ public final class SchemaBD {
             "SELECT "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
             "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? ORDER BY "+QuizzTable.C_DATE+
                     " ASC LIMIT 1";
+    public static final String SQL_FIRST_GAME_WIN_THIS_PLAYER_IN_LEVEL=
+            "SELECT "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
+                    "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? AND "+
+                    QuizzTable.C_RESULT+"=1 ORDER " + "BY "+QuizzTable.C_DATE+ " ASC LIMIT 1";
+    public static final String SQL_SELECT_ALL_GAME_THIS_PLAYER_IN_LEVEL=
+            "SELECT "+QuizzTable.C_ID+" , "+QuizzTable.C_RESULT+" , "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
+                    "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? ORDER BY "+QuizzTable.C_DATE+ " ASC";
     public static final String SQL_LAST_GAME_THIS_PLAYER_IN_LEVEL=
             "SELECT "+QuizzTable.C_DATE+" FROM "+QuizzTable.TABLE_NAME+" " +
                     "WHERE "+QuizzTable.C_ID_PLAYER+"=? AND "+QuizzTable.C_ID_LEVEL+"=? ORDER BY "+QuizzTable.C_DATE+
@@ -246,6 +253,8 @@ public final class SchemaBD {
             "),"+
             "FOREIGN KEY("+ QuizzQuestionTable.C_ID_QUIZZ +") REFERENCES "+QuizzTable.TABLE_NAME+"( "+QuizzTable.C_ID+" )"+
             ")";
+    public static final String SQL_GET_ALL_QUESTION_THIS_QUIZZ = "SELECT "+QuizzQuestionTable.C_ID_QUESTION+" , "+
+            QuizzQuestionTable.C_RESULT+" FROM "+QuizzQuestionTable.TABLE_NAME+" WHERE "+QuizzQuestionTable.C_ID_QUIZZ+"=?";
     public static final String SQL_DROP_QUIZZ_QUESTION_TABLE = "DROP TABLE IF EXISTS "+QuizzQuestionTable.TABLE_NAME;
 
 

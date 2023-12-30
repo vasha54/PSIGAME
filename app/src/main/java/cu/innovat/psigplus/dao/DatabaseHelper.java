@@ -886,10 +886,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int countGame = this.countGame(idPlayer,idLevel);
             long tsFirstGame = this.firstGame(idPlayer,idLevel);
             long tsLastGame = this.lastGame(idPlayer,idLevel);
+            long tsFirstWinGame = this.firstWinGame(idPlayer,idLevel);
+            int countGameBeforeWin = this.countGamesBeforeGame(idPlayer,idLevel);
+            double [] scores = this.bestWorstMeansScore(idPlayer,idLevel);
 
             stat.setCountGames(countGame);
             stat.setTimeStampFGame(tsFirstGame);
             stat.setTimeStampLGame(tsLastGame);
+            stat.setTimeStampFWGame(tsFirstWinGame);
+            stat.setCountGamesBeforeWin(countGameBeforeWin);
+            stat.setBestScore(scores[0]);
+            stat.setWorstScore(scores[1]);
+            stat.setMeanScore(scores[2]);
         }
     }
 
@@ -948,5 +956,121 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public long firstWinGame(String idPlayer,String idLevel){
+        long timeStamp = Long.MIN_VALUE;
+        try {
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_FIRST_GAME_WIN_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                timeStamp = cursor.getLong(0);
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            return timeStamp;
+        }
+    }
 
+    public int countGamesBeforeGame(String idPlayer,String idLevel){
+        int countGames=0;
+        boolean winGame = false;
+        try{
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_SELECT_ALL_GAME_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                do{
+                    int result = cursor.getInt(1);
+                    if(result != 1) countGames++;
+                    else winGame = true;
+                }while(cursor.moveToNext() && !winGame);
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            if(!winGame) countGames = Integer.MIN_VALUE;
+            return countGames;
+        }
+    }
+
+    public double [] bestWorstMeansScore(String idPlayer,String idLevel){
+        double [] scores = {Double.MIN_VALUE,Double.MAX_VALUE,Double.MIN_VALUE};
+
+        List<String> idQuizzs = new ArrayList<String>();
+        try{
+            String [] args = {idPlayer,idLevel};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_SELECT_ALL_GAME_THIS_PLAYER_IN_LEVEL,args);
+            if(cursor.moveToFirst()){
+                do{
+                    String id = cursor.getString(0);
+                    idQuizzs.add(id);
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            double countGames= idQuizzs.size();
+            double sumsScores = 0;
+            for(String id : idQuizzs){
+                double score = this.scoreThisQuizz(id);
+                sumsScores+=score;
+                scores[0]=Math.max(score,scores[0]);
+                scores[1]=Math.min(score,scores[1]);
+            }
+            if(countGames > 0){
+                scores[2]=sumsScores/countGames;
+            }
+            if(scores[1]==Double.MAX_VALUE) scores[1]=Double.MIN_VALUE;
+            return scores;
+        }
+    }
+
+    public double scoreThisQuizz(String id){
+        double score = 0;
+        double countQuestion = 0;
+        double countQuestionAccept=0;
+        try{
+            String [] args = {id};
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(SchemaBD.SQL_GET_ALL_QUESTION_THIS_QUIZZ,args);
+            if(cursor.moveToFirst()){
+                do{
+                    countQuestion++;
+                    int result = cursor.getInt(1);
+                    if(result == 1) countQuestionAccept++;
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+            db.close();
+        }catch (Exception e){
+            LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+        }finally {
+            if(countQuestion>0) score = (countQuestionAccept/countQuestion)*100.000;
+            return score;
+        }
+    }
+
+    public void resetRegisterPlayer(){
+        String idPlayerCurrent = this.getIDCurrentPlayer();
+        if( idPlayerCurrent != null){
+            try{
+                SQLiteDatabase  db = this.getWritableDatabase();
+                String [] args = {idPlayerCurrent};
+                ContentValues update = new ContentValues();
+                update.put(PlayerTable.C_ACTIVE, 0);
+                db.update(PlayerTable.TABLE_NAME, update, PlayerTable.C_ID+"=? ", args);
+                db.close();
+            }catch (Exception e){
+                LOG.e(SchemaBD.TAG_DATABASE, "Ocurrío un error: "+e.getMessage());
+            }
+        }
+    }
 }

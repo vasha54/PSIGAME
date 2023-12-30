@@ -3,7 +3,6 @@ package cu.innovat.psigplus.dao;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.SQLException;
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.cim.questions.MultipleChoise;
 import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.cim.questions.Sentence;
+import cu.innovat.psigplus.util.LOG;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -69,7 +69,7 @@ public class DBManager {
                 MultipleChoise mch = (MultipleChoise) q;
                 if(mch !=null){
                     List<Sentence> sentences = mch.getSentences();
-                    Log.i("TAG_DB_PSIGAME_PLUS","Insertando las opciones ("+String.valueOf(sentences.size())+") de la" +
+                    LOG.i("TAG_DB_PSIGAME_PLUS","Insertando las opciones ("+String.valueOf(sentences.size())+") de la" +
                             " pregunta :"+mch.getUuid());
                     addSentences(sentences);
                     addMultipleChoiseSentences(mch,sentences);
@@ -94,12 +94,12 @@ public class DBManager {
     }
 
     public void addQuizz(Quizz quizz){
-        Log.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"addQuizz");
+        LOG.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"addQuizz");
         dbHelper.addQuizz(quizz);
     }
 
     public List<Question> getAllQuestionsThisLevel(String idLevel){
-        Log.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"getAllQuestionsThisLevel");
+        LOG.i("TAG_DB_PSIGAME_PLUS",DBManager.class.getName()+"getAllQuestionsThisLevel");
         return dbHelper.getAllQuestionsThisLevel(idLevel);
     }
 
@@ -139,4 +139,6 @@ public class DBManager {
     public void updateStatistic(Statistics stat){
         dbHelper.updateStatistic(stat);
     }
+
+    public void resetRegisterPlayer(){ dbHelper.resetRegisterPlayer(); }
 }
