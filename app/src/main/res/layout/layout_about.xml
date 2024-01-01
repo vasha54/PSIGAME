@@ -101,7 +101,7 @@
                                 android:id="@+id/image_doctor"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:src="@mipmap/cartman"
+                                android:src="@mipmap/doctor"
                                 android:scaleType="fitXY"
                                 android:layout_gravity="center"
                                 android:drawable="@drawable/image_circle"/>
@@ -449,7 +449,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:orientation="vertical" >
+                                    android:orientation="vertical">
 
                                 <TextView
                                         android:id="@+id/text_mark_water3"
@@ -469,7 +469,7 @@
                                         android:layout_height="72dip"
                                         android:layout_gravity="center"
                                         android:gravity="center"
-                                        android:src="@mipmap/cartman" />
+                                        android:src="@mipmap/logo_ucm"/>
                                 <TextView
                                         android:id="@+id/textview_phone_ucmm"
                                         android:drawablePadding="5dp"
@@ -511,7 +511,8 @@
                                         android:text="@string/text_facebook_ucmm"
                                         android:textAlignment="textStart"
                                         android:textColor="@color/colorLink"
-                                        android:layout_marginTop="3dp"/>
+                                        android:layout_marginTop="3dp"
+                                        android:visibility="gone"/>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
