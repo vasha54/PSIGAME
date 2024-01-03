@@ -135,6 +135,11 @@ public abstract class Question  {
 
     /**
      *
+     */
+    public abstract int durationQuestion();
+
+    /**
+     *
      * @return
      */
     @Override

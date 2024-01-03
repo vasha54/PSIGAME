@@ -3,7 +3,7 @@
     <string translatable="false" name="app_name">PSIGAME+</string>
     <string name="app_folder">PSIGAME_PLUS</string>
     <string name="certificate">certificates</string>
-    <string translatable="false" name="version">Versión: 1.0.1</string>
+    <string translatable="false" name="version">Versión: 1.0.2</string>
     <string translatable="false" name="exit">Pulse de nuevo para salir</string>
     <!-- Fin de textos generales -->
 
@@ -115,7 +115,7 @@
 
     <!-- Inicio de los textos presentes en la vista generar de Certificado -->
     <string name="formats">Formatos:</string>
-    <string name="expired_certificate">Expirar un certificado a nombre de:</string>
+    <string name="expired_certificate">Emitir un certificado a nombre de:</string>
     <string name="format_pdf">.pdf</string>
     <string name="format_png">.png</string>
     <string name="format_jpg">.jpg</string>

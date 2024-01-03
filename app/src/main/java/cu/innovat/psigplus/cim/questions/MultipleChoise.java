@@ -77,4 +77,20 @@ public class MultipleChoise extends Question{
     public void setSentences(List<Sentence> sentences) {
         this.sentences = sentences;
     }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int durationQuestion() {
+        int duration =0;
+        if(level == GameLevel.ROOKIE_MEDICAL || level == GameLevel.ROOKIE_GENERAL)
+            duration = 25;
+        else if(level == GameLevel.COMPETENT_MEDICAL || level == GameLevel.COMPETENT_GENERAL)
+            duration = 20;
+        else if(level == GameLevel.PROFESSIONAL_MEDICAL || level == GameLevel.PROFESSIONAL_GENERAL)
+            duration = 15;
+        return duration;
+    }
 }

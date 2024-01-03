@@ -469,7 +469,7 @@
                                         android:layout_height="72dip"
                                         android:layout_gravity="center"
                                         android:gravity="center"
-                                        android:src="@mipmap/logo_ucm"/>
+                                        android:src="@mipmap/logo_dte_ucmm"/>
                                 <TextView
                                         android:id="@+id/textview_phone_ucmm"
                                         android:drawablePadding="5dp"

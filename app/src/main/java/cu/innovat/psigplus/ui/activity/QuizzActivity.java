@@ -209,14 +209,24 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadNextQuestion(){
-        if(quizz != null) timeToPass=quizz.getDurationQuestion();
-        if(progressBarTime!=null && quizz!=null){
-            progressBarTime.setMax(quizz.getDurationQuestion());
-            progressBarTime.setProgress(quizz.getDurationQuestion(),false);
-        }
-        if(tviewTime!=null && quizz!=null) tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
-        if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(indexFragments+1));
+//        if(quizz != null) timeToPass=quizz.getDurationQuestion();
+//        if(progressBarTime!=null && quizz!=null){
+//            progressBarTime.setMax(quizz.getDurationQuestion());
+//            progressBarTime.setProgress(quizz.getDurationQuestion(),false);
+//        }
+//        if(tviewTime!=null && quizz!=null) tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
+//        if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(indexFragments+1));
+
         if(indexFragments < fragments.size()){
+            if(progressBarTime!=null && quizz!=null){
+                timeToPass=fragments.get(indexFragments).getTimeQuestion();
+                progressBarTime.setMax(timeToPass);
+                progressBarTime.setProgress(timeToPass,false);
+                if(tviewTime!=null) tviewTime.setText(Util.convertToMMSS(timeToPass));
+
+            }
+            if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(indexFragments+1));
+
             fragmentManager.beginTransaction().
                     replace(R.id.container_question,fragments.get(indexFragments),fragments.get(indexFragments).getUuid()).
                     addToBackStack(null).

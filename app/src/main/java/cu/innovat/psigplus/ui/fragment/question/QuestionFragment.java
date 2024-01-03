@@ -32,6 +32,12 @@ public abstract class QuestionFragment extends BaseFragment {
         return id;
     }
 
+    public int getTimeQuestion(){
+        int time = 0;
+        if(this.question != null) time = this.question.durationQuestion();
+        return time;
+    }
+
     @Override
     public String toString() {
         return "QuestionFragment{" +

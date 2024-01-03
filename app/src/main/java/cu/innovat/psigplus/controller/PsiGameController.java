@@ -141,10 +141,12 @@ public class PsiGameController {
         while(index < questions.size()){
             Question q = questions.get(index);
             if(q instanceof TrueOrFalse && ctof > 0){
+                q.setLevel(level);
                 selects.add(q);
                 ctof--;
                 questions.remove(index);
             }else if(q instanceof MultipleChoise && cmch > 0){
+                q.setLevel(level);
                 selects.add(q);
                 cmch--;
                 questions.remove(index);
@@ -157,6 +159,7 @@ public class PsiGameController {
         // para el cuestionario
         while(cmch+ctof>0 && questions.isEmpty()==false){
             Question q = questions.remove(0);
+            q.setLevel(level);
             selects.add(q);
             ctof--;
         }
