@@ -29,7 +29,7 @@
        fx="-0.26042521"
        fy="-44.38419"
        r="105.17573"
-       gradientTransform="matrix(-2.0125049,1.1571904,0.89060425,1.5488279,250.05349,69.044831)"
+       gradientTransform="matrix(-2.0125049,1.1571904,0.89060425,1.5488279,249.74932,69.028246)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -782,9 +782,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="552.27266"
-     inkscape:cy="273.39929"
+     inkscape:zoom="0.35"
+     inkscape:cx="114.73111"
+     inkscape:cy="690.22369"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -812,30 +812,29 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#f8fcff;fill-opacity:1;stroke-width:0.435363;stroke-linecap:round;stroke-linejoin:round"
-       id="rect187"
-       width="211.04884"
-       height="297.93796"
-       x="-0.83333498"
-       y="-0.016585"
-       ry="0" />
     <g
-       id="g1131"
-       transform="translate(-0.30416833,-0.016585)">
+       id="g243">
+      <rect
+         style="fill:#f8fcff;fill-opacity:1;stroke-width:0.435363;stroke-linecap:round;stroke-linejoin:round"
+         id="rect187"
+         width="211.04884"
+         height="297.93796"
+         x="-0.83333498"
+         y="-0.016585"
+         ry="0" />
       <path
          style="fill:#f8049c;fill-opacity:1;stroke:none;stroke-width:0.265419px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 0,297.03317 h 210.34375 v -7.40834 c 0,0 -69.77779,-9.69138 -105.37856,-9.69138 C 46.388451,279.93345 0,289.62483 0,289.62483 Z"
+         d="M -0.30416833,297.01658 H 210.03958 v -7.40834 c 0,0 -69.77779,-9.69138 -105.37856,-9.69138 -58.576737,0 -104.96518833,9.69138 -104.96518833,9.69138 z"
          id="path837"
          sodipodi:nodetypes="cccscc" />
       <path
          style="fill:url(#radialGradient875);fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 210.35146,0 H 0 c 24.863124,21.166667 68.791667,39.6875 105.83333,37.041667 100.54167,0 63.50001,196.056253 105.83334,195.791663 z"
+         d="M 210.04729,-0.016585 H -0.30416833 C 24.558956,21.150082 68.487499,39.670915 105.52916,37.025082 c 100.54167,0 63.50001,196.056248 105.83334,195.791658 z"
          id="path867"
          sodipodi:nodetypes="ccccc" />
       <g
          id="g378"
-         transform="matrix(0.07113055,0,0,0.07113055,29.809951,64.249445)">
+         transform="matrix(0.07113055,0,0,0.07113055,29.505783,64.23286)">
         <g
            id="g353"
            transform="matrix(0.3527778,0,0,0.3527778,-317.5,-444.50001)">
@@ -892,70 +891,70 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="78.490074"
-         y="131.52359"
+         x="78.185905"
+         y="131.507"
          id="text382-3"><tspan
            sodipodi:role="line"
            id="tspan380-6"
-           x="78.490074"
-           y="131.52359"
+           x="78.185905"
+           y="131.507"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Baskerville Old Face';-inkscape-font-specification:'Baskerville Old Face';stroke-width:0.264583">certificado a:</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="37.146481"
-         y="118.29477"
+         x="36.842312"
+         y="118.27818"
          id="text382-3-7"><tspan
            sodipodi:role="line"
            id="tspan380-6-5"
-           x="37.146481"
-           y="118.29477"
+           x="36.842312"
+           y="118.27818"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';stroke-width:0.264583">PSIGAME+ otorga el presente</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="37.913868"
-         y="174.38618"
+         x="37.609699"
+         y="174.3696"
          id="text382-3-7-3"><tspan
            sodipodi:role="line"
            id="tspan380-6-5-5"
-           x="37.913868"
-           y="174.38618"
+           x="37.609699"
+           y="174.3696"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';stroke-width:0.264583">por haber alcanzado el nivel de:</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="169.7991"
-         y="267.51324"
+         x="169.49493"
+         y="267.49667"
          id="text382-3-7-3-0"><tspan
            sodipodi:role="line"
            id="tspan380-6-5-5-91"
-           x="169.7991"
-           y="267.51324"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;line-height:1.05;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';text-align:center;text-anchor:middle;stroke-width:0.264583">Profesor: M. Sc. Cristóbal Eutasio </tspan><tspan
+           x="169.49493"
+           y="267.49667"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;line-height:1.05;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';text-align:center;text-anchor:middle;stroke-width:0.264583">Profesor: M. Sc. Cristóbal Eustasio </tspan><tspan
            sodipodi:role="line"
-           x="169.7991"
-           y="272.32867"
+           x="169.49493"
+           y="272.3121"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;line-height:1.05;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';text-align:center;text-anchor:middle;stroke-width:0.264583"
            id="tspan528">Mesa Simpson:</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:0;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="39.666225"
-         y="267.51324"
+         x="39.362057"
+         y="267.49667"
          id="text382-3-7-3-0-3"><tspan
            sodipodi:role="line"
-           x="39.666225"
-           y="267.51324"
+           x="39.362057"
+           y="267.49667"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58611px;line-height:1.05;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';text-align:center;text-anchor:middle;stroke-width:0.264583"
            id="tspan528-7">Otorgado</tspan></text>
       <path
          style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 137.58333,261.9375 h 63.5"
+         d="m 137.27916,261.92091 h 63.5"
          id="path259" />
       <path
          style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 7.9375,261.9375 h 63.5"
+         d="M 7.6333317,261.92091 H 71.133332"
          id="path259-5" />
     </g>
   </g>
