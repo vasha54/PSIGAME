@@ -55,7 +55,7 @@ public class Util {
 
     public static boolean isEmptyString(String str){
         boolean empty = true;
-        empty = str.strip().isEmpty();
+        empty = str.trim().isEmpty();
         return empty;
     }
 

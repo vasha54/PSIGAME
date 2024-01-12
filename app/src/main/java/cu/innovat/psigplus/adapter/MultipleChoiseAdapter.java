@@ -13,7 +13,6 @@ import cu.innovat.psigplus.interfaces.IObserverSelectUnSelectChoise;
 import cu.innovat.psigplus.util.LOG;
 import cu.innovat.psigplus.viewholder.ViewHolderMultipleChoise;
 import cu.innovat.psigplus.R;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 

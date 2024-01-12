@@ -7,16 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.interfaces.IClickButtonStartQuizz;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonStartQuizz;
-import cu.innovat.psigplus.ui.activity.MainActivity;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

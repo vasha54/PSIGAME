@@ -2,12 +2,10 @@ package cu.innovat.psigplus.ui.fragment;
 
 import android.content.Context;
 import android.view.View;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import cu.innovat.psigplus.cim.GameLevel;
 import cu.innovat.psigplus.interfaces.IClickButtonGameLevel;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
