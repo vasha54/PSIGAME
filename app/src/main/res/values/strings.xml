@@ -3,7 +3,7 @@
     <string translatable="false" name="app_name">PSIGAME+</string>
     <string name="app_folder">PSIGAME_PLUS</string>
     <string name="certificate">certificates</string>
-    <string translatable="false" name="version">Versión: 1.0.2</string>
+    <string translatable="false" name="version">Versión: 1.0.5</string>
     <string translatable="false" name="exit">Pulse de nuevo para salir</string>
     <!-- Fin de textos generales -->
 
@@ -89,11 +89,7 @@
     <!-- Fin de los textos presentes en la vista Estadisticas ... -->
 
     <!-- Inicio de los textos presentes en la vista inicial de Certificado -->
-    <string name="text_begin_register" translatable="false">\tLa aplicación PSIGAME+ permite la generación de certificados que acreditan
-    su nivel en Psicología General y Psicología Médica acorde a los niveles que usted puede alcanzar en el juego.\n\n\tPara
-        la emisión de dichos certificados se hace necesario que usted llene un formulario de registro con algunos
-        dados necesarios para la elaboración de los certificados. De igual forma las estadísticas del juego no comenzarán
-    a funcionar hasta que no se lleve a cabo dicho registro.</string>
+    <string name="text_begin_register" translatable="false">A través de esta aplicación, usted podrá obtener un certificado en varios formatos de reconocimiento del nivel alcanzado en Psicología General y Médica.\n\nPara la elaboración de estos certificados debe completar un formulario, en el que aporte sus datos generales, que sólo serán utilizados con ese fin dentro de la aplicación. Hasta que no realice su registro, no podrá vencer nuevos niveles superiores, ni recibir información sobre sus estadísticas durante el juego.</string>
     <string name="button_begin_register" translatable="false">Iniciar registro</string>
     <!-- Fin de los textos presentes en la vista inicial de Certificado -->
 
