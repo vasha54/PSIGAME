@@ -6,10 +6,10 @@ android {
 
     signingConfigs {
         release {
-            storePassword '123456'
-            keyPassword '123456'
-            keyAlias 'key0'
-            storeFile file('/media/Datos/workspace/workspaceAndroid/PSIGAMEv4/key/key-test1.jks')
+            storeFile file('/media/Datos/workspace/workspaceAndroid/PSIGAMEv4/key/Innovat-android-Keystore.jks')
+            keyAlias 'innovat'
+            storePassword 'Inn0v@t'
+            keyPassword 'Inn0v@t'
         }
     }
     namespace 'cu.innovat.psigplus'

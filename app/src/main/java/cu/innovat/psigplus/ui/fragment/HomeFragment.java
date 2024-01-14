@@ -9,13 +9,10 @@ import android.view.View;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import cu.innovat.psigplus.cim.GameLevel;
-import cu.innovat.psigplus.interfaces.IClickButtonGameLevel;
+import cu.innovat.psigplus.cim.GameMode;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
 import cu.innovat.psigplus.ui.activity.MainActivity;
 import cu.innovat.psigplus.ui.fragment.pageradapter.FragmentPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
@@ -23,14 +20,21 @@ import java.util.List;
  */
 public class HomeFragment extends BaseFragment implements IObserverClickButtonGameLevel {
 
+    private final GameMode modeActive;
     private ViewPager m_viewPager;
     private TabLayout m_tabs;
 
     private CourseGeneralLevelFragment m_fCGeneralLevelF;
     private CourseMedicalLevelFragment m_fCMedicalLevelF;
 
-    public HomeFragment(){
+    public HomeFragment(GameMode mode){
         super();
+        modeActive = mode;
+    }
+
+    public HomeFragment() {
+        super();
+        modeActive = GameMode.GENERAL;
     }
 
     @Override
@@ -73,6 +77,11 @@ public class HomeFragment extends BaseFragment implements IObserverClickButtonGa
         m_tabs = (TabLayout) m_viewFragment.findViewById(R.id.result_tabs);
         setupViewPager(m_viewPager);
         m_tabs.setupWithViewPager(m_viewPager);
+        if(modeActive == GameMode.GENERAL) {
+            if(m_tabs != null) m_tabs.getTabAt(0).select();
+        }else if(modeActive == GameMode.MEDICAL){
+            if(m_tabs != null) m_tabs.getTabAt(1).select();
+        }
     }
 
 

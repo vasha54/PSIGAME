@@ -24,13 +24,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.cim.Constant;
 import cu.innovat.psigplus.cim.GameLevel;
+import cu.innovat.psigplus.cim.GameMode;
 import cu.innovat.psigplus.cim.Quizz;
 import cu.innovat.psigplus.cim.ResultQuizz;
-import cu.innovat.psigplus.cim.questions.Question;
 import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonResultQuizz;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonStartQuizz;
-import cu.innovat.psigplus.ui.fragment.HomeFragment;
 import cu.innovat.psigplus.ui.fragment.QuizzInformationFragment;
 import cu.innovat.psigplus.ui.fragment.QuizzResultFragment;
 import cu.innovat.psigplus.ui.fragment.question.FactoryViewFragmentQuestion;
@@ -70,6 +69,8 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     private QuizzInformationFragment fragmentInformation;
     private QuizzResultFragment fragmentResult;
 
+    private GameLevel level;
+
     private Runnable updateTimeView = new Runnable() {
         @Override
         public void run() {
@@ -85,6 +86,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
 
         }
     };
+
 
     public QuizzActivity(){
         super();
@@ -209,13 +211,6 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadNextQuestion(){
-//        if(quizz != null) timeToPass=quizz.getDurationQuestion();
-//        if(progressBarTime!=null && quizz!=null){
-//            progressBarTime.setMax(quizz.getDurationQuestion());
-//            progressBarTime.setProgress(quizz.getDurationQuestion(),false);
-//        }
-//        if(tviewTime!=null && quizz!=null) tviewTime.setText(Util.convertToMMSS(quizz.getDurationQuestion()));
-//        if(tviewCurrentQuestion != null) tviewCurrentQuestion.setText(String.valueOf(indexFragments+1));
 
         if(indexFragments < fragments.size()){
             if(progressBarTime!=null && quizz!=null){
@@ -323,7 +318,7 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = getIntent();
         int levelInt = intent.getIntExtra(Constant.LEVEL_GAME,-1);
-        GameLevel level = GameLevel.values()[levelInt];
+        level = GameLevel.values()[levelInt];
 
         controller = PsiGameController.getInstance(QuizzActivity.this);
 
@@ -342,7 +337,14 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onBackPressed() {
         if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
+
+        GameMode mode = GameMode.GENERAL;
+        if(this.level == GameLevel.COMPETENT_MEDICAL || this.level == GameLevel.ROOKIE_MEDICAL ||
+                this.level == GameLevel.PROFESSIONAL_MEDICAL){
+            mode = GameMode.MEDICAL;
+        }
         Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
+        intent.putExtra(Constant.MODE_GAME,mode.ordinal());
         Bundle b = new Bundle();
         controller.registerResultQuizz(quizz.getIdPlayer(),quizz.getIdQuizz(),-1);
         startActivity(intent);
@@ -390,7 +392,13 @@ public class QuizzActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void clickedButtonResultQuizz() {
         if(handlerTime != null && updateTimeView!=null)  handlerTime.removeCallbacks(updateTimeView);
+        GameMode mode = GameMode.GENERAL;
+        if(this.level == GameLevel.COMPETENT_MEDICAL || this.level == GameLevel.ROOKIE_MEDICAL ||
+                this.level == GameLevel.PROFESSIONAL_MEDICAL){
+            mode = GameMode.MEDICAL;
+        }
         Intent intent = new Intent(QuizzActivity.this, MainActivity.class);
+        intent.putExtra(Constant.MODE_GAME,mode.ordinal());
         Bundle b = new Bundle();
         startActivity(intent);
         finish();

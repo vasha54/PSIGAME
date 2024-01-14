@@ -28,8 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_begin_register"
-                style="@style/CustomTextViewDescription"
+                style="@style/CustomTextViewIntroRegister"
                 android:padding="10dp"
+                android:textAlignment="textStart"
                 android:background="@drawable/border_round_8dip"/>
             <Space
                     android:layout_width="match_parent"

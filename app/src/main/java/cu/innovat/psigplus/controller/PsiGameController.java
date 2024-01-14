@@ -226,4 +226,8 @@ public class PsiGameController {
     public void resetRegisterPlayer(){
         this.managerDB.resetRegisterPlayer();
     }
+
+    public boolean existPLayerActive(){
+        return (this.getCurrentPlayer()!= null);
+    }
 }

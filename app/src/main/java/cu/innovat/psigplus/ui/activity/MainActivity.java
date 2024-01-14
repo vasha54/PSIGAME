@@ -3,37 +3,23 @@ package cu.innovat.psigplus.ui.activity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import android.graphics.*;
 import android.graphics.pdf.PdfDocument;
-import android.provider.Settings;
-import android.telephony.SignalStrength;
-import android.telephony.SubscriptionInfo;
-import android.telephony.SubscriptionManager;
 import android.os.Environment;
 import android.view.*;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener;
 
 import android.widget.Toast;
 import android.content.Intent;
-import android.os.Process;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.content.pm.PackageManager;
-import android.Manifest;
-import android.content.Context;
 import android.os.Build;
 
 import cu.innovat.psigplus.R;
@@ -47,10 +33,6 @@ import cu.innovat.psigplus.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.Manifest.permission.READ_PHONE_NUMBERS;
-import static android.Manifest.permission.READ_PHONE_STATE;
-import static android.Manifest.permission.READ_SMS;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener, IObserverClickButtonGameLevel,
         IObserverClickButtonGenerateCertificate {
@@ -102,15 +84,28 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         if(bottomNavigationView!=null){
             bottomNavigationView.setOnItemSelectedListener(this);
         }
+
+        Intent intent = getIntent();
+        int modeInt = intent.getIntExtra(Constant.MODE_GAME,GameMode.GENERAL.ordinal());
+        GameMode mode = GameMode.values()[modeInt];
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = new HomeFragment();
+        Fragment fragment = new HomeFragment(mode);
+
+        if(!controller.existPLayerActive()){
+            fragment = new CertificateFragment(getIMEI(),getNumberPhone());
+            if(bottomNavigationView!=null){
+                bottomNavigationView.setSelectedItemId(R.id.navigation_certificate);
+            }
+        }
+
         fragmentManager.beginTransaction().
                 replace(R.id.container,fragment).addToBackStack(fragment.toString()).
                 commit();
     }
 
     public boolean onNavigationItemSelected(MenuItem item){
-        if(bottomNavigationView!=null){
+        if(bottomNavigationView!=null && controller.existPLayerActive()){
             final int previousItem = bottomNavigationView.getSelectedItemId();
             final int nextItem = item.getItemId();
             if (previousItem != nextItem) {
@@ -401,7 +396,8 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         int h = bounds.height();
         widthText =(int) paintText.measureText(namePlayer);
         canvas.drawText(namePlayer,Util.WIDTH_TEMPLATE_CERTIFICATE/2-widthText/2,420-h/2,paintText);
-
     }
+
+
 
 }
