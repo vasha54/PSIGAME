@@ -1,520 +1,1906 @@
 [
-    {
-        "id": "9e1e92a1-5e5a-4872-b862-5f04d3760134",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicología médica se enfoca en la relación entre la mente y el cuerpo en el ámbito de la salud",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "7a67a523-fab2-44bc-b2c1-de86358afa66",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicología médica se centra únicamente en el diagnóstico y tratamiento de enfermedades mentales.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "61b7b4b9-3ab9-4722-8252-a40c84398a9d",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El apoyo social puede tener un impacto positivo en el bienestar y la recuperación de un paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "6e3338ab-91f7-4076-a84f-f716007d203d",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La comunicación efectiva entre médico y paciente puede mejorar los resultados del tratamiento.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "3bdb589f-cb26-4821-96dd-e317e8d9114a",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La comunicación es un elemento clave en la relación médico-paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "8d2a7c6d-6d7f-4e1b-bb6f-3912607eadec",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "En la RMP, la comunicación es responsabilidad únicamente del paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "42de80a8-b7aa-489d-819b-7d95eb0d6c10",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "En los casos de emergencia, la comunicación no es necesaria",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "48706401-da3d-4b31-8cd4-3f7ea4e8e557",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para recopilar información médica.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "b129bfc5-d150-4d00-894c-3d907120443b",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para discutir temas personales",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "2ec60027-2dfa-4882-9529-ce0b8f92437c",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para realizar exámenes físicos",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "8437c8c8-b7f6-4d98-9255-25f16de55254",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "La relación médico-paciente es fundamental para el proceso de atención médica",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "b43e0acc-e21c-46c6-a49a-8e5bdd128c1d",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "La RMP se caracteriza por la interacción y comunicación entre un médico y su paciente, con el objetivo de lograr un diagnóstico preciso y un tratamiento efectivo.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "6ea50fcb-47ca-4b07-ac2f-4092b2655c51",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "El propósito único de la RMP es el tratamiento efectivo del enfermo",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "41e8bdc0-dd1d-4247-929f-a9bb412456fb",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "Una buena RMP se basa esencialmente en el respeto del paciente hacia el médico",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "a402c3ff-7628-4d16-b680-8b4bacfcd816",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "El objetivo principal de la relación médico-paciente es establecer una buena comunicación",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "4ccdf303-3514-42f5-b64d-aeea3fb8eb4e",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "El objetivo principal de la relación médico-paciente es promover el bienestar del médico.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "a17d99f7-0589-4bec-98b7-fe247e23c866",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "La psicoterapia no es efectiva en el tratamiento de la depresión en pacientes mayores.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "24562077-3868-4135-8cef-45ca1699c05a",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "La terapia de apoyo es una forma efectiva de psicoterapia para el tratamiento de la depresión.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "bbd98ef7-b68c-478a-9e10-0b58c08591bb",
-        "level": "COMPETENT_MEDICAL",
-        "statement": "La psicoterapia no es adecuada para pacientes con depresión con pensamientos suicidas.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "8dc28828-523b-4862-8284-ac57c5ec9f56",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El objetivo de la entrevista médica es establecer una relación de confianza con el paciente. Uno de los objetivos de la entrevista médica es establecer una relación de confianza con el paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "68ad3b48-ab85-4690-8f28-899d4870435d",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La prescripción de medicamentos es parte de la entrevista médica, pero no es el objetivo principal.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "25e2e25d-e25d-423a-94a2-a603a35747f5",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "Las pruebas de laboratorio son parte de la entrevista médica, pero no es el objetivo principal.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "bdedb916-441d-4d4a-89bc-b60777f41d64",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "Escuchar activamente al paciente es una habilidad importante en la entrevista médica.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "df3f3a98-08c4-4187-8993-cbd03fb7a304",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "Prestar atención a la comunicación no verbal del paciente es importante en la entrevista médica",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "3c34679c-4570-451b-a0f1-d3281997296e",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La confidencialidad es un principio ético que se debe respetar en la entrevista médica.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "2e0fe686-9e50-405c-bd31-c6a839215134",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La divulgación de información es un principio ético en la entrevista médica.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "c91b1524-1c0c-4902-8be6-a1ad2617002a",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La confidencialidad solo se aplica a pacientes con enfermedades contagiosas.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "1f1bf9e5-1440-4dfc-86f8-0da2987d88f8",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es inútil en el tratamiento de los ataques de pánico.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "c35f5c5f-d4a7-46bd-ab92-1f2c734e3daa",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento recomendado para los pacientes con ansiedad que tienen efectos secundarios negativos con los medicamentos.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "7c698091-a7ce-41c1-9ad5-d64e5ae030c5",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es menos efectiva en el tratamiento de la ansiedad que los medicamentos antidepresivos.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "cec775e6-123f-4b76-bc3d-6686e2de6289",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La terapia interpersonal es una forma efectiva de psicoterapia para el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "a3639077-5006-4b1a-ad7c-9cd918f088f3",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia no tiene efectos secundarios como los medicamentos para la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "4a5abb72-e254-4b11-9232-1a2a70a24da2",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia no es útil en el tratamiento de fobias específicas.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "cd6ce244-6f16-4244-ad49-4d38561778ab",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La terapia de aceptación y compromiso (TAC) es una forma de psicoterapia que se enfoca en aceptar los pensamientos y sentimientos que causan ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "40048aab-4b58-497f-a26c-4a2783e46662",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento a largo plazo para la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "4fc6fec5-87eb-4e31-9b16-3267b8145394",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La hipnosis es una forma efectiva de psicoterapia para el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "96e27ddf-571c-42f6-acdb-62dd02defed1",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La TCC es una forma de psicoterapia que se enfoca en cambiar los pensamientos y comportamientos que contribuyen a la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "c12e5378-2ccb-4d4a-b83b-0fd435f590d7",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es útil en el tratamiento de la ansiedad social.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "baf5e81c-8ee3-4403-a70a-f0692da3c46b",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El uso de medicamentos es más efectivo que la psicoterapia en el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "3993d7a1-b387-433e-a065-8f840edce517",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El estrés es un factor de riesgo psicosocial en la salud",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "fd31b909-0135-4a36-9549-efaef7bd60b0",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La negación es un ejemplo de estrategia de afrontamiento.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "bbaed705-4829-4229-aec9-830cec48df1c",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La tristeza persistente es un síntoma de depresión.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "5868e765-305e-4eff-9ca0-89a1ae6daa50",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La tristeza persistente es un síntoma de depresión.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "2a3bf72b-cf5b-4533-bf4d-a01937a1c2c4",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La bulimia nerviosa es un trastorno de la conducta alimentaria.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "ba0786ac-57d6-4cbe-b649-76a81987bf3f",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia no es útil en el tratamiento de trastornos de ansiedad específicos, como el trastorno obsesivo-compulsivo (TOC).",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "f1aa76aa-d4cc-4e5c-a30b-246b89247e80",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El objetivo de la psicoterapia en pacientes con ansiedad es la eliminación completa de los síntomas.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "718b1ee9-3fdb-4c4d-bf65-368ed1c13d4c",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento de corto plazo para la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "50b7e8a2-cc23-4983-b802-aa40b765ab4d",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento de corto plazo para la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "0bef482d-78bf-4cef-8c1a-5d98e5ed4a3b",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La mayoría de los pacientes con ansiedad pueden beneficiarse de la psicoterapia.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "5215460b-ecf9-4d50-a918-35e18ba72930",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia sólo debe ser usada en casos graves de ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "acbfeb52-7574-493d-8022-98e309051b50",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La terapia de grupo es tan efectiva como la terapia individual en el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "59f76ab0-3f39-4445-81f2-8eab16227303",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "El psicólogo es el único profesional capacitado para aplicar la psicoterapia.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "d0f5bf0e-bff8-4732-9c81-a64008f70003",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede ser un tratamiento efectivo para pacientes con trastornos del sueño.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "1502b3ef-0023-479a-aea1-1521cb6f7aef",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "En la psicoterapia, el paciente sólo habla y el psicólogo no dice nada.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "41c99938-2f84-4f57-9f87-b47c8bf46cce",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede ayudar a los pacientes con trastornos de la personalidad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "64bad346-8869-4867-ae5c-273dd071fa8a",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia sólo se aplica cuando el paciente está en crisis.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "dc66e6e9-63f8-4d5f-981a-cd0c5d9af20b",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede ser un tratamiento efectivo para pacientes con trastornos adictivos.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "9d8b2f7d-e609-4c2c-a3eb-1a98356f51f6",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento muy invasivo que requiere una gran cantidad de horas.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "64f7e438-1fb6-456b-b76a-78de59b105a7",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia requiere un gran esfuerzo por parte del paciente para ser efectiva.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "3e3fe1eb-d18f-4f29-b914-035d80ccca87",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es eficaz en el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "e7be55c2-8e90-49f5-afcc-352b0ee0590e",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La terapia cognitivo-conductual (TCC) es el tipo de psicoterapia más efectivo en el tratamiento de la ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "d504d9b9-40cf-4771-b821-bad55b1a4d57",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La hipnosis es una técnica comúnmente utilizada en la psicoterapia.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "a456bdad-3847-4bc1-9271-34b64d2a1294",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia no es un tratamiento efectivo para los trastornos alimentarios.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "1c6a358d-795d-4b8e-b8cd-1598f298cc62",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia sólo se aplica a pacientes con trastornos de ansiedad.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "968d9684-f7a8-4351-97f9-8679db7ece07",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede aplicarse en sesiones individuales y grupales.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "3b4c1bfb-5d69-411a-9d63-218c8f5d68f3",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede aplicarse a pacientes con enfermedades físicas graves.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "d15bb394-0a2c-43c7-b2d7-8d0405b911ac",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia busca encontrar soluciones rápidas a los problemas emocionales del paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "125007bd-14c5-4ebb-8071-0018d246c5b9",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento que sólo se aplica a adultos.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "dc1c1f17-f5d1-449f-924e-84443f8484f5",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia puede ser un tratamiento complementario a terapias médicas como la medicación.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    },
-    {
-        "id": "129cff7e-ad4a-4f41-b674-e0f4c476b94b",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia sólo tiene efectos en la parte emocional del paciente.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "cced8dc1-c78f-4af9-8e06-8a032f5e3ae5",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "En la psicoterapia, el psicólogo se sienta detrás del paciente y no interactúa con él.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "1e27bff2-3667-40cc-b78d-19ae86fea94c",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es un tratamiento que sólo se aplica en casos de trastornos mentales graves.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "274747eb-95c0-44aa-817e-b0fa23196385",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La psicoterapia es una intervención que solo se utiliza en casos de trastornos mentales graves.",
-        "type_question": "trueorfalse",
-        "isTrue": false
-    },
-    {
-        "id": "bde44ebd-58b7-4fba-91d6-8b97647e2832",
-        "level": "ROOKIE_MEDICAL",
-        "statement": "La terapia cognitivo-conductual es un ejemplo de intervención psicológica en el ámbito de la medicina.",
-        "type_question": "trueorfalse",
-        "isTrue": true
-    }
+  {
+    "id": "9e1e92a1-5e5a-4872-b862-5f04d3760134",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicología médica se enfoca en la relación entre la mente y el cuerpo en el ámbito de la salud",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "7a67a523-fab2-44bc-b2c1-de86358afa66",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicología médica se centra únicamente en el diagnóstico y tratamiento de enfermedades mentales.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "61b7b4b9-3ab9-4722-8252-a40c84398a9d",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El apoyo social puede tener un impacto positivo en el bienestar y la recuperación de un paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6e3338ab-91f7-4076-a84f-f716007d203d",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La comunicación efectiva entre médico y paciente puede mejorar los resultados del tratamiento.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "3bdb589f-cb26-4821-96dd-e317e8d9114a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La comunicación es un elemento clave en la relación médico-paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8d2a7c6d-6d7f-4e1b-bb6f-3912607eadec",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "En la RMP, la comunicación es responsabilidad únicamente del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "42de80a8-b7aa-489d-819b-7d95eb0d6c10",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "En los casos de emergencia, la comunicación no es necesaria",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "48706401-da3d-4b31-8cd4-3f7ea4e8e557",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para recopilar información médica.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b129bfc5-d150-4d00-894c-3d907120443b",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para discutir temas personales",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "2ec60027-2dfa-4882-9529-ce0b8f92437c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La entrevista médica es un proceso de comunicación entre el médico y el paciente para realizar exámenes físicos",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "8437c8c8-b7f6-4d98-9255-25f16de55254",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La relación médico-paciente es fundamental para el proceso de atención médica",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b43e0acc-e21c-46c6-a49a-8e5bdd128c1d",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La RMP se caracteriza por la interacción y comunicación entre un médico y su paciente, con el objetivo de lograr un diagnóstico preciso y un tratamiento efectivo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6ea50fcb-47ca-4b07-ac2f-4092b2655c51",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El propósito único de la RMP es el tratamiento efectivo del enfermo",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "41e8bdc0-dd1d-4247-929f-a9bb412456fb",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Una buena RMP se basa esencialmente en el respeto del paciente hacia el médico",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a402c3ff-7628-4d16-b680-8b4bacfcd816",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El objetivo principal de la relación médico-paciente es establecer una buena comunicación",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "4ccdf303-3514-42f5-b64d-aeea3fb8eb4e",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El objetivo principal de la relación médico-paciente es promover el bienestar del médico.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a17d99f7-0589-4bec-98b7-fe247e23c866",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia no es efectiva en el tratamiento de la depresión en pacientes mayores.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "24562077-3868-4135-8cef-45ca1699c05a",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La terapia de apoyo es una forma efectiva de psicoterapia para el tratamiento de la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bbd98ef7-b68c-478a-9e10-0b58c08591bb",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia no es adecuada para pacientes con depresión con pensamientos suicidas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "8dc28828-523b-4862-8284-ac57c5ec9f56",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El objetivo de la entrevista médica es establecer una relación de confianza con el paciente. Uno de los objetivos de la entrevista médica es establecer una relación de confianza con el paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "68ad3b48-ab85-4690-8f28-899d4870435d",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La prescripción de medicamentos es parte de la entrevista médica, pero no es el objetivo principal.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "25e2e25d-e25d-423a-94a2-a603a35747f5",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Las pruebas de laboratorio son parte de la entrevista médica, pero no es el objetivo principal.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bdedb916-441d-4d4a-89bc-b60777f41d64",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Escuchar activamente al paciente es una habilidad importante en la entrevista médica.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "df3f3a98-08c4-4187-8993-cbd03fb7a304",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Prestar atención a la comunicación no verbal del paciente es importante en la entrevista médica",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "3c34679c-4570-451b-a0f1-d3281997296e",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La confidencialidad es un principio ético que se debe respetar en la entrevista médica.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "2e0fe686-9e50-405c-bd31-c6a839215134",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La divulgación de información es un principio ético en la entrevista médica.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c91b1524-1c0c-4902-8be6-a1ad2617002a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La confidencialidad solo se aplica a pacientes con enfermedades contagiosas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1f1bf9e5-1440-4dfc-86f8-0da2987d88f8",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es inútil en el tratamiento de los ataques de pánico.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c35f5c5f-d4a7-46bd-ab92-1f2c734e3daa",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento recomendado para los pacientes con ansiedad que tienen efectos secundarios negativos con los medicamentos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "7c698091-a7ce-41c1-9ad5-d64e5ae030c5",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es menos efectiva en el tratamiento de la ansiedad que los medicamentos antidepresivos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "cec775e6-123f-4b76-bc3d-6686e2de6289",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia interpersonal es una forma efectiva de psicoterapia para el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "a3639077-5006-4b1a-ad7c-9cd918f088f3",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia no tiene efectos secundarios como los medicamentos para la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "4a5abb72-e254-4b11-9232-1a2a70a24da2",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia no es útil en el tratamiento de fobias específicas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "cd6ce244-6f16-4244-ad49-4d38561778ab",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia de aceptación y compromiso (TAC) es una forma de psicoterapia que se enfoca en aceptar los pensamientos y sentimientos que causan ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "40048aab-4b58-497f-a26c-4a2783e46662",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento a largo plazo para la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "4fc6fec5-87eb-4e31-9b16-3267b8145394",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La hipnosis es una forma efectiva de psicoterapia para el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "96e27ddf-571c-42f6-acdb-62dd02defed1",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La TCC es una forma de psicoterapia que se enfoca en cambiar los pensamientos y comportamientos que contribuyen a la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c12e5378-2ccb-4d4a-b83b-0fd435f590d7",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es útil en el tratamiento de la ansiedad social.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "baf5e81c-8ee3-4403-a70a-f0692da3c46b",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El uso de medicamentos es más efectivo que la psicoterapia en el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "3993d7a1-b387-433e-a065-8f840edce517",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El estrés es un factor de riesgo psicosocial en la salud",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "fd31b909-0135-4a36-9549-efaef7bd60b0",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La negación es un ejemplo de estrategia de afrontamiento.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bbaed705-4829-4229-aec9-830cec48df1c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La tristeza persistente es un síntoma de depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "5868e765-305e-4eff-9ca0-89a1ae6daa50",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La tristeza persistente es un síntoma de depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "2a3bf72b-cf5b-4533-bf4d-a01937a1c2c4",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La bulimia nerviosa es un trastorno de la conducta alimentaria.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "ba0786ac-57d6-4cbe-b649-76a81987bf3f",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia no es útil en el tratamiento de trastornos de ansiedad específicos, como el trastorno obsesivo-compulsivo (TOC).",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "f1aa76aa-d4cc-4e5c-a30b-246b89247e80",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El objetivo de la psicoterapia en pacientes con ansiedad es la eliminación completa de los síntomas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "718b1ee9-3fdb-4c4d-bf65-368ed1c13d4c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento de corto plazo para la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "50b7e8a2-cc23-4983-b802-aa40b765ab4d",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento de corto plazo para la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "0bef482d-78bf-4cef-8c1a-5d98e5ed4a3b",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La mayoría de los pacientes con ansiedad pueden beneficiarse de la psicoterapia.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "5215460b-ecf9-4d50-a918-35e18ba72930",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia sólo debe ser usada en casos graves de ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "acbfeb52-7574-493d-8022-98e309051b50",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia de grupo es tan efectiva como la terapia individual en el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "59f76ab0-3f39-4445-81f2-8eab16227303",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El psicólogo es el único profesional capacitado para aplicar la psicoterapia.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "d0f5bf0e-bff8-4732-9c81-a64008f70003",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede ser un tratamiento efectivo para pacientes con trastornos del sueño.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "1502b3ef-0023-479a-aea1-1521cb6f7aef",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "En la psicoterapia, el paciente sólo habla y el psicólogo no dice nada.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "41c99938-2f84-4f57-9f87-b47c8bf46cce",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede ayudar a los pacientes con trastornos de la personalidad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "64bad346-8869-4867-ae5c-273dd071fa8a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia sólo se aplica cuando el paciente está en crisis.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "dc66e6e9-63f8-4d5f-981a-cd0c5d9af20b",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede ser un tratamiento efectivo para pacientes con trastornos adictivos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "9d8b2f7d-e609-4c2c-a3eb-1a98356f51f6",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento muy invasivo que requiere una gran cantidad de horas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "64f7e438-1fb6-456b-b76a-78de59b105a7",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia requiere un gran esfuerzo por parte del paciente para ser efectiva.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "3e3fe1eb-d18f-4f29-b914-035d80ccca87",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es eficaz en el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "e7be55c2-8e90-49f5-afcc-352b0ee0590e",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia cognitivo-conductual (TCC) es el tipo de psicoterapia más efectivo en el tratamiento de la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d504d9b9-40cf-4771-b821-bad55b1a4d57",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La hipnosis es una técnica comúnmente utilizada en la psicoterapia.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a456bdad-3847-4bc1-9271-34b64d2a1294",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia no es un tratamiento efectivo para los trastornos alimentarios.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1c6a358d-795d-4b8e-b8cd-1598f298cc62",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia sólo se aplica a pacientes con trastornos de ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "968d9684-f7a8-4351-97f9-8679db7ece07",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede aplicarse en sesiones individuales y grupales.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "3b4c1bfb-5d69-411a-9d63-218c8f5d68f3",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede aplicarse a pacientes con enfermedades físicas graves.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d15bb394-0a2c-43c7-b2d7-8d0405b911ac",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia busca encontrar soluciones rápidas a los problemas emocionales del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "125007bd-14c5-4ebb-8071-0018d246c5b9",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento que sólo se aplica a adultos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "dc1c1f17-f5d1-449f-924e-84443f8484f5",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia puede ser un tratamiento complementario a terapias médicas como la medicación.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "129cff7e-ad4a-4f41-b674-e0f4c476b94b",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia sólo tiene efectos en la parte emocional del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "cced8dc1-c78f-4af9-8e06-8a032f5e3ae5",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "En la psicoterapia, el psicólogo se sienta detrás del paciente y no interactúa con él.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1e27bff2-3667-40cc-b78d-19ae86fea94c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento que sólo se aplica en casos de trastornos mentales graves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "274747eb-95c0-44aa-817e-b0fa23196385",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es una intervención que solo se utiliza en casos de trastornos mentales graves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "bde44ebd-58b7-4fba-91d6-8b97647e2832",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia cognitivo-conductual es un ejemplo de intervención psicológica en el ámbito de la medicina.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "78b805af-fe54-4783-9e2c-62a828748589",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática es una rama de la psiquiatría que se enfoca en el tratamiento de los síntomas físicos causados por el estrés y otros factores psicológicos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "ddb71000-7fff-4c9b-a827-aa627b041643",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los trastornos somatomorfos son aquellos en los que los síntomas físicos son causados por factores psicológicos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "06681fa1-17c3-491a-9c81-ad4f3697baa9",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca en el uso de medicamentos psiquiátricos para tratar los síntomas somáticos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "20fc1fce-3da3-43f3-b462-cdff1399a090",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los trastornos de conversión son aquellos en los que la persona experimenta síntomas físicos que no tienen una causa física identificable.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bf54f6d6-d248-440e-9c86-e3571cdf2ada",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática no tiene en cuenta los factores biológicos que pueden contribuir a la aparición de síntomas físicos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a70c6a4a-d04e-45e2-953b-3f9779c62d4c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca en la relación entre los factores psicológicos y las enfermedades físicas.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f31f2104-09e4-4cd3-a923-098bfd587e3c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Las enfermedades psicosomáticas son aquellas en las que los síntomas físicos son causados únicamente por factores psicológicos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5fbf9ade-2670-40c0-a61e-1c87cf972cf1",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca en el tratamiento no solo de los síntomas físicos, sino también de los factores psicológicos subyacentes.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "4186e268-42a1-445f-9919-5a3b143da04e",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los factores psicológicos pueden influir en la aparición, la gravedad y la duración de una enfermedad física.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f56c19db-ea44-482c-a0ee-49b94184abce",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática es útil para tratar enfermedades físicas que no tienen una causa conocida.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "84543f4a-1d30-45c9-aa34-33d9ae5ceadd",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La terapia cognitivo-conductual puede ser efectiva en el tratamiento de la medicina psicosomática.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "31e08d1b-1a09-453f-b4ac-6c9e8eb19a46",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca solo en el tratamiento de enfermedades físicas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "06e72f9e-b202-4f1a-be71-57eeba2f4644",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La depresión y la ansiedad pueden aumentar el dolor físico experimentado por un paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f3ff08e4-acdf-4623-8466-42dd74a77541",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicoterapia es efectiva para tratar los síntomas físicos de los trastornos somatomorfos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8fde9b77-4004-4f1f-a850-e9de4008af77",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El estrés crónico puede aumentar el riesgo de desarrollar enfermedades físicas.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "eaab976b-3a05-4094-81c9-c7e935a666c9",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los pacientes pueden beneficiarse de la medicina psicosomática si se abordan adecuadamente los factores psicológicos subyacentes de sus síntomas físicos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d8c5c44e-c427-4ba1-9306-9513f96a20ad",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca solo en el tratamiento de enfermedades relacionadas con el estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "7dad6023-0fe7-433c-a69c-0e5001c05ba2",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El tratamiento de los factores psicológicos subyacentes de los síntomas físicos puede mejorar la calidad de vida del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "722cf618-143c-40fe-a9ef-b10fe488be1c",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La meditación y la terapia de relajación pueden ser útiles en el tratamiento de los síntomas físicos relacionados con el estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8c08a80f-20c8-4ccf-8e64-d4d07f0e257a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La medicina psicosomática se enfoca solo en el tratamiento de los síntomas físicos, y no en la causa subyacente de la enfermedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "792ceccb-abf5-4562-a1c7-c407497bf233",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicología médica sustenta la idea de que el estrés crónico puede contribuir al desarrollo de enfermedades físicas",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "0a7128b4-85c7-4253-84f5-5b8b074a4e38",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El estrés puede afectar a la salud física y mental de una persona.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5c2e90f6-4f37-4eef-ae0f-d7d4444444ee",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La psicología del estrés se centra en el estudio de las respuestas psicológicas y emocionales de las personas ante situaciones estresantes",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "27a5823d-5a28-44a9-b813-761d4de1bb9a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El estrés solo afecta a las personas que tienen un estilo de vida poco saludable.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "ccaa55e1-25c2-40eb-b87a-61fcc060eec0",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los estilos de afrontamiento son las diferentes formas en que las personas responden al estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "790c9638-eeee-4733-8c80-2b11aefa4fcf",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El afrontamiento activo implica tomar medidas para resolver un problema estresante.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "9813e2fa-6059-4730-a7d3-25f4de3f5b15",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El afrontamiento evitativo implica ignorar o evitar completamente un problema estresante.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bad3204e-9cd0-4c0a-b0e0-10481b8d48f6",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El afrontamiento emocional implica expresar y procesar las emociones asociadas al estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f1294942-ea8c-45a5-b8a9-67a651626448",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El afrontamiento social implica buscar apoyo y ayuda de otras personas para manejar el estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f315b9b7-29bd-4a2a-b001-7f0de771e85a",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los síntomas psíquicos son manifestaciones emocionales o cognitivas que pueden ocurrir en el contexto de la práctica médica",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "5d640ffd-ba6d-4580-a286-6979f4040dd6",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "La ansiedad es uno de los síntomas psíquicos más comunes en la práctica médica",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "809ec280-ec25-46f3-bf64-24c0b6d2c819",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los síntomas psíquicos son exclusivamente causados por problemas de salud mental preexistentes.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "698fd506-7c20-4fa1-8f6a-a613a689963f",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "Los síntomas psíquicos pueden afectar la calidad de vida y el bienestar de los pacientes.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "35b9607e-e6c3-49f6-a0ae-e5b783f6f082",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El consentimiento informado es el proceso mediante el cual el médico informa al paciente sobre su diagnóstico, opciones de tratamiento, riesgos y beneficios.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "2d271988-c5e1-418e-8d3e-e0613dba8f66",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El consentimiento informado es una forma de obligar al paciente a seguir el tratamiento.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c049fbd1-8f3f-4e62-8e7d-7d83a8e0e0da",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El consentimiento informado solo se aplica en casos de cirugías.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "508faf93-0cdc-41c9-b5dd-edd712dc77e9",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El consentimiento informado solo es necesario en la atención pediátrica",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "d02ce166-8304-46c7-bef6-a7f07baca7b1",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La confidencialidad es el deber del médico de mantener la información privada del paciente y no compartirla sin su consentimiento.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "86d3681c-f899-4884-a5c6-9a1368d30735",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La confidencialidad solo se aplica a pacientes con enfermedades contagiosas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "d8127785-d0e0-476d-99c9-d410e0c51bc6",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La confidencialidad solo se aplica a pacientes mayores de edad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1a541e8f-c670-49a8-895a-526cf15bce7f",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El diagnóstico médico es parte de la entrevista médica, pero no es el objetivo principal.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "f2e8e97f-e4e6-434b-87c7-3bd4022dcd1b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La entrevista médica tiene como objetivo únicamente recolectar información específica sobre la salud del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "363c1d91-b345-4e3e-9828-0502e356601b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la entrevista médica, el profesional debe prestar atención a la afectividad del paciente, su estilo de comportamiento, las características de su pensamiento y su modalidad de relación.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "95ab02e9-d826-4c58-8d41-030bf6c07b7b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La entrevista médica solo tiene como función establecer un diagnóstico presuntivo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "ab4624ec-2576-4f09-a0b6-dd7830201b1c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El objetivo de la entrevista médica es proporcionar un espacio interpersonal en el que se facilite la comunicación del diagnóstico y de la propuesta de tratamiento.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b86f46bb-5082-43a5-a226-c99a21e62849",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Durante la entrevista médica, el silencio prolongado puede generar incomodidad y ser interpretado como una forma de rechazo o exclusión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "2b99a29b-a83b-4ff2-92e0-73c19ec0df79",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la entrevista médica, la técnica de parafrasear consiste en repetir, utilizando otras palabras, lo que el paciente ha dicho.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "61109c91-4be4-4d33-acf2-b3320481a1bb",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La técnica de señalar en la entrevista médica consiste en aconsejar al paciente acerca de las decisiones que debe tomar.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "8d9e943e-09d6-4081-89bb-3d748d8a972c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Durante la entrevista médica, el médico debe prestar atención a la capacidad del paciente para responder, su nivel de conciencia, su estado cognitivo y su nivel de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "19b6ee77-4dd6-47c3-aad6-f186a83e78d9",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El consejo es una técnica en la entrevista médica que expresa un juicio definitivo sobre lo que el paciente debe hacer o pensar.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "5f4f75b2-41c6-4cdd-8b95-d8556f0d2340",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Durante la entrevista médica, es importante no forzar al paciente a hablar y permitirle espacios para que pueda reflexionar y pensar lo que va a contestar.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "822db0bc-bac7-4922-9ccf-5259e92938e9",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El trastorno obsesivo-compulsivo (TOC) se caracteriza por pensamientos obsesivos que llevan a la realización de conductas repetitivas compulsivas.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b7359ffa-6b27-433d-bdf3-e85501b43b5c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El trastorno por déficit de atención con hiperactividad (TDAH) solo afecta a niños y desaparece durante la adolescencia.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b68ea880-6b12-455a-9af9-97c090ebeb70",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El trastorno de ansiedad generalizada (TAG) se caracteriza por una preocupación excesiva y difícil de controlar sobre diferentes áreas de la vida.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "883494da-4abe-47c1-ace4-c8faf1ac26fa",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La depresión es una enfermedad que solo afecta emocionalmente a la persona, sin tener consecuencias físicas o cognitivas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "4bb881af-2a5f-4d39-a131-124376febe7d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El trastorno por estrés agudo (TEA) se produce inmediatamente después de la experiencia de un evento traumático.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "abd9c11b-3a70-40f2-a226-97421aac7d46",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La respuesta de estrés puede resultar beneficiosa para mantener o incrementar la salud, por lo que el exceso de estrés siempre es perjudicial.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "366c3ce3-9297-4f94-9275-a351f2ebdb87",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El eje neural se activa de manera lenta y produce un aumento general de la activación fisiológica del organismo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b33753bd-a1ea-4ce4-89eb-f86daba85478",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipótesis del modelo cognitivo plantea que las percepciones que se tengan de los eventos no influyen sobre las emociones y los comportamientos de las personas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "219dfbfc-c10f-4dc9-8a38-3d284840547d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La respuesta de activación fisiológica incluye tres ejes: neural, neuroendocrino y endocrino.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "22070592-3bf0-4a35-9fba-29616258f9fd",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los pacientes con patrón de conducta tipo A tienen mayor predisposición a padecer patologías cardiovasculares.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "cd9ae24f-6b7d-4733-8313-ca138af14621",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El burnout o síndrome de estar quemado por el trabajo surge tras un proceso de reevaluación cognitiva.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c8f51e53-58fe-419f-971b-3b481be48251",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La personalidad tipo C o patrón de conducta tipo C se presenta en sujetos introvertidos, obsesivos y agresivos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "dd9da999-8758-45ea-9942-63892fd1102d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La activación mantenida del tercer eje endocrino puede propiciar la aparición de trastornos psicosomáticos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "14ca0668-0e37-4b99-bf05-6449af7a860b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La autoestima es un factor protector ante el estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b4f42dff-aec3-4eb6-a160-f9ec99bf05b7",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La respuesta de estrés implica un nivel de activación general del organismo en el que participan el sistema nervioso central y el sistema nervioso parcial.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1efb62af-6f6f-48ed-bc86-f5b02f7bc5a8",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Aprender a identificar las situaciones causantes del estrés es una forma efectiva de controlarlo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "4f8eed0b-dbc8-4e8c-966d-2639d8c53190",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La activación del segundo eje neuroendocrino suele provocar trastornos psicofisiológicos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1386b0f7-1a14-49d5-813d-46d977af38f3",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Las estrategias inadecuadas de afrontamiento, el estilo de vida, la autoestima y el control determinan la vulnerabilidad al estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "a84a1c42-b4d6-474a-85cf-e807942f3aee",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Para superar el estrés es necesario aprender a comunicarse asertivamente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "90306e0d-a486-4238-b2c1-d6f482419013",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los individuos con personalidad resistente se enfrentan de forma pasiva a los estímulos estresantes.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "4445d004-3d80-4dda-b8eb-4ce3554e40fd",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los procesos patológicos agudos no pueden ser fuentes de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5593d630-b928-4eb9-ae14-ff79999ae9e2",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los pacientes que emplean estilos de afrontamiento centrados en el problema presentan una evolución satisfactoria.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "dfa03429-db39-4971-af2f-5759ec45286e",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "El sentimiento de compromiso en la personalidad resistente se refiere a la tendencia a implicarse en todas las actividades de la vida.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d684dc66-fd35-4b10-af14-e96790dcfef4",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La preocupación destructiva se centra en la búsqueda de soluciones a la situación de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "3cde5618-93b6-4f95-8f6a-b2110b635a91",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La relajación es una habilidad efectiva para controlar el estrés, pero su práctica solo puede ser a largo plazo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "85e6fd9c-115d-44db-9b40-0ba6ccebcf82",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Ignorar las preocupaciones del paciente no es una habilidad importante en la entrevista médica.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "0865785f-b403-4ff3-a92f-9513a1a0be7a",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Hablar constantemente sin dejar que el paciente hable es necesario cuando la situación del paciente es complicada",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "e942aa49-be87-4060-8d1f-acb0d833f2b5",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La práctica regular de ejercicio físico, la meditación y la respiración profunda son algunas técnicas efectivas para manejar el estrés",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "25fb520a-3b0b-4a32-9875-a2f3827dd53d",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Algunos síntomas comunes del estrés incluyen fatiga, dificultad para concentrarse y cambios en el apetito.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "88440987-28a7-4d9a-badf-49efe1279ca4",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La teoría de Lazarus sobre el estrés se centra en la relación entre las situaciones estresantes y la evaluación cognitiva de las mismas.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "746105a8-c539-4d56-8182-87db86b4c649",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Según la teoría de Lazarus, el estrés es exclusivamente una respuesta física del cuerpo ante situaciones amenazantes.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "29fdf1a5-68f1-4fc7-a2c3-8ce0a75fe7a0",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La teoría de Lazarus sugiere que la forma en que una persona evalúa una situación estresante puede afectar su nivel de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "22bb92dd-bf4e-4d72-a082-750e4f3d838a",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La teoría de Lazarus sostiene que todas las personas responden de la misma manera ante situaciones estresantes.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "30fceb4b-e89a-4831-ac77-3f6486418801",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Según la teoría de Lazarus, el estrés es un proceso que ocurre únicamente a nivel consciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "347092a6-6c37-4a39-bac0-a183c5a6aae1",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El tratamiento del estrés puede incluir técnicas de relajación, como la respiración profunda y la meditación.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "0f3571f9-9442-45eb-ac20-97ce66cf2afe",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La terapia cognitivo-conductual es un enfoque efectivo para el tratamiento del estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d2713834-c6bf-45aa-9089-314c1503deb3",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El uso de medicamentos siempre es necesario para tratar el estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "777b96f4-ed8e-42e4-9702-41c1df44a90e",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El apoyo social y las redes de apoyo son importantes en el tratamiento del estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d918cb37-ad9a-4e52-968d-922210673c1b",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico suele ser causado únicamente por lesiones del cuerpo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5f984d77-1b97-4129-839a-f04cf57cebc9",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La ansiedad y la depresión pueden empeorar el dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "0a48a391-65cc-40cd-8149-e4efa4e5e4cd",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Las personas que tienen un alto umbral de dolor son menos sensibles al dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "b7689157-8572-4812-99cd-abbb2fd69a2e",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico siempre se acompaña de signos visibles de lesión, como inflamación o enrojecimiento.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "4b352e06-1947-4a4f-963b-51fc3c9cced4",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La atención plena puede ser útil para controlar el dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "27603311-0b37-49de-8c56-c9e52c4ddb32",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Las técnicas de relajación, como la meditación y la respiración profunda, no son efectivas para controlar el dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "ec1e7946-470e-4d02-97a9-7d8f6eefc8e1",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor crónico no tiene un impacto significativo en la salud mental de una persona.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "eb39e016-3f24-43fa-b42b-0c7a4aebbd56",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Las mujeres son más propensas que los hombres a experimentar dolor crónico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "de13cf26-92b7-49a7-a016-c4a580d281bd",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La sugestión puede influir en la percepción del dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d4ff8a97-94c6-4b89-909e-606cd3a8e7b0",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico puede ser inducido por factores psicológicos, como el estrés y la ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "48716dbf-f7d6-4872-9a6b-cfe31cf9f6ac",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico crónico puede afectar significativamente la capacidad de una persona para realizar actividades cotidianas.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "864467be-c2ef-4f5e-94f0-4d838ee32992",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La terapia cognitivo-conductual puede ser efectiva para tratar el dolor crónico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d0c1d172-ce36-4f25-bbc5-5576d5b18f05",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico es menos intenso cuando se recibe una cantidad adecuada de apoyo social.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "848d469e-93bc-406d-8bc3-73c5a821b7fa",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico puede ser una señal de que una persona necesita descansar y cuidar su cuerpo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "647d908a-56f9-493d-851b-a3adffef2adf",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico es menos común en las personas mayores.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "e677f4b0-7f30-4929-9015-f7e64a9afe1f",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "Las personas que experimentan dolor crónico deben depender únicamente de medicamentos para tratar el dolor.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5cbc17c3-8dfe-40c4-85e2-8b71cb3d7c1a",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico puede convertirse en un problema crónico si no se trata adecuadamente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "ead4e3ed-3a94-4a3d-a874-07ca5d5970de",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La edad de una persona tiene un impacto significativo en la percepción del dolor físico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "a2a0569a-0b26-4e62-9071-278641e9cbc7",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico a menudo se trata efectivamente con cirugía.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "3703f7d3-0825-4351-a54e-a92bea39b3ab",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El dolor físico puede ser una respuesta adaptativa a una lesión o enfermedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "e898f876-3f13-4272-ac36-fe7cd52b6785",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia puede ser utilizada tanto en tratamiento individual como grupal",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "e21d80cc-08cc-4c76-9da4-29fd803530b5",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia puede ser utilizada para tratar trastornos de la personalidad",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "937611eb-94ab-49e0-9fdd-cbb217771569",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento que sólo se utiliza en casos de trastornos mentales graves",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "cbcdf841-ecdc-4858-acd5-aa31166d6e1b",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es uno de los tratamientos más efectivos para la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "f66f0a2d-4e12-4cdd-8102-373a12f43d5d",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La TCC es la forma más efectiva de psicoterapia para la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "a14e1058-5949-4bb1-bbc8-e52163af2702",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia sólo se recomienda para pacientes con depresión grave.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "3c380db9-a270-4e15-9eaf-fa8ce7395570",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La mayoría de los pacientes con depresión pueden beneficiarse de la psicoterapia.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bbb9621f-1fb6-4e29-afbd-f98bdf1f9a9f",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento a corto plazo para la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "ef69acb8-3e6e-4744-905f-e94df35aa9ff",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El objetivo de la psicoterapia en pacientes con depresión es la eliminación completa de los síntomas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "20f2ce43-d822-4911-9148-3b2966649382",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La terapia de grupo es menos efectiva que la terapia individual en el tratamiento de la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c6a4a253-da8d-42ae-9664-247ab1b1fc82",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es menos efectiva que los medicamentos en el tratamiento de la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "555ce7f9-77fc-4e08-9087-355fec63e8c7",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "El uso de medicamentos es más efectivo que la psicoterapia en el tratamiento de la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b804068d-520b-4ecb-85e3-65965db09d6a",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es útil en el tratamiento de la depresión postparto.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "502677ed-aabd-486a-aec2-6ef24ef2368d",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La TCC se enfoca en cambiar los pensamientos y comportamientos que contribuyen a la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d44860dc-a8b0-4c95-b34a-7461ece87fac",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La terapia interpersonal se enfoca en mejorar las relaciones interpersonales que pueden contribuir a la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "ce212860-2c79-40ce-b0f2-7d6357f417b5",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia no es un tratamiento efectivo para la depresión resistente al tratamiento.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b70e58b0-e39b-4458-ba14-b1140eb08724",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia es un tratamiento a largo plazo para la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bff6254f-f70e-4833-bfb3-58b9ef21995c",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La hipnosis es una forma efectiva de psicoterapia para el tratamiento de la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "1981363a-496d-43ea-a8bf-7d82eb237e12",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La psicoterapia no tiene efectos secundarios como los medicamentos para la depresión.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "afea5e25-10c6-4ba4-bc08-14883a9692dc",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La depresión posparto es un trastorno de la conducta en el embarazo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "0085f676-fe61-44ad-9754-aca3c5cb2998",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La depresión posparto es un trastorno de la conducta en el posparto.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "78ca62a2-e635-4e3d-bd46-a684e690b507",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los cambios en la personalidad y el comportamiento siempre son causados por trastornos mentales.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "197c5da8-5584-49d3-ad1b-850d3be0691c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicología médica puede ayudar a los pacientes a lidiar con el dolor crónico mediante técnicas de relajación, terapia de aceptación y compromiso y terapia de biofeedback.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c4f75072-e3ca-4462-adc7-027427093a83",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tipo de tratamiento que se centra en resolver los problemas del paciente en el menor tiempo posible.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6063fa75-74ac-41d6-aa7b-a8644ec51906",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve sólo puede ser aplicada a pacientes con trastornos mentales leves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "31e7fa71-4dc1-4e5e-91d3-6ba853c02add",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve se enfoca en trabajar los aspectos más superficiales de los problemas emocionales del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c392fbbd-bc73-4d01-b429-124863be8e97",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve puede ser aplicada tanto en sesiones individuales como en grupo",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "bd020c6c-9277-46cd-b639-ede987d9473d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tratamiento que requiere una gran inversión de tiempo y dinero.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "075b5446-d7d5-41c1-a82f-e1c1d0933453",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve puede ser efectiva en el tratamiento de trastornos de ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "cee63217-efa6-4366-8f90-041acc05887b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve sólo se aplica en pacientes que necesiten soluciones rápidas a sus problemas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b331b7e0-daf2-44b0-a9fe-479fcb176908",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia breve, el terapeuta ayuda al paciente a identificar y solucionar los problemas relevantes de su vida diaria.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "56db714d-95f2-451d-b94b-091f2647cf4f",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve requiere que el paciente se comprometa con el proceso de cambio para que sea efectivo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d314dc0d-4265-4d16-913e-d5c1c77c43d7",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tipo de tratamiento que no se puede combinar con otras intervenciones médicas.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "27ada9f2-3951-4ed6-9d47-8ee30d50e274",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve puede ser efectiva en el tratamiento de trastornos de la personalidad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "7a5e332b-cdac-4d98-bf3c-93d3b9f0c1e2",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia breve, el terapeuta y el paciente trabajan juntos para establecer metas a corto plazo y solucionar los problemas del paciente en un tiempo reducido.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "938b5b27-313e-49e5-9ddb-8a039cfe2839",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tratamiento que sólo se aplica en casos de crisis emocionales.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a52ea7be-a764-47bd-9bbf-177c0e17f158",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia breve, el objetivo principal es enseñar al paciente a manejar mejor sus emociones y pensamientos.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c823261e-6c6f-4659-8aaf-5c8ca9bbda24",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve implica un gran compromiso por parte del terapeuta para lograr resultados en un corto tiempo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8bcb5155-d822-4aea-a1b7-0c6293843af8",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tipo de tratamiento que siempre se aplica en sesiones individuales.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "10d83a21-0750-4811-b675-87c20996b4d3",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia breve, el terapeuta tiene un papel más activo en el proceso de cambio del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "501f07ed-5c8a-423c-bb34-70a217639245",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve sólo se aplica en casos de trastornos mentales graves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "026b83cb-d8ea-4981-b4ae-396b8374ce6b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve puede ser aplicada a pacientes de cualquier edad",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "3171bb69-310e-4fd2-9609-069aacbd6945",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia breve es un tratamiento que sólo se puede aplicar una vez en la vida del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "14c2ef3b-ef73-48aa-aa3b-2b29709106fa",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo se enfoca en resolver los problemas del paciente en un corto periodo de tiempo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c2173f98-1104-41ee-ad50-9b4d45e7768c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo está diseñada para pacientes con trastornos mentales graves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c111b80f-c426-4f16-9d55-610495f25929",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo se enfoca en brindar al paciente un ambiente de apoyo y comprensión en el que pueda procesar sus problemas emocionales.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6db6c37b-1e2d-49e0-9327-9150dcd5b9f1",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo requiere que el paciente haga un gran esfuerzo para lograr cambios significativos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "e8f235fb-b26f-4ac5-8a68-017bb14564fb",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo puede ser aplicada en una variedad de situaciones, como en el apoyo a pacientes que enfrentan una enfermedad crónica o a personas que están atravesando un proceso de separación o duelo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "a9818403-e369-4439-aa28-8660331c8a02",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo sólo se utiliza en pacientes con problemas emocionales leves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "ec957e6d-021f-40e3-82af-4217d025134a",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo puede ser de un tiempo limitado o prolongado, dependiendo de las necesidades del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "632e308c-b0d1-4fd7-87ce-048862613e7b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia de apoyo, el terapeuta se enfoca en ayudar al paciente a comprender sus emociones y a desarrollar estrategias de afrontamiento saludables.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "e52b5013-1d1c-4f70-9fe3-deeebe152b8d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo se enfoca en realizar cambios profundos en la personalidad del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "caf1eb94-4cfd-425e-bfe7-b5638d323468",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo se enfoca en enseñar al paciente habilidades para manejar sus emociones y pensamientos en situaciones de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6ecb8b21-18b2-4296-9aca-4f4c8990f283",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo no es una forma efectiva de tratar el trastorno de estrés.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "5892c33c-c636-44ea-af8a-68feaade6a83",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo puede ser efectiva en el tratamiento de trastornos de ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "120dee82-368c-4731-ab5b-c8be8e384c40",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia de apoyo, el objetivo principal es ayudar al paciente a desarrollar una mayor capacidad de resiliencia ante las situaciones adversas de la vida.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "88c23e5d-c908-4db3-8c30-e81b3e08bc12",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo es un tratamiento que sólo se aplica en casos de crisis emocionales.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "ed58999c-5a5f-4b5d-a538-55d610111185",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia de apoyo, el terapeuta actúa como un consejero que le brinda apoyo emocional al paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "45b09981-e0b9-4610-990a-524e45f3dc98",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo es un tratamiento que requiere una gran inversión de tiempo y recursos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b8ffc5e6-3cf0-4e31-b79a-ad207a6639fa",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia de apoyo, el terapeuta ayuda al paciente a resolver conflictos subyacentes que puedan estar contribuyendo a sus problemas emocionales.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "778f97c5-4c36-402f-93ea-4b3ae37cea78",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo puede ser aplicada a pacientes de cualquier edad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8cc7ed58-b9b1-44b9-b61b-62be8f2164cc",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La psicoterapia de apoyo implica que el terapeuta siempre dirige la sesión y toma el control de la terapia.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c192d513-ebe1-4e8d-827e-b998f888f29e",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la psicoterapia de apoyo, el terapeuta motiva al paciente a tomar decisiones y a dirigir su propia terapia.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "0a588130-27b5-4dfc-8d8e-af87de760958",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un estado de trance en el que el paciente pierde el control de sus pensamientos y acciones.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "a090c826-fee3-4003-94a7-4a3e5c9fb523",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica se basa en la suggestión y la sugestibilidad del paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6d12710a-5f76-4cf3-8a57-eb948a4430ce",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica sólo se utiliza para tratar trastornos de ansiedad.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "c8bf6ec8-496c-411f-8886-9ec216e72df0",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica requiere que el paciente esté dormido durante toda la sesión.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "497090c0-ed54-4664-9b8e-8c527f093f25",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica se enfoca en ayudar al paciente a resolver problemas emocionales y psicológicos mediante la alteración del estado de conciencia.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "28329876-dc24-4621-b803-ade38b9950d1",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica no funciona para todos los pacientes, ya que algunos tienen una menor capacidad de sugestibilidad.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "d0608cd5-811a-44ad-b877-94ef2e3d1b21",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica puede ser utilizada para tratar trastornos de dolor crónico.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "0e9f5271-d753-4d5b-9684-7f83f8a4a9b0",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un tratamiento que suele ser bastante costoso.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "21fd8e6e-3628-4f30-b92e-a36759891494",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la hipnosis terapéutica, el paciente siempre pierde el control de sus pensamientos y acciones.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "6ad98f91-eb9a-4fa8-833c-89c1ec7a5543",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica puede ser aplicada sin la ayuda de un terapeuta profesional.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "be06f0b9-3577-4e77-b370-529418b82bf6",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica puede ser efectiva en el tratamiento de trastornos relacionados con el sueño.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c8ad4628-604f-4907-b9d8-3a8eac44205f",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un tipo de tratamiento que requiere que el paciente esté hipnotizado durante largos periodos de tiempo.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "612cbb3c-7ed9-4c08-a327-8b55bbeff18b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Durante la hipnosis terapéutica, el paciente se encuentra en un estado de trance en el que está altamente sugestionable.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "1c66cf55-98df-401a-a6ad-6bc4f903670e",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un tratamiento que sólo puede ser aplicado en pacientes adultos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "b9e2b966-7517-464b-9801-6b534c29fa4c",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica se enfoca en ayudar al paciente a desarrollar una mayor comprensión de sí mismo y de sus problemas emocionales.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "0ca53948-0846-4835-bc25-14b8260455c2",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un tratamiento que se utiliza exclusivamente para trastornos relacionados con la alimentación.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "0742431f-c91e-49c3-8d6f-bcffc2638593",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica siempre implica que el terapeuta tome el control de la sesión y dirija al paciente en un estado hipnótico.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "f7de42d6-b3ed-4de7-aa6a-b0f35c7a3ea6",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica es un tratamiento que puede ser aplicado en sesiones individuales o en grupo.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "6985d879-0b37-494f-8aea-939c85e6851b",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "La hipnosis terapéutica puede ser efectiva en el tratamiento de trastornos de ansiedad generalizada.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "8cd2b940-799a-4f3e-89f6-eb792c719931",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "En la hipnosis terapéutica, el terapeuta ayuda al paciente a acceder a partes del inconsciente que son difíciles de explorar en la conciencia consciente.",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "c4a231bc-0ce3-4ffd-aee3-1ab787941250",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los síntomas psíquicos pueden afectar la calidad de vida y el bienestar de los pacientes",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "25d6c735-5130-4572-bfe8-6a56674b799d",
+    "level": "PROFESSIONAL_MEDICAL",
+    "statement": "Los psicólogos pueden ayudar a los pacientes a manejar el dolor crónico a través de la terapia conversacional",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "5f799d6b-abbf-4aa0-8806-98ee7843d8df",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "¿La psicoterapia se puede combinar con otras intervenciones médicas?",
+    "type_question": "trueorfalse",
+    "isTrue": true
+  },
+  {
+    "id": "84ef2007-cfbe-4afa-bca7-0e8156366172",
+    "level": "ROOKIE_MEDICAL",
+    "statement": "El objetivo principal de la relación médico-paciente es obtener beneficios económicos.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "60cd2091-ebdb-4313-9da4-46c74193823d",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "La comunicación no es tan importante en la relación médico-paciente.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  },
+  {
+    "id": "78fb0d9e-ab02-4efe-842c-6a601735b171",
+    "level": "COMPETENT_MEDICAL",
+    "statement": "En la RMP, la empatía solo es necesaria en casos de enfermedades graves.",
+    "type_question": "trueorfalse",
+    "isTrue": false
+  }
 ]

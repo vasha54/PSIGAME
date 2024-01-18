@@ -1,6 +1,8 @@
 package cu.innovat.psigplus.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 
 
 import cu.innovat.psigplus.cim.*;
@@ -27,12 +29,31 @@ public class PsiGameController {
     private Context context;
     private DBManager managerDB;
 
+    private class B extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            LOG.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
+            LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
+            insertAcademicGroup();
+            LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
+            insertLevelGame();
+            LOG.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
+            insertQuestions();
+            LOG.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
+            return null;
+        }
+    }
+
+
     private PsiGameController(Context c) {
         this.context = c;
         this.managerDB = new DBManager(this.context);
         this.managerDB.initDatabase();
         insertDataDefault();
     }
+
+
 
     public static PsiGameController getInstance(Context c) {
         if (instance == null) {
@@ -46,14 +67,16 @@ public class PsiGameController {
     }
 
     private void insertDataDefault(){
-        LOG.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
-        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
-        insertAcademicGroup();
-        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
-        insertLevelGame();
-        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
-        insertQuestions();
-        LOG.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
+          B b =new B();
+          b.execute();
+//        LOG.i("TAG_DB_PSIGAME_PLUS","Iniciando inserssción de datos por defectos");
+//        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Grupos Academicos");
+//        insertAcademicGroup();
+//        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando Niveles del juego");
+//        insertLevelGame();
+//        LOG.i("TAG_DB_PSIGAME_PLUS","Insertando preguntas");
+//        insertQuestions();
+//        LOG.i("TAG_DB_PSIGAME_PLUS","Fin inserssción de datos por defectos");
     }
 
     private void insertAcademicGroup(){

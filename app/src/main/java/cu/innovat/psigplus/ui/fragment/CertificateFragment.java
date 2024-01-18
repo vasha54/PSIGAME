@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CertificateFragment extends BaseFragment implements IObserverClickButtonBeginRegisterCertificate,
         IObserverClickButtonRegisterCertificate, IObserverClickButtonGenerateCertificate,
-        IObserverRegisterPlayer, IClickButtonGenerateCertificate {
+        IObserverRegisterPlayer, IClickButtonGenerateCertificate,IClickButtonRegisterCertificate {
 
     private CertificatePresentationFragment m_fPresentation;
     private CertificateRegisterFragment m_fRegister;
@@ -28,7 +28,8 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
     private String IMEI;
     private String numberPhone;
 
-    private List<IObserverClickButtonGenerateCertificate> observers;
+    private List<IObserverClickButtonGenerateCertificate> observersOCBGC;
+    private List<IObserverClickButtonRegisterCertificate> observersOCBRC;
 
     public CertificateFragment(String _IMEI, String _numberPhone){
         super();
@@ -38,7 +39,8 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
         m_fPresentation = new CertificatePresentationFragment();
         m_fRegister = new CertificateRegisterFragment(this.IMEI,this.numberPhone);
 
-        observers = new ArrayList<IObserverClickButtonGenerateCertificate>();
+        observersOCBGC = new ArrayList<IObserverClickButtonGenerateCertificate>();
+        observersOCBRC = new ArrayList<IObserverClickButtonRegisterCertificate>();
     }
 
     @Override
@@ -87,15 +89,12 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
 
     @Override
     public void clickedButtonRegisterCertificate() {
-        FragmentManager fragmentManager = getChildFragmentManager();
-        fragmentManager.beginTransaction().
-                replace(R.id.containerFragmentCertificate,m_fGenerate).addToBackStack(m_fGenerate.toString()).
-                commit();
+        notifyClickButtonRegisterCertificate();
     }
 
     @Override
     public void clickedButtonGenerateCertificate(List<Format> formats) {
-        for(IObserverClickButtonGenerateCertificate obj :observers)
+        for(IObserverClickButtonGenerateCertificate obj :observersOCBGC)
             obj.clickedButtonGenerateCertificate(formats);
     }
 
@@ -107,16 +106,32 @@ public class CertificateFragment extends BaseFragment implements IObserverClickB
 
     @Override
     public void attach(IObserverClickButtonGenerateCertificate observer) {
-        observers.add(observer);
+        observersOCBGC.add(observer);
     }
 
     @Override
     public void detach(IObserverClickButtonGenerateCertificate observer) {
-        observers.remove(observer);
+        observersOCBGC.remove(observer);
     }
 
     @Override
     public void notifyClickButtonGenerateCertificate() {
 
+    }
+
+    @Override
+    public void attachOCBRC(IObserverClickButtonRegisterCertificate observer) {
+        observersOCBRC.add(observer);
+    }
+
+    @Override
+    public void detachOCBRC(IObserverClickButtonRegisterCertificate observer) {
+        observersOCBRC.remove(observer);
+    }
+
+    @Override
+    public void notifyClickButtonRegisterCertificate() {
+        for(IObserverClickButtonRegisterCertificate obj : observersOCBRC)
+            obj.clickedButtonRegisterCertificate();
     }
 }

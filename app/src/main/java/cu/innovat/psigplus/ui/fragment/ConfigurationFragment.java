@@ -7,19 +7,32 @@ import android.widget.Button;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AlertDialog;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import cu.innovat.psigplus.R;
 import cu.innovat.psigplus.controller.PsiGameController;
+import cu.innovat.psigplus.interfaces.IObserverResetRegisterPlayer;
+import cu.innovat.psigplus.interfaces.IResetRegisterPlayer;
 
 /**
  * @author Luis Andrés Valido Fajardo +53 53694742  luis.valido1989@gmail.com
  * @date 1/10/23
  */
-public class ConfigurationFragment extends BaseFragment{
+public class ConfigurationFragment extends BaseFragment implements IResetRegisterPlayer {
 
     private ImageButton resetStadistics;
     private ImageButton resetRegisterPlayer;
     private AlertDialog.Builder m_dialog;
     private AlertDialog m_alertDialog;
+
+    private List<IObserverResetRegisterPlayer> observersORRP;
+
+    public ConfigurationFragment() {
+        super();
+        observersORRP = new ArrayList<IObserverResetRegisterPlayer>();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,5 +97,22 @@ public class ConfigurationFragment extends BaseFragment{
 
     private void resetRegisterPlayer(){
         PsiGameController.getInstance(getContext()).resetRegisterPlayer();
+        this.notifyResetRegisterPlayer();
+    }
+
+    @Override
+    public void attach(IObserverResetRegisterPlayer observer) {
+        observersORRP.add(observer);
+    }
+
+    @Override
+    public void detach(IObserverResetRegisterPlayer observer) {
+        observersORRP.remove(observer);
+    }
+
+    @Override
+    public void notifyResetRegisterPlayer() {
+        for(IObserverResetRegisterPlayer obj :observersORRP)
+            obj.resetRegisterPlayer();
     }
 }

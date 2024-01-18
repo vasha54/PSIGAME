@@ -27,6 +27,8 @@ import cu.innovat.psigplus.cim.*;
 import cu.innovat.psigplus.controller.PsiGameController;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGameLevel;
 import cu.innovat.psigplus.interfaces.IObserverClickButtonGenerateCertificate;
+import cu.innovat.psigplus.interfaces.IObserverClickButtonRegisterCertificate;
+import cu.innovat.psigplus.interfaces.IObserverResetRegisterPlayer;
 import cu.innovat.psigplus.ui.fragment.*;
 import cu.innovat.psigplus.util.LOG;
 import cu.innovat.psigplus.util.Util;
@@ -35,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener, IObserverClickButtonGameLevel,
-        IObserverClickButtonGenerateCertificate {
+        IObserverClickButtonGenerateCertificate, IObserverClickButtonRegisterCertificate, IObserverResetRegisterPlayer {
 
     private BottomNavigationView bottomNavigationView;
     private Toast m_toast;
@@ -90,18 +92,26 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         GameMode mode = GameMode.values()[modeInt];
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = new HomeFragment(mode);
+
 
         if(!controller.existPLayerActive()){
-            fragment = new CertificateFragment(getIMEI(),getNumberPhone());
+            CertificateFragment fragment = new CertificateFragment(getIMEI(),getNumberPhone());
+            fragment.attachOCBRC(this);
+            fragment.attachOCBRC(this);
             if(bottomNavigationView!=null){
                 bottomNavigationView.setSelectedItemId(R.id.navigation_certificate);
             }
+            fragmentManager.beginTransaction().
+                    replace(R.id.container,fragment).addToBackStack(fragment.toString()).
+                    commit();
+        }else{
+            Fragment fragment = new HomeFragment(mode);
+            fragmentManager.beginTransaction().
+                    replace(R.id.container,fragment).addToBackStack(fragment.toString()).
+                    commit();
         }
 
-        fragmentManager.beginTransaction().
-                replace(R.id.container,fragment).addToBackStack(fragment.toString()).
-                commit();
+
     }
 
     public boolean onNavigationItemSelected(MenuItem item){
@@ -166,9 +176,11 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 String numberPhone = getNumberPhone();
                 CertificateFragment fCertificateFragment = new CertificateFragment(IMEI,numberPhone);
                 fCertificateFragment.attach(this);
+                fCertificateFragment.attachOCBRC(this);
                 return fCertificateFragment;
             case R.id.navigation_configuration:
                 ConfigurationFragment fConfigurationFragment = new ConfigurationFragment();
+                fConfigurationFragment.attach(this);
                 return fConfigurationFragment;
             case R.id.navigation_home:
                 HomeFragment fHomeFragment = new HomeFragment();
@@ -399,5 +411,29 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     }
 
 
+    @Override
+    public void clickedButtonRegisterCertificate() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = new HomeFragment();
+        if(bottomNavigationView!=null){
+            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        }
+        fragmentManager.beginTransaction().
+                replace(R.id.container,fragment).addToBackStack(fragment.toString()).
+                commit();
+    }
 
+    @Override
+    public void resetRegisterPlayer() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        CertificateFragment fragment = new CertificateFragment(getIMEI(),getNumberPhone());
+        fragment.attachOCBRC(this);
+        fragment.attach(this);
+        if(bottomNavigationView!=null){
+            bottomNavigationView.setSelectedItemId(R.id.navigation_configuration);
+        }
+        fragmentManager.beginTransaction().
+                replace(R.id.container,fragment).addToBackStack(fragment.toString()).
+                commit();
+    }
 }
